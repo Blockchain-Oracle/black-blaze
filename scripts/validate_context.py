@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED_DIRS = {".git", ".research-clones", ".research-venv"}
+EXCLUDED_DIRS = {".git", ".research-clones", ".research-venv", ".tmp", ".cache"}
 LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 SECRET_PATTERNS = {
     "private key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),

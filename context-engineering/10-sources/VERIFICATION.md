@@ -13,7 +13,7 @@ python scripts/validate_context.py
 Result before publication:
 
 ```text
-VALIDATION PASSED: 36 Markdown files, 3 JSON files, required files present, relative links resolved, no matched secret patterns.
+VALIDATION PASSED: 36 Markdown files, 2 JSON files, required files present, relative links resolved, no matched secret patterns.
 ```
 
 This count includes the post-delegation concept shortlist and source clarifications.
