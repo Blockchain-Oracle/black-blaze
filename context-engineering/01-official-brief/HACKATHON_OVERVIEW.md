@@ -50,7 +50,7 @@ Examples are inspiration, not bonus categories.
 
 ## Dynamic observations
 
-The browser showed **1,069 participants** on 2026-07-25 around 22:19 UTC, while a separate extracted snapshot showed 861. Participant count is live and should not be treated as stable. The project gallery had not yet been published at the time of inspection.
+The browser showed **1,069 participants** on 2026-07-25 around 22:19 UTC, while separate extracted/cache snapshots showed lower counts. Participant count is live and should not be treated as stable. The participant directory requires a Devpost login, so entrant names were not anonymously auditable. The project gallery had not yet been published at the time of inspection.
 
 ## Contact surfaces
 

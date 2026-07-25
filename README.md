@@ -26,7 +26,8 @@ The repository slug follows the requested working name, **Black Blaze**. The spo
 3. [`context-engineering/00-start-here/CONTEXT_MAP.md`](context-engineering/00-start-here/CONTEXT_MAP.md) — folder map and reading order.
 4. [`context-engineering/03-submission/SUBMISSION_CHECKLIST.md`](context-engineering/03-submission/SUBMISSION_CHECKLIST.md) — non-negotiable deliverables.
 5. [`context-engineering/08-strategy/JUDGE_OPTIMIZATION.md`](context-engineering/08-strategy/JUDGE_OPTIMIZATION.md) — evidence-led competition strategy.
-6. [`context-engineering/10-sources/SOURCE_LEDGER.md`](context-engineering/10-sources/SOURCE_LEDGER.md) — provenance and source URLs.
+6. [`context-engineering/08-strategy/CONCEPT_SHORTLIST.md`](context-engineering/08-strategy/CONCEPT_SHORTLIST.md) — ranked non-photo-centric concept directions.
+7. [`context-engineering/10-sources/SOURCE_LEDGER.md`](context-engineering/10-sources/SOURCE_LEDGER.md) — provenance and source URLs.
 
 ## Repository scope
 

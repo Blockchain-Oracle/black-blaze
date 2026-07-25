@@ -22,7 +22,7 @@ Resolve these before product commitment or submission.
 - [ ] What caps are shown in the actual dashboard?
 - [ ] Is payment information needed for the intended public bucket or usage level?
 - [ ] Will judge-facing playback use public assets, app-proxied private objects, or durable links?
-- [ ] Is Event Notifications access available? Do not depend on it until confirmed.
+- [ ] Has Backblaze Support enabled Event Notifications for the account? Official docs require requesting access; do not depend on it until confirmed.
 
 ## Rules/organizer
 

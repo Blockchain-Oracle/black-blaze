@@ -10,6 +10,7 @@ Checked primarily on 2026-07-25. URLs are grouped by authority.
 - Resources: https://backblaze-generative-media.devpost.com/resources
 - Updates: https://backblaze-generative-media.devpost.com/updates
 - Discussions: https://backblaze-generative-media.devpost.com/forum_topics
+- Participants: https://backblaze-generative-media.devpost.com/participants
 - Project gallery: https://backblaze-generative-media.devpost.com/project-gallery
 
 ## Official updates
@@ -29,6 +30,7 @@ Checked primarily on 2026-07-25. URLs are grouped by authority.
 - App keys: https://www.backblaze.com/docs/cloud-storage-create-and-manage-app-keys
 - S3-compatible API: https://www.backblaze.com/docs/cloud-storage-s3-compatible-api
 - Event Notifications: https://www.backblaze.com/docs/cloud-storage-event-notifications
+- Object Lock: https://www.backblaze.com/docs/cloud-storage-object-lock
 - Pricing: https://www.backblaze.com/cloud-storage/pricing
 - Transaction pricing: https://www.backblaze.com/cloud-storage/transaction-pricing
 - Terms: https://www.backblaze.com/company/policy/terms-of-service

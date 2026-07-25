@@ -13,10 +13,10 @@ python scripts/validate_context.py
 Result before publication:
 
 ```text
-VALIDATION PASSED: 34 Markdown files, 2 JSON files, required files present, relative links resolved, no matched secret patterns.
+VALIDATION PASSED: 36 Markdown files, 3 JSON files, required files present, relative links resolved, no matched secret patterns.
 ```
 
-The count becomes 35 Markdown files after adding this report.
+This count includes the post-delegation concept shortlist and source clarifications.
 
 ## External links
 
@@ -29,7 +29,7 @@ python scripts/check_external_links.py --output .tmp/link-check.json
 Result:
 
 ```text
-Checked 67 URLs: 67 reachable, 0 failed
+Checked 70 URLs: 70 reachable, 0 failed
 ```
 
 An event-provided GMI Cloud path returned HTTP 404. The resource index documents the broken historical path and points to GMI's current `llms.txt` documentation index instead.

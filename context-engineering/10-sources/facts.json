@@ -61,7 +61,9 @@
   "live_signals": {
     "participant_count_observed": 1069,
     "participant_count_stable": false,
+    "participants_directory_login_required": true,
     "project_gallery_published": false,
+    "b2_event_notifications_require_support_enablement": true,
     "gmi_promotional_credits_assumption": "treat as unavailable unless already credited"
   },
   "source_precedence": [

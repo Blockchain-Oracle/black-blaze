@@ -11,6 +11,7 @@ This file preserves every directly relevant resource found on the event page, re
 - Resources: https://backblaze-generative-media.devpost.com/resources
 - Updates: https://backblaze-generative-media.devpost.com/updates
 - Discussions: https://backblaze-generative-media.devpost.com/forum_topics
+- Participants: https://backblaze-generative-media.devpost.com/participants (login required to browse)
 - Project gallery: https://backblaze-generative-media.devpost.com/project-gallery
 
 ## Backblaze B2
@@ -23,6 +24,7 @@ This file preserves every directly relevant resource found on the event page, re
 - Pricing: https://www.backblaze.com/cloud-storage/pricing
 - Transaction classes: https://www.backblaze.com/cloud-storage/transaction-pricing
 - Event Notifications: https://www.backblaze.com/docs/cloud-storage-event-notifications
+- Object Lock: https://www.backblaze.com/docs/cloud-storage-object-lock
 - Sample AI/reference architecture index: https://www.backblaze.com/docs/cloud-storage-sample-ai-apps-reference-architecture
 
 ## Genblaze

@@ -26,7 +26,7 @@ Typical Genblaze environment variables are `B2_KEY_ID`, `B2_APP_KEY`, optional `
 - **Deduplication:** content-addressed asset keys.
 - **Provenance:** manifests beside assets; optional Object Lock for immutability.
 - **Serving:** durable public URLs or controlled private access/presigned delivery.
-- **Workflow:** asset arrival can trigger downstream work where Event Notifications access is available.
+- **Workflow:** asset arrival can trigger downstream work where Event Notifications access is available. Official documentation says the feature must be enabled by contacting Backblaze Support, so it must not be a critical hackathon dependency until access is confirmed.
 - **Lifecycle:** delete rejected/intermediate variants after a policy period.
 - **Indexing:** query metadata/Parquet or an app database keyed to B2 objects.
 
@@ -37,7 +37,7 @@ Typical Genblaze environment variables are `B2_KEY_ID`, `B2_APP_KEY`, optional `
 - Never expose B2 application keys in a browser bundle.
 - Use least privilege and a dedicated hackathon bucket/key.
 - Presigned URLs are temporary and can include credential identifiers in query parameters; redact them from logs/manifests.
-- Object Lock must be enabled thoughtfully because compliant objects cannot be removed before retention expires.
+- Object Lock must be enabled thoughtfully: once enabled at bucket level it cannot be disabled, and compliance-mode retention cannot be shortened or removed. Use it only where immutability materially supports the product.
 
 ## Current pricing and limits
 
