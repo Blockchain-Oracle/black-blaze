@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED = {".git", ".research-clones", ".research-venv"}
 URL_RE = re.compile(r"https?://[^\s)>\]`]+")
 REACHABLE_AUTH_STATUSES = {401, 403, 405, 408, 409, 425, 429}
+EXPECTED_PRIVATE_URLS = {"https://github.com/Blockchain-Oracle/black-blaze"}
 
 
 def collect_urls() -> list[str]:
@@ -34,6 +35,8 @@ def fetch(url: str, timeout: float) -> dict[str, object]:
         with urllib.request.urlopen(request, timeout=timeout) as response:
             return {"url": url, "status": response.status, "final_url": response.url, "ok": True}
     except urllib.error.HTTPError as exc:
+        if exc.code == 404 and url in EXPECTED_PRIVATE_URLS:
+            return {"url": url, "status": 404, "final_url": exc.url, "ok": True, "note": "expected unauthenticated response for private repository"}
         if exc.code in REACHABLE_AUTH_STATUSES:
             return {"url": url, "status": exc.code, "final_url": exc.url, "ok": True, "note": "reachable but access/method/rate restricted"}
         if exc.code in {400, 404, 410, 500, 501}:
