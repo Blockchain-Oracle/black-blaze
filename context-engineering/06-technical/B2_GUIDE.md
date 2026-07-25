@@ -1,0 +1,65 @@
+# Backblaze B2 Technical Guide
+
+## Why B2 must be load-bearing
+
+The scoring criterion rewards meaningful storage and data orchestration. A single `upload(final.mp4)` call is weak. Strong B2 usage stores and manages the full media lifecycle:
+
+```text
+inputs/ → intermediate generations/ → accepted outputs/ → thumbnails/
+        → manifests/ → indexes/ → logs/ → final deliveries/
+```
+
+## Account setup
+
+1. Create/enable a B2 account and MFA.
+2. Create a bucket.
+3. Create a bucket-scoped application key with only required permissions.
+4. Copy key value once into a secrets manager or local `.env`; never commit it.
+5. Configure Genblaze's `S3StorageBackend.for_backblaze(...)`.
+
+Typical Genblaze environment variables are `B2_KEY_ID`, `B2_APP_KEY`, optional `B2_BUCKET`, and `B2_REGION`. Sample repositories differ (`B2_APPLICATION_KEY`, `B2_BUCKET_NAME`, `B2_ENDPOINT`), so follow the installed package and chosen app's configuration rather than mixing conventions.
+
+## Recommended product roles
+
+- **Durability:** provider URLs expire; B2 copies remain.
+- **Organization:** hierarchical run/tenant/project paths.
+- **Deduplication:** content-addressed asset keys.
+- **Provenance:** manifests beside assets; optional Object Lock for immutability.
+- **Serving:** durable public URLs or controlled private access/presigned delivery.
+- **Workflow:** asset arrival can trigger downstream work where Event Notifications access is available.
+- **Lifecycle:** delete rejected/intermediate variants after a policy period.
+- **Indexing:** query metadata/Parquet or an app database keyed to B2 objects.
+
+## Security decisions
+
+- Prefer private buckets for user media.
+- Public buckets are acceptable only for sanitized demo assets.
+- Never expose B2 application keys in a browser bundle.
+- Use least privilege and a dedicated hackathon bucket/key.
+- Presigned URLs are temporary and can include credential identifiers in query parameters; redact them from logs/manifests.
+- Object Lock must be enabled thoughtfully because compliant objects cannot be removed before retention expires.
+
+## Current pricing and limits
+
+The official pricing page checked on 2026-07-25 says:
+
+- first 10 GB always free;
+- pay-as-you-go Class A/B/C API calls free;
+- Class D transactions have 2,500 free calls/day, then a small per-call charge;
+- free egress up to 3× average monthly storage, with stated partner exceptions and paid overage.
+
+However, a participant reported hitting a 2,500/day B2 access cap, and Genblaze v0.6.0 mentions daily Class B caps/restricted keys causing `HeadObject` 403. Older help pages also describe 2,500 free Class B calls. Treat account-level caps/pricing as an **open operational check**: inspect the actual B2 dashboard and run a load test. Do not architect a polling-heavy system.
+
+## S3 compatibility caveats
+
+Backblaze's S3-compatible API supports common S3 operations and presigned URLs, but not all AWS S3 features. Official documentation names limitations around object-level ACLs, IAM roles, object tagging, website configuration, and browser `POST` uploads to presigned URLs. Design against B2's actual API surface.
+
+## Judge-visible B2 evidence
+
+- media library or run browser backed by B2;
+- inspectable object path and metadata;
+- provenance verification screen;
+- intermediate/final distinction and retention policy;
+- download/playback that remains valid through judging;
+- test showing a stored byte changed → verification fails;
+- architecture diagram showing B2 between pipeline stages, not outside the product.

@@ -1,0 +1,22 @@
+# Local research clones used for source inspection; not vendored into this context repository
+.research-clones/
+.research-venv/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python / Node / OS artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.DS_Store
+
+# Local working artifacts
+.tmp/
+.cache/

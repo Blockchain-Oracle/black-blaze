@@ -1,0 +1,75 @@
+{
+  "snapshot": {
+    "checked_at_utc": "2026-07-25T22:19:24Z",
+    "event_status": "submission period open"
+  },
+  "event": {
+    "official_name": "Backblaze Generative Media Hackathon: Build with Genblaze on B2",
+    "format": "online",
+    "devpost_challenge_id": 30205,
+    "url": "https://backblaze-generative-media.devpost.com/"
+  },
+  "dates": {
+    "deadline_et": "2026-08-03T17:00:00-04:00",
+    "deadline_utc": "2026-08-03T21:00:00Z",
+    "deadline_wat": "2026-08-03T22:00:00+01:00",
+    "judging_start_et": "2026-08-05T10:00:00-04:00",
+    "judging_end_et": "2026-08-11T17:00:00-04:00",
+    "winner_announcement_approx_et": "2026-08-12T14:00:00-04:00"
+  },
+  "requirements": {
+    "required_technologies": [
+      "Backblaze B2 Cloud Storage",
+      "Genblaze"
+    ],
+    "gmi_cloud_required": false,
+    "working_app_url": true,
+    "github_repository": true,
+    "provider_model_list": true,
+    "public_demo_video": true,
+    "video_duration_rule": "less than 3 minutes",
+    "submission_language": "English or English translations"
+  },
+  "judging": {
+    "stage_one": "pass/fail theme and required technology viability",
+    "equal_weight_criteria": [
+      "Real-World Utility",
+      "Production Readiness",
+      "B2 Storage + Data Orchestration",
+      "Use of Genblaze"
+    ],
+    "tie_break_order": [
+      "Real-World Utility",
+      "Production Readiness",
+      "B2 Storage + Data Orchestration",
+      "Use of Genblaze",
+      "judge vote"
+    ]
+  },
+  "prizes": {
+    "grand_prize_usd": 7000,
+    "second_place_usd": 2000,
+    "third_place_usd": 1000,
+    "feedback_mentorship_awards": 10
+  },
+  "eligibility": {
+    "minimum": "age of majority where resident",
+    "nigeria_named_as_excluded": false,
+    "assessment": "likely eligible subject to law, individual sanctions screening, service access, and sponsor verification",
+    "guarantee": false
+  },
+  "live_signals": {
+    "participant_count_observed": 1069,
+    "participant_count_stable": false,
+    "project_gallery_published": false,
+    "gmi_promotional_credits_assumption": "treat as unavailable unless already credited"
+  },
+  "source_precedence": [
+    "official rules",
+    "official Devpost pages",
+    "manager clarifications",
+    "official Backblaze docs/repos",
+    "official blog/updates",
+    "third-party evidence"
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "owner": "backblaze-labs",
+    "repo": "genblaze",
+    "url": "https://github.com/backblaze-labs/genblaze",
+    "commit": "293beade3e705d69b29dbf57402800f8a868313f",
+    "kind": "official",
+    "license": "MIT",
+    "inspected_at": "2026-07-25"
+  },
+  {
+    "owner": "backblaze-labs",
+    "repo": "genblaze-gen-media-multi-provider-sample",
+    "url": "https://github.com/backblaze-labs/genblaze-gen-media-multi-provider-sample",
+    "commit": "2e31577b7a9d5a7b0309d814f2d0282088b33fe8",
+    "kind": "official-sample",
+    "license": "MIT per official blog/repo LICENSE",
+    "inspected_at": "2026-07-25"
+  },
+  {
+    "owner": "backblaze-labs",
+    "repo": "genblaze-gmicloud-pipeline",
+    "url": "https://github.com/backblaze-labs/genblaze-gmicloud-pipeline",
+    "commit": "355a539ecf99f8d6fcfc5ba40cc5f9a95523100b",
+    "kind": "official-sample",
+    "license": "MIT",
+    "inspected_at": "2026-07-25"
+  },
+  {
+    "owner": "upgradedev",
+    "repo": "cinemory",
+    "url": "https://github.com/upgradedev/cinemory",
+    "commit": "fababdc10521f30bef2b8ba1f6ab4956173eef8c",
+    "kind": "competitive-signal",
+    "license": "MIT stated in README",
+    "inspected_at": "2026-07-25"
+  },
+  {
+    "owner": "yaredtekile",
+    "repo": "proofrelay",
+    "url": "https://github.com/yaredtekile/proofrelay",
+    "commit": "700cc77898677e6434bd331dbfbbbd29087ba690",
+    "kind": "competitive-signal",
+    "license": "not verified",
+    "inspected_at": "2026-07-25"
+  },
+  {
+    "owner": "woadi-vector",
+    "repo": "reel",
+    "url": "https://github.com/woadi-vector/reel",
+    "commit": "41ba8b53a2e06222ff024d57e107996eab921853",
+    "kind": "competitive-signal",
+    "license": "MIT",
+    "inspected_at": "2026-07-25"
+  }
+]
