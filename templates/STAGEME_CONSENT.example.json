@@ -1,0 +1,52 @@
+{
+  "schema_version": "1",
+  "fixture_id": null,
+  "project_id": null,
+  "source_original_sha256": null,
+  "source_canonical_sha256": null,
+  "canonicalization": {
+    "operation": "decode-downmix-resample-only",
+    "sample_rate_hz": 24000,
+    "channels": 1,
+    "sample_format": "pcm_f32le",
+    "ffmpeg_version": null,
+    "ffmpeg_binary_sha256": null,
+    "command": null
+  },
+  "performer_attestation": {
+    "owns_or_is_authorized_to_use_recording": null,
+    "recording_contains_only_authorized_voice": null,
+    "recording_contains_no_copyrighted_backing_media": null,
+    "third_party_or_celebrity_imitation_requested": false
+  },
+  "allowed_purposes": {
+    "local_media_analysis": null,
+    "accompaniment_generation": null,
+    "deterministic_mix_and_qc": null,
+    "private_human_review": null,
+    "temporary_gpu_host_processing": null,
+    "backblaze_b2_storage": false,
+    "public_demo_or_submission": false,
+    "training_reuse": false
+  },
+  "processing": {
+    "gpu_host_or_provider": null,
+    "model": "AmphionTeam/AnyAccomp",
+    "model_commit": null,
+    "checkpoint_revision": null,
+    "processing_region": null,
+    "approved_spend_cap_usd": null,
+    "provider_terms_url": null,
+    "provider_retention_disclosed": null
+  },
+  "retention": {
+    "temporary_worker_max_hours": 24,
+    "delete_worker_copy_after_verified_download": true,
+    "user_controlled_bundle_max_days": 7,
+    "delete_voice_bearing_derivatives_with_source": true,
+    "deletion_contact_or_command": null
+  },
+  "accepted": false,
+  "accepted_at_utc": null,
+  "policy_version": "stageme-f1-2026-07-27"
+}

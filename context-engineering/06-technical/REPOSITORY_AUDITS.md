@@ -87,7 +87,7 @@ Core repositories were shallow-cloned for direct source inspection. Additional S
 
 ### StageMe support/reference repositories
 
-The machine ledger records exact commits for 20 additional repositories, including librosa, pyloudnorm, python-audio-separator, Whisper/WhisperX, Revideo, Motion Canvas, MoviePy, PixiJS, wavesurfer.js, Meyda, ONEFIELD, Murmur, InstantBandAI, Vanta, ACE-Step Studio, AceForge, and Synesthesia.
+The machine ledger records exact commits for the StageMe support and reference repositories, including librosa, pyloudnorm, python-audio-separator, Whisper/WhisperX, Revideo, Motion Canvas, MoviePy, PixiJS, wavesurfer.js, Meyda, ONEFIELD, Murmur, InstantBandAI, Vanta, ACE-Step Studio, AceForge, and Synesthesia.
 
 Key license boundary:
 
@@ -97,6 +97,15 @@ Key license boundary:
 - Essentia/aubio introduce AGPL/GPL obligations and are not default choices.
 
 See `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md` for interface-level adopt/evaluate/reject decisions.
+
+### fspecii/ace-step-ui
+
+- URL/commit: https://github.com/fspecii/ace-step-ui at `a1fdf91829ec6f7b98844f80e323529cd155dbf2`; shallow clone inspected 2026-07-27 11:15 UTC.
+- Purpose: workflow/history/editing calibration for the later ACE comparison, never a source or product-identity dependency.
+- Architecture: React/Vite frontend, Express/SQLite backend, local ACE-Step Gradio API, FFmpeg/AudioMass/Demucs integrations, and library/history surfaces.
+- Setup/activity: Node 18+, ACE-Step launched separately with API enabled; current head was pushed 2026-06-27. GitHub reported 47 open issues/PRs at inspection, including Gradio/CLI/VRAM failures in issue 105 and app-config fallback in issue 87.
+- License boundary: the README displays an MIT badge, but the inspected tree has no LICENSE/COPYING file and GitHub license metadata is null. Treat the repository as no recognized license and do not copy code or assets.
+- Finding: confirms user demand for local history, seed reuse, repaint, and region-editing workflows, while also exposing the maintenance burden and generic full-song-workstation scope StageMe must avoid.
 
 ## Reproduction commands
 
@@ -108,3 +117,65 @@ git clone --depth 1 https://github.com/upgradedev/cinemory.git .research-clones/
 git clone --depth 1 https://github.com/yaredtekile/proofrelay.git .research-clones/proofrelay
 git clone --depth 1 https://github.com/woadi-vector/reel.git .research-clones/reel
 ```
+
+## StageMe pre-call refresh — checked 2026-07-27 10:13–11:49 UTC
+
+All repositories below were inspected from ignored shallow clones. No third-party source or weight was copied into the project. Model-output quality remains unreproduced.
+
+### AnyAccomp refresh
+
+- URL/commit: https://github.com/AmphionTeam/AnyAccomp at `82604b5e3107944ad4c49fc64900b86118ae2c62`; clean clone.
+- Purpose: first source-conditioned accompaniment experiment.
+- Code/model licenses: MIT code; checkpoint revision `9aa9e62427337bf1df4caa3c4f3e6ad934522e71` declares CC BY 4.0.
+- Exact weight tree: 880,790,586-byte flow model, 1,020,206,416-byte vocoder, 177,202,134-byte VQ; 2,078,199,136 bytes total.
+- Runtime: stock Python 3.9, FFmpeg 4.x, Torch/Torchaudio 2.3.1, CUDA 12.1 dependencies. A `uv pip compile` resolution for Python 3.9/Linux passed; no weights were downloaded.
+- Implementation: 24 kHz mono input; 50 steps, CFG 3, seed 1024 defaults; separate accompaniment; un-gain-staged raw source-plus-accompaniment mixture.
+- New installation finding: the current Hugging Face model tree already begins `pretrained/...`, so the README's `local_dir='./pretrained'` snapshot example nests it. The runbook downloads the pinned allowed tree into the repository root and verifies exact hashes.
+- Hosted boundary: official Space currently reports `CONFIG_ERROR`; no Hugging Face inference-provider mapping exists. No Dockerfile or official VRAM/latency/CPU benchmark was found.
+
+### ACE-Step 1.5 refresh
+
+- URL/commit: https://github.com/ace-step/ACE-Step-1.5 at `6d467e4b5081ccb0abf1ec1bf4fdf9051a2d34b0`; clean clone.
+- Release: `v0.1.8`, tag commit `dce621408bee8c31b4fcf4811682eb9359e1bc94`; package declares 1.5.0.
+- Immutable Hugging Face state: model-card/main snapshot [`ACE-Step/Ace-Step1.5@19671f406d603126926c1b7e2adc169acbcade22`](https://huggingface.co/ACE-Step/Ace-Step1.5/tree/19671f406d603126926c1b7e2adc169acbcade22); base snapshot [`ACE-Step/acestep-v15-base@e432212fec32b8965a14ffa57ae653438d6abd14`](https://huggingface.co/ACE-Step/acestep-v15-base/tree/e432212fec32b8965a14ffa57ae653438d6abd14). Base `model.safetensors` is 4,787,825,604 bytes with SHA-256 `4177f600501a6d4bd81cadaa0abac557ffd15c54e5c8cb52053cdb24a0844d6b`.
+- Purpose: `lego` separate-layer comparison, `complete` full-mix comparison, `repaint` only after parent acceptance.
+- License: MIT code/model cards; bundled Qwen3-derived components originate under Apache 2.0.
+- Download boundary: the five major tensor weights total 14,813,190,540 bytes / 13.796 GiB. The complete pinned main and base snapshots total 14,883,895,000 bytes / 13.862 GiB, including configs and auxiliary files. The base checkpoint exceeds 2 GB and was not downloaded.
+- Runtime: Python 3.11–3.12; official Linux pins Torch 2.10/CUDA 12.8 and ships a CUDA 12.8.1 Dockerfile.
+- Implementation risks: `complete` source validation/duration mismatch; request crossfade fields recomputed; repaint splice/truncation is mode/length-dependent; API job store is in memory, unknown IDs look pending, no generation cancel exists, and request timeout may leave CUDA work running.
+- Hosted boundary: official Space exposes turbo/XL-turbo rather than base-only `lego`/`complete`; no base inference-provider mapping was found.
+
+### Revideo refresh and reproduction
+
+- URL/commit: https://github.com/midrender/revideo at `b5de67a009a55aa2768a1e178b0446b2479a0b4e`; npm 0.11.0; MIT.
+- Runtime: Node `>=22.12.0`, Puppeteer 25.3.0, fetched Chrome/headless shell 150.0.7871.24. Telemetry opt-out is `DISABLE_TELEMETRY=true`.
+- Canonical monorepo build passed for 10 projects.
+- First bundled-template render passed: 7.433 seconds, 1080×1080 at 30 fps, H.264/AAC, 11.42 seconds wall, 467,517,440-byte max RSS, output SHA-256 `58ec67eab29a44a48fde7f096d3c515066b31a7b5ce0af1cdb41549463c0cda7`.
+- Immediate rerenders failed on Node 25 and supported Node 22.12 with `Navigating frame was detached`, consistent with open issue #343 and the source-forced Chromium `--single-process` argument.
+- Decision: intended architecture but not StageMe-reproduced. Require three consecutive cold/warm 15-second 720p local-audio/font runs, sync/repeat checks, container and deployment success. FFmpeg/MoviePy remains Phase-0 fallback.
+
+### Genblaze refresh and reproduction
+
+- URL/commit: https://github.com/backblaze-labs/genblaze at `293beade3e705d69b29dbf57402800f8a868313f`; release `v0.6.0`; MIT; Python ≥3.11.
+- Current distributions observed independently: umbrella 0.4.4, core 0.3.7, S3 0.3.6, CLI 0.3.5.
+- Selected provider/streaming/compositor/registry/ObjectStorageSink/URL-policy suite: 210 passed, 3 skipped.
+- Separate clean-room evidence: 388 selected core tests passed in 24.03 seconds and 26 selected S3 tests passed in 0.50 seconds after installing the optional S3 connector.
+- The current compliance class has 16 methods while two docs still say 15.
+- `SyncProvider` is blocking and non-durable despite async thread dispatch; local AnyAccomp belongs only in a dedicated worker with outer durable state. ACE and any queued AnyAccomp need real `BaseProvider` lifecycle semantics.
+- Manifest verification does not fetch remote bytes. Canonical hashes omit asset transport URLs and `parent_run_id`; StageMe must bind lineage and fetch/hash media separately.
+
+### Newly cloned support/runtime repositories
+
+| Repository | Inspected commit | License boundary | Purpose / finding |
+|---|---|---|---|
+| https://github.com/numpy/numpy | `25c89980fcffe59af8ac12b39cf41bd4b07d09ce` | BSD-3 core; bundled notices; GitHub metadata NOASSERTION | deterministic arrays/null metrics; released 2.4.6 selected for Python 3.11 compatibility |
+| https://github.com/scipy/scipy | `e0134f43e13f376a59d9aabaf7c193403131c8f9` | BSD-3 plus bundled notices | pinned 1.17.1 signal/scientific dependency for QC environment |
+| https://github.com/bastibe/python-soundfile | `350394191a2af890fc464d0f11a1690e7a4f4c64` | BSD-3 wrapper; libsndfile separate | released 0.14.0 lossless float WAV/FLAC I/O |
+| https://github.com/FFmpeg/FFmpeg | `a757b708ae7d43fdec89545a55cbc11ae2967b19` | LGPL/GPL depends on build | decode/probe/resample/mix/mux/QC; local Homebrew 8.1.1 enables GPL components and is not a default redistribution build |
+| https://github.com/Wan-Video/Wan2.2 | `42bf4cfaa384bc21833865abc2f9e6c0e67233dc` | Apache-2.0 code/model materials | upstream authority for optional 3–5 second Replicate S2V interval |
+
+### Official multi-provider sample refresh
+
+- Commit remains `2e31577b7a9d5a7b0309d814f2d0282088b33fe8`.
+- pnpm 10.32.1 frozen install, Next 16.1.6 build, and TypeScript check passed.
+- The repository allows Node ≥20/pnpm ≥9 but does not pin `packageManager`; current pnpm 11.17 requires Node ≥22.13. Pin pnpm 10.32.1 or tighten the runtime declaration. Do not copy the sample's product identity or stale dependency pins.

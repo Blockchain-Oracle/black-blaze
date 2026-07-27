@@ -66,6 +66,60 @@
     "b2_event_notifications_require_support_enablement": true,
     "gmi_promotional_credits_assumption": "treat as unavailable unless already credited"
   },
+  "stageme_pre_call": {
+    "checked_at_utc": "2026-07-27T11:49:07Z",
+    "verdict": "conditionally ready",
+    "canonical_lane": "authorized 8–15 second rough sung performance",
+    "first_model": {
+      "repository": "AmphionTeam/AnyAccomp",
+      "code_commit": "82604b5e3107944ad4c49fc64900b86118ae2c62",
+      "checkpoint_revision": "9aa9e62427337bf1df4caa3c4f3e6ad934522e71",
+      "checkpoint_total_bytes": 2078199136,
+      "evidence_level": "implemented",
+      "official_maintained_hosted_endpoint_found": false
+    },
+    "second_model": {
+      "repository": "ace-step/ACE-Step-1.5",
+      "code_commit": "6d467e4b5081ccb0abf1ec1bf4fdf9051a2d34b0",
+      "model_card_repository": "ACE-Step/Ace-Step1.5",
+      "model_card_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+      "base_model_repository": "ACE-Step/acestep-v15-base",
+      "base_model_revision": "e432212fec32b8965a14ffa57ae653438d6abd14",
+      "base_model_sha256": "4177f600501a6d4bd81cadaa0abac557ffd15c54e5c8cb52053cdb24a0844d6b",
+      "first_task": "lego",
+      "base_model_weight_bytes": 4787825604,
+      "main_snapshot_bytes": 10092102593,
+      "base_snapshot_bytes": 4791792407,
+      "major_weight_bytes": 14813190540,
+      "full_snapshot_download_bytes": 14883895000,
+      "evidence_level": "implemented"
+    },
+    "renderer": {
+      "repository": "midrender/revideo",
+      "code_commit": "b5de67a009a55aa2768a1e178b0446b2479a0b4e",
+      "version": "0.11.0",
+      "smoke_renders_passed": 1,
+      "immediate_repeat_renders_failed": 2,
+      "revideo_package_evidence_level": "implemented",
+      "stage_me_evidence_level": "advertised",
+      "stage_me_outcome_status": "not reproduced",
+      "repeat_render_gate_status": "failed",
+      "phase_zero_fallback": "FFmpeg/MoviePy"
+    },
+    "human_blockers_for_first_call": [
+      "authorized F1 fixture",
+      "accepted provider/region-specific consent",
+      "working approved GPU account and secure inventory",
+      "approved spend cap"
+    ],
+    "safety": {
+      "paid_calls_made": false,
+      "provider_credentials_used": false,
+      "b2_writes_made": false,
+      "human_audio_processed": false,
+      "oversized_checkpoints_downloaded": false
+    }
+  },
   "source_precedence": [
     "official rules",
     "official Devpost pages",

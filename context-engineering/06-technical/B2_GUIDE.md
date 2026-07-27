@@ -19,6 +19,8 @@ inputs/ → intermediate generations/ → accepted outputs/ → thumbnails/
 
 Typical Genblaze environment variables are `B2_KEY_ID`, `B2_APP_KEY`, optional `B2_BUCKET`, and `B2_REGION`. Sample repositories differ (`B2_APPLICATION_KEY`, `B2_BUCKET_NAME`, `B2_ENDPOINT`), so follow the installed package and chosen app's configuration rather than mixing conventions.
 
+For the StageMe canary, use a standard application key—not the master key—restricted to one private bucket/prefix with `readFiles`, `writeFiles`, `deleteFiles`, and `listAllBucketNames`; add `listFiles` only if the test lists objects. Both write and delete capabilities are generally needed for S3 `DeleteObject`.
+
 ## Recommended product roles
 
 - **Durability:** provider URLs expire; B2 copies remain.
@@ -41,18 +43,44 @@ Typical Genblaze environment variables are `B2_KEY_ID`, `B2_APP_KEY`, optional `
 
 ## Current pricing and limits
 
-The official pricing page checked on 2026-07-25 says:
+The official main pricing page rechecked on 2026-07-27 says:
 
 - first 10 GB always free;
 - pay-as-you-go Class A/B/C API calls free;
-- Class D transactions have 2,500 free calls/day, then a small per-call charge;
-- free egress up to 3× average monthly storage, with stated partner exceptions and paid overage.
+- storage is $6.95/TB/30-day, approximately $0.00695/GB-month;
+- Class D transactions have 2,500 free calls/day, then $0.004/10,000;
+- free egress up to 3× average monthly storage, with stated partner exceptions, then $0.01/GB.
+
+The transaction-pricing page still states stale $0.005/GB-month storage. Preserve the conflict and use the current main pricing page for budgeting.
 
 However, a participant reported hitting a 2,500/day B2 access cap, and Genblaze v0.6.0 mentions daily Class B caps/restricted keys causing `HeadObject` 403. Older help pages also describe 2,500 free Class B calls. Treat account-level caps/pricing as an **open operational check**: inspect the actual B2 dashboard and run a load test. Do not architect a polling-heavy system.
 
 ## S3 compatibility caveats
 
 Backblaze's S3-compatible API supports common S3 operations and presigned URLs, but not all AWS S3 features. Official documentation names limitations around object-level ACLs, IAM roles, object tagging, website configuration, and browser `POST` uploads to presigned URLs. Design against B2's actual API surface.
+
+- Use short-lived exact-key presigned `PUT` or an API proxy; presigned browser `POST` is unsupported.
+- CORS permits browser behavior but is not authorization. Allow only the production origin and required PUT/GET/HEAD methods/headers.
+- A single S3 upload may be up to 5 GB. StageMe media should normally use one PUT; do not infer a multipart requirement for small clips.
+- Combined filename and metadata are limited to 7,000 bytes, reduced to 2,048 bytes with SSE or Object Lock. Store full lineage in a JSON manifest.
+- Do not use S3 ETag as SHA-256. `HeadObject`, fetch every byte, and recompute the digest.
+- B2 buckets are always versioned. Reusing a key creates versions; name-only deletion can leave older bytes. Record and delete exact `VersionId`/native `fileId` values.
+- Current S3 lifecycle API documentation conflicts with an older official page. Use the newer API and one management surface; lifecycle is approximately daily and not an immediate-deletion guarantee.
+
+## Prepared StageMe canary
+
+The smallest real canary remains credential-gated:
+
+```text
+put one synthetic artifact
+→ head it
+→ fetch every byte and compare SHA-256
+→ put/read/verify its manifest
+→ delete artifact and manifest by exact versions
+→ optionally head both to confirm not found
+```
+
+Base request classes are A=4 and B=3; post-delete confirmation makes B=5. Do not enable Object Lock on this bucket.
 
 ## Judge-visible B2 evidence
 

@@ -6,13 +6,16 @@
 
 1. `../00-start-here/STAGEME_START_HERE.md`
 2. `STAGEME_PRODUCT_SPEC.md` — canonical product authority
-3. `STAGEME_SPIKE_PROTOCOL.md` — evidence gates
-4. `../06-technical/STAGEME_SYSTEM_DESIGN.md` — interfaces and architecture
-5. `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md` — inspiration and library ledger
-6. `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md` — research depth
-7. `RISK_REGISTER.md`, `OPEN_QUESTIONS.md`, `DECISION_LOG.md`
-8. `../06-technical/GENBLAZE_GUIDE.md`, `../06-technical/B2_GUIDE.md`
-9. `../10-sources/SOURCE_LEDGER.md`
+3. `STAGEME_PRECALL_READINESS_REPORT.md` — current evidence, blockers, and costs
+4. `STAGEME_FIRST_CALL_RUNBOOK.md` — exact authorized F1/AnyAccomp procedure
+5. `STAGEME_F1_RECORDING_CHECKLIST.md` — fixture instructions
+6. `STAGEME_SPIKE_PROTOCOL.md` — evidence gates
+7. `../06-technical/STAGEME_SYSTEM_DESIGN.md` — interfaces and architecture
+8. `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md` — inspiration and library ledger
+9. `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md` — research depth at selection time
+10. `RISK_REGISTER.md`, `OPEN_QUESTIONS.md`, `DECISION_LOG.md`
+11. `../06-technical/GENBLAZE_GUIDE.md`, `../06-technical/B2_GUIDE.md`
+12. `../10-sources/SOURCE_LEDGER.md`
 
 If summaries differ, `STAGEME_PRODUCT_SPEC.md` wins unless a later decision-log entry explicitly supersedes it.
 
@@ -81,11 +84,20 @@ Deliver:
 - F0 synthetic plumbing fixture;
 - F1 user-owned sung fixture before qualitative execution.
 
+Zero-cost readiness tooling already exists:
+
+- `scripts/stageme_preflight.py` for phase-aware, zero-secret environment checks;
+- `scripts/stageme_null_test.py` for literal-retention verification;
+- `.env.example` for names-only configuration;
+- `templates/STAGEME_CONSENT.example.json` for a copied, user-specific consent record.
+
 Blockers:
 
 - no authorized F1;
 - no GPU/endpoint;
 - no approved paid budget when using a hosted endpoint.
+
+Do not ask for F1 until the selected worker provider/region, retention, deletion, and spend cap can be disclosed.
 
 #### A1. Deterministic ingest and QC
 
@@ -93,7 +105,11 @@ Implement:
 
 - ffprobe inspection;
 - SHA-256;
-- decode/resample/trim/fade/gain with recorded commands;
+- decode, downmix, and resample F1 to the canonical processing format with the
+  exact commands recorded;
+- do not trim, fade, or gain-adjust F1 unless a later explicit, versioned
+  experiment authorizes and records that transformation; apply such operations
+  only to generated layers or downstream mixes otherwise;
 - duration/silence/clipping/format validation;
 - immutable original and canonical normalized asset records.
 
@@ -108,6 +124,8 @@ Acceptance:
 
 Start from pinned upstream `82604b5e3107944ad4c49fc64900b86118ae2c62` in an isolated environment/container.
 
+Use stock Python 3.9 separately from the Python 3.11/3.12 StageMe control/Genblaze environment. The official hosted Space is currently unavailable; follow `STAGEME_FIRST_CALL_RUNBOOK.md` on an approved dedicated worker.
+
 Do not modify upstream code before reproducing its stock inference on a safe fixture unless setup demands a documented patch.
 
 Deliver:
@@ -115,7 +133,7 @@ Deliver:
 - exact environment/build script;
 - checkpoint/license record;
 - direct inference command;
-- accompaniment and mixture;
+- accompaniment, StageMe-owned float premaster, and upstream mixture only as diagnostic evidence;
 - null-test utility;
 - measurements and report.
 
@@ -197,7 +215,7 @@ Acceptance:
 
 #### C0. Validate the default renderer
 
-Use Revideo with a pinned Chromium/browser build as the default deterministic renderer. Benchmark it against the requirements below; use MoviePy as the Phase-0 fallback if container, browser, latency, or deployment constraints block the first spike. Motion Canvas remains a pattern/alternative reference rather than a second default implementation.
+Use Revideo with a pinned Chromium/browser build as the intended deterministic renderer. Its 2026-07-27 canonical build and first smoke render passed, but two immediate rerenders failed with the current frame-detachment issue. Keep MoviePy/direct FFmpeg as the Phase-0 fallback until the full repeatability benchmark passes. Motion Canvas remains a pattern/alternative reference rather than a second default implementation.
 
 The renderer must implement:
 
@@ -234,7 +252,7 @@ Generate only a 3–5 second replaceable hero interval. Use a stylized silhouett
 
 #### D1. AnyAccomp provider adapter
 
-For direct local inference, implement a Genblaze `SyncProvider` only inside the dedicated GPU worker; it must never block the API process. Keep outer job state durable, initially cap concurrency at one job/GPU, and make timeout/orphan cleanup explicit. If AnyAccomp runs behind a queued hosted service, use `BaseProvider` with real submit/poll/fetch semantics instead. Return separate accompaniment and mixture assets. Run `ProviderComplianceTests`.
+For direct local inference, implement a Genblaze `SyncProvider` only inside the dedicated GPU worker; it must never block the API process. Keep outer job state durable, initially cap concurrency at one job/GPU, and make timeout/orphan cleanup explicit. If AnyAccomp runs behind a queued hosted service, use `BaseProvider` with real submit/poll/fetch semantics instead. Return the separate accompaniment; a following deterministic StageMe mixer creates and null-tests the accepted premaster. Run the current 16-method `ProviderComplianceTests` plus StageMe retention tests.
 
 #### D2. ACE-Step polling BaseProvider
 
@@ -314,6 +332,7 @@ Shared contracts must be merged before dependent tracks diverge.
 - reference ledger;
 - source ledger;
 - agent handoff;
+- readiness report, first-call runbook, recording checklist, consent/environment templates, preflight, null-test utility, and tests;
 - navigation and validation.
 
 ### M1 — Core media reproduced
@@ -374,10 +393,13 @@ You are implementing StageMe in /workspace/black-blaze.
 Read, in order:
 1. context-engineering/00-start-here/STAGEME_START_HERE.md
 2. context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md
-3. context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md
-4. context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md
-5. context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md
-6. context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md
+3. context-engineering/09-planning/STAGEME_PRECALL_READINESS_REPORT.md
+4. context-engineering/09-planning/STAGEME_FIRST_CALL_RUNBOOK.md
+5. context-engineering/09-planning/STAGEME_F1_RECORDING_CHECKLIST.md
+6. context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md
+7. context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md
+8. context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md
+9. context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md
 
 The canonical product promise is retained real performance + source-conditioned accompaniment + staged reveal + bounded revision. Do not broaden scope or replace the source with synthetic vocals.
 
@@ -387,8 +409,8 @@ Before editing, inspect git status and preserve existing uncommitted research. W
 ## 10. Immediate blockers requiring a human or configured environment
 
 - one authorized F1 sung fixture;
-- GPU or hosted endpoint capable of the pinned AnyAccomp/ACE base workloads;
-- explicit paid-call budget if using hosted inference;
+- approved secure GPU account/region/live inventory capable of pinned AnyAccomp; ACE comes after the first result;
+- explicit first-session spend cap and provider funding approval;
 - B2 bucket and scoped key for real storage canary;
 - deployment target selection;
 - final data-retention policy;

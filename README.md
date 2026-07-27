@@ -26,13 +26,16 @@ The repository slug follows the requested working name, **Black Blaze**. The spo
 1. [`AGENTS.md`](AGENTS.md) — operating rules for AI agents.
 2. [`context-engineering/00-start-here/STAGEME_START_HERE.md`](context-engineering/00-start-here/STAGEME_START_HERE.md) — StageMe status, blockers, and required read order.
 3. [`context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md`](context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md) — canonical product contract.
-4. [`context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md`](context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md) — real-media experiments and stop conditions.
-5. [`context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md`](context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md) — architecture and interfaces.
-6. [`context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md`](context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md) — clean-room library/project ledger.
-7. [`context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md`](context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md) — ordered implementation work.
-8. [`context-engineering/00-start-here/EXECUTIVE_BRIEF.md`](context-engineering/00-start-here/EXECUTIVE_BRIEF.md) — competition orientation.
-9. [`context-engineering/03-submission/SUBMISSION_CHECKLIST.md`](context-engineering/03-submission/SUBMISSION_CHECKLIST.md) — non-negotiable deliverables.
-10. [`context-engineering/10-sources/SOURCE_LEDGER.md`](context-engineering/10-sources/SOURCE_LEDGER.md) — provenance and source URLs.
+4. [`context-engineering/09-planning/STAGEME_PRECALL_READINESS_REPORT.md`](context-engineering/09-planning/STAGEME_PRECALL_READINESS_REPORT.md) — current verdict, evidence, costs, and blockers.
+5. [`context-engineering/09-planning/STAGEME_FIRST_CALL_RUNBOOK.md`](context-engineering/09-planning/STAGEME_FIRST_CALL_RUNBOOK.md) — exact first authorized AnyAccomp procedure.
+6. [`context-engineering/09-planning/STAGEME_F1_RECORDING_CHECKLIST.md`](context-engineering/09-planning/STAGEME_F1_RECORDING_CHECKLIST.md) — user-owned fixture instructions.
+7. [`context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md`](context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md) — real-media experiments and stop conditions.
+8. [`context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md`](context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md) — architecture and interfaces.
+9. [`context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md`](context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md) — clean-room library/project ledger.
+10. [`context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md`](context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md) — ordered implementation work.
+11. [`context-engineering/00-start-here/EXECUTIVE_BRIEF.md`](context-engineering/00-start-here/EXECUTIVE_BRIEF.md) — competition orientation.
+12. [`context-engineering/03-submission/SUBMISSION_CHECKLIST.md`](context-engineering/03-submission/SUBMISSION_CHECKLIST.md) — non-negotiable deliverables.
+13. [`context-engineering/10-sources/SOURCE_LEDGER.md`](context-engineering/10-sources/SOURCE_LEDGER.md) — provenance and source URLs.
 
 ## Repository scope
 
@@ -41,10 +44,10 @@ This repository contains the competition research and StageMe's implementation-r
 ## Validate the context
 
 ```bash
-python scripts/validate_context.py
+python3 scripts/validate_context.py
 ```
 
-The validator checks required StageMe files, all repository Markdown links, all JSON, repository pins/licenses, stale active-status language, repository-escape links, and common secret patterns.
+The validator checks required StageMe/readiness files, all repository Markdown links, all JSON, repository pins/licenses, stale active-status language, names-only environment/consent defaults, the fixed Wan interval, repository-escape links, and common secret patterns.
 
 ## Verification snapshot
 

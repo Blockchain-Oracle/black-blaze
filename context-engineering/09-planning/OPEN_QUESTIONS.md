@@ -1,13 +1,15 @@
 # Open Questions
 
-Resolve these before any implementation commitment or submission. No product is selected. StageMe is the leading hypothesis only after being narrowed to retained-vocal arrangement plus an affordable animated stage.
+StageMe is the selected feasibility-first direction. Resolve the load-bearing items below before broad application implementation or submission. Questions answered by the 2026-07-27 pre-call pass are checked; a checked infrastructure question does not promote the media transformation above its evidence level.
 
-Primary audit: `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md`.
+Current primary audit: `STAGEME_PRECALL_READINESS_REPORT.md`. Historical selection audit: `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md`.
 
 ## Product proof
 
-- [ ] Does ACE-Step 1.5 base `complete` preserve an authorized rough vocal while adding coherent backing tracks?
-- [ ] Does AnyAccomp produce a more source-faithful accompaniment on the same authorized fixtures, and what are its real VRAM/latency requirements?
+- [ ] Does one pinned AnyAccomp run on authorized F1 produce a coherent, source-connected accompaniment, and what are measured cold/warm latency, VRAM, RAM, and cost?
+- [ ] Does the StageMe premaster pass the sample-aligned null test while keeping F1 audible and emotionally stronger?
+- [ ] Does ACE-Step 1.5 base `lego` produce a useful separate instrument layer on the same F1?
+- [ ] How does ACE-Step base `complete` compare as a full mix, without assuming source preservation?
 - [ ] Does a hummed seed materially influence the result, or does the model ignore it?
 - [ ] Does a beatboxed/rhythmic seed materially influence the result?
 - [ ] Can an uninformed viewer identify the source-to-output connection in under 20 seconds?
@@ -15,37 +17,40 @@ Primary audit: `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md`.
 - [ ] Is the result sufficiently distinct from ONEFIELD, Murmur, InstantBandAI, and the official multi-provider starter app?
 - [ ] What exact user repeats this workflow, and what do they currently pay or struggle with?
 
-## ACE-Step and compute
+## Models and compute
 
-- [ ] Which GPU endpoint can run ACE-Step 1.5 base—not merely turbo—with `complete`, `lego`, and `repaint`?
-- [ ] What are measured cold-start and warm-generation times for 15–30 seconds of audio?
-- [ ] What are measured peak GPU memory, CPU memory, model-download size, and worker startup time?
+- [x] What is the first worker strategy? Use an approved RunPod Secure Cloud Pod for the interactive experiment; Modal is the serverless follow-on. Lambda is unavailable to a Nigeria-billed account unless explicitly confirmed.
+- [ ] Does the actual RunPod/Modal account accept the user's payment method and expose a secure 24 GB+ Ampere/Ada worker in an acceptable region?
+- [ ] What are measured cold-start and warm-generation times for 8–15 seconds of AnyAccomp audio?
+- [ ] What are measured peak GPU memory, CPU memory, checkpoint-download time, and worker startup time?
 - [ ] What is the measured cost of an accepted result including failed candidates and retries?
 - [ ] Does `repaint` change only a 3–5 second interval while preserving accepted audio outside it?
 - [ ] Can a lower-quality/low-compute configuration produce a useful free-tier output?
-- [ ] Is a RunPod/GMI/other endpoint already available, or would the spike require paid setup?
-- [ ] Are ACE-Step model weights, training-data claims, and generated-output terms acceptable for the intended use?
+- [x] Are exact model download sizes known? AnyAccomp is 2,078,199,136 bytes total. ACE's five major main+base tensor weights total 14,813,190,540 bytes; the complete pinned snapshots total 14,883,895,000 bytes, and the base file exceeds 2 GB.
+- [ ] Are AnyAccomp/ACE model training-data claims and output terms acceptable for production after legal/product review?
 
 ## Genblaze integration
 
-- [ ] Implement only after spike approval: can a custom async ACE-Step provider pass Genblaze's provider compliance suite?
-- [ ] What `ModelSpec`, capability declaration, parameter normalization, and audio metadata should the adapter expose?
-- [ ] How will local or worker-produced audio become a valid `file://` or HTTPS Genblaze asset?
-- [ ] Which errors are retryable, and which must fail fast?
+- [ ] Implement only after direct semantics are reproduced: can the AnyAccomp and ACE providers pass the current 16-method compliance suite plus StageMe retention/task tests?
+- [x] What provider shape is required? Dedicated-worker `SyncProvider` for local AnyAccomp; real `BaseProvider` for queued AnyAccomp and ACE; exact package layout is in the system design.
+- [x] How will local or worker audio become a Genblaze asset? Canonical allowlisted `file://` inside the worker or absolute validated HTTPS from a queued provider.
+- [x] Which errors retry? Only bounded timeout/rate/server failures by default; auth, invalid input, content policy, and model errors fail fast.
 - [ ] What second real provider/model stage makes the orchestration meaningfully multi-stage rather than decorative?
 - [ ] What truthful fallback remains if ACE-Step `complete` fails?
 - [ ] Can progress events and resumable job IDs survive worker/app restarts?
 
 ## Visual stage
 
-- [ ] Which permissive renderer—Motion Canvas, Revideo, MoviePy, or another audited component—best supports the polished 15–20 second stage?
+- [x] Which renderer architecture leads? Revideo 0.11.0 with pinned Node/Chromium/fonts/container; direct FFmpeg/MoviePy remains Phase-0 fallback because repeat-render stability failed.
+- [ ] Can Revideo complete three consecutive cold and warm 15-second 720p local-audio/font renders with one-frame sync and repeatable decoded output?
 - [ ] Can one generated image plus deterministic waveform, lyric timing, lighting, and camera motion look intentional rather than templated?
 - [ ] Which image provider/model is already entitled and affordable?
 - [ ] What is the fallback if the image provider fails?
 - [ ] Can the visual branch be revised independently while keeping accepted audio byte-identical?
 - [ ] What low-data and audio-only exports should be created for constrained connectivity?
 - [ ] Is full AI video omitted, precomputed, or offered only as a clearly optional renderer?
-- [ ] After the deterministic stage passes, does the official Replicate Wan 2.2 S2V endpoint produce one acceptable 10–15 second audio-bound hero shot within one or two candidates at $0.02/output-second?
+- [ ] After the deterministic stage passes, does the exact-version Replicate Wan 2.2 S2V endpoint produce one acceptable replaceable 3–5 second interval within one or two candidates at $0.02/output-second?
+- [ ] Which Wan codec/duration constraints and exact prediction version apply immediately before payment, given the current official schema conflict?
 - [ ] Does the S2V hero shot improve blind preference enough to justify its latency, consent, and failure risk?
 
 ## Affordability and access
@@ -60,7 +65,8 @@ Primary audit: `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md`.
 
 ## Voice consent and rights
 
-- [ ] What exact consent language authorizes processing and storage of the user's recording?
+- [x] Is a pre-call consent/recording template prepared? Yes: the checklist and consent template bind original/canonical hashes, deterministic derivation evidence, exact model/checkpoint, provider/region/spend cap, retention, deletion, and `training_reuse=false`.
+- [ ] Does the owner approve the final provider/region-specific consent and seven-day user-bundle retention wording?
 - [ ] How can a user delete/revoke the source and derived private artifacts?
 - [ ] Which derived project metadata may remain after revocation, if any?
 - [ ] How will the UI distinguish original, deterministically transformed, and generated audio?
@@ -70,11 +76,11 @@ Primary audit: `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md`.
 
 - [ ] Can the entrant create and use B2 from Nigeria without operational friction?
 - [ ] What caps and payment requirements appear in the actual account dashboard?
-- [ ] Will source recordings remain private and upload through signed URLs?
+- [x] What is the upload boundary? Private bucket; short-lived presigned PUT or API proxy; browser presigned POST is unsupported; signed URLs never persist.
 - [ ] What stable app endpoint will serve judge-facing accepted outputs?
-- [ ] How will source, consent, analysis, candidates, accepted output, revision branches, and manifests be namespaced?
+- [x] How are objects namespaced? Immutable source/candidate/run/version/manifest keys are defined in the system design and readiness report; record exact B2 version IDs.
 - [ ] Can the final accepted bytes be fetched and verified against the manifest?
-- [ ] Event Notifications require support enablement; confirm they are not an MVP dependency.
+- [x] Event Notifications require Support enablement and are not an MVP dependency.
 
 ## Rules, organizers, and judging
 

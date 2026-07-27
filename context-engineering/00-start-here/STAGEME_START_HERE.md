@@ -4,6 +4,8 @@
 >
 > **Canonical product file:** `../09-planning/STAGEME_PRODUCT_SPEC.md`.
 >
+> **Pre-call verdict:** conditionally ready; no real media call is authorized or executed yet.
+>
 > **Last updated:** 2026-07-27.
 
 ## What StageMe is
@@ -34,14 +36,17 @@ real authorized performance
 ## Required read order
 
 1. `../09-planning/STAGEME_PRODUCT_SPEC.md` — canonical behavior, truth boundaries, and acceptance
-2. `../09-planning/STAGEME_SPIKE_PROTOCOL.md` — exact experiments and stop conditions
-3. `../06-technical/STAGEME_SYSTEM_DESIGN.md` — APIs, schemas, pipeline, storage, failure recovery
-4. `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md` — libraries and projects to learn from
-5. `../09-planning/STAGEME_AGENT_BUILD_HANDOFF.md` — build order and agent constraints
-6. `../09-planning/STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md` — full feasibility evidence
-7. `../09-planning/DECISION_LOG.md`, `RISK_REGISTER.md`, `OPEN_QUESTIONS.md`
-8. `../06-technical/GENBLAZE_GUIDE.md`, `B2_GUIDE.md`
-9. `../10-sources/SOURCE_LEDGER.md`
+2. `../09-planning/STAGEME_PRECALL_READINESS_REPORT.md` — current evidence, costs, blockers, and verdict
+3. `../09-planning/STAGEME_FIRST_CALL_RUNBOOK.md` — exact first authorized AnyAccomp procedure
+4. `../09-planning/STAGEME_F1_RECORDING_CHECKLIST.md` — under-five-minute user fixture guide
+5. `../09-planning/STAGEME_SPIKE_PROTOCOL.md` — experiments and stop conditions after the first call
+6. `../06-technical/STAGEME_SYSTEM_DESIGN.md` — APIs, schemas, pipeline, storage, failure recovery
+7. `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md` — libraries and projects to learn from
+8. `../09-planning/STAGEME_AGENT_BUILD_HANDOFF.md` — build order and agent constraints
+9. `../09-planning/STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md` — feasibility evidence at selection time
+10. `../09-planning/DECISION_LOG.md`, `RISK_REGISTER.md`, `OPEN_QUESTIONS.md`
+11. `../06-technical/GENBLAZE_GUIDE.md`, `B2_GUIDE.md`
+12. `../10-sources/SOURCE_LEDGER.md`
 
 ## Ready-to-run agent prompt
 
@@ -85,6 +90,8 @@ Its official inference code writes:
 
 This directly supports literal source retention, but quality, hardware, latency, and accepted-result cost remain unreproduced in StageMe.
 
+The official Hugging Face Space is currently unavailable and no official maintained hosted inference mapping was found. The first call therefore uses a dedicated approved GPU worker. StageMe keeps only the separate accompaniment from upstream, constructs its own gain-staged float premaster, and runs the repository null-test utility.
+
 ### Secondary arrangement/editing candidate
 
 **ACE-Step 1.5**, pinned source `6d467e4b5081ccb0abf1ec1bf4fdf9051a2d34b0`.
@@ -122,13 +129,13 @@ Current StageMe core status: **implemented upstream, not reproduced in the Stage
 
 ## Known blockers
 
-- no authorized human F1 fixture in the repository;
-- no visible NVIDIA GPU in the current Docker environment;
+- no authorized human F1 fixture has been supplied outside Git;
+- no selected/approved NVIDIA GPU account, region, or live secure inventory;
 - no measured AnyAccomp or ACE quality/latency/VRAM;
 - no approved hosted-inference budget;
 - no real B2 credentials/canary in the build environment;
-- Revideo + pinned-Chromium benchmark, font packaging, and deployment verification remain unmeasured;
-- product data-retention wording needs final approval;
+- Revideo built and rendered once, but two immediate rerenders failed; its 15-second StageMe sync/font/container/deployment benchmark remains red;
+- provider/region-specific processing consent and final retention wording need owner approval;
 - no application implementation exists yet.
 
 These are explicit work items, not permission to use mocks as proof.
@@ -145,6 +152,8 @@ These are explicit work items, not permission to use mocks as proof.
 - deployment planning;
 - consent and deletion-flow implementation;
 - B2 adapter tests without claiming the real account path.
+
+These zero-cost preparation items now have a concrete readiness report, runbook, recording checklist, consent template, preflight, null-test utility, and tests. Their existence does not promote the media transformation above implemented.
 
 ## Hackathon fit
 

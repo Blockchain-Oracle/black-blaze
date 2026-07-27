@@ -1,6 +1,6 @@
 # StageMe Feasibility, Affordability, Competition, and Judge-Fit Audit
 
-> Status: evidence-bound research as of 2026-07-27. StageMe has since been selected for a feasibility-first build. This audit remains supporting evidence, not the canonical product contract; read `STAGEME_PRODUCT_SPEC.md`. No media transformation has yet been reproduced in the StageMe environment.
+> **Historical selection-time audit:** evidence-bound research as of 2026-07-27. StageMe has since been selected for a feasibility-first build. This file is supporting history, not an execution authority. Do not execute its procedures or rely on its duration/model instructions; read `STAGEME_PRODUCT_SPEC.md`, `STAGEME_PRECALL_READINESS_REPORT.md`, and `STAGEME_FIRST_CALL_RUNBOOK.md` for the current contract. No media transformation has yet been reproduced in the StageMe environment.
 
 ## Why this audit exists
 
@@ -654,7 +654,7 @@ Pass only if:
 
 ### Spike D — optional Wan S2V hero shot
 
-Only after Spikes A–C pass, submit one approved stage/performer reference image and a 10–15 second accepted audio excerpt to the official Replicate Wan 2.2 S2V endpoint.
+**Superseded historical proposal:** this audit originally contemplated a longer, full-clip Wan call. Do not execute that proposal. The current contract permits only one replaceable **3–5 second** Wan interval after accepted audio and deterministic-stage success; follow `STAGEME_PRODUCT_SPEC.md` and `STAGEME_FIRST_CALL_RUNBOOK.md`.
 
 Measure:
 

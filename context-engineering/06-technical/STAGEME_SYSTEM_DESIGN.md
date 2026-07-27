@@ -148,6 +148,8 @@ Responsibilities:
 - progress/checkpoint events;
 - retry and fallback.
 
+The StageMe control/QC and Genblaze environment is Python 3.11 or 3.12. The pinned stock AnyAccomp environment is Python 3.9 with a CUDA 12.1-era Torch stack. Treat them as separate processes/containers with an explicit file/job contract; do not solve the version conflict by importing the model into the API or Genblaze control process.
+
 ### Renderer
 
 Responsibilities:
@@ -560,11 +562,13 @@ anyaccomp = "genblaze_anyaccomp:AnyAccompProvider"
 2. resolve it to an authorized local file;
 3. enforce duration/format limits;
 4. invoke the pinned AnyAccomp pipeline;
-5. write separate accompaniment and mixture files;
-6. attach both as `file://` assets with specific MIME/audio metadata;
+5. write the separate accompaniment; retain the upstream raw mixture only as diagnostic evidence;
+6. attach the accompaniment as a `file://` asset with specific MIME/audio metadata;
 7. record model commit, config, steps, CFG, seed, latency, and memory metrics;
 8. map errors explicitly;
 9. never claim remote model discovery it cannot perform.
+
+A following deterministic StageMe mixer—not the model provider—combines the immutable canonical source and accompaniment with recorded gains, writes a float premaster, and executes `scripts/stageme_null_test.py`. The un-gain-staged upstream mixture is never an accepted product asset.
 
 ### `genblaze-acestep`
 
@@ -584,22 +588,28 @@ Support only the task types StageMe actually uses:
 
 Do not expose the entire ACE-Step surface by default.
 
+Current-main defensive requirements:
+
+- validate source audio for `complete` even though upstream request validation currently omits it;
+- pass and verify explicit matching duration;
+- treat the API's in-memory job registry and unknown-ID-as-pending behavior as untrusted;
+- apply an application-owned TTL/not-found policy and process-level timeout cleanup;
+- for `repaint`, restore parent accompaniment samples outside the authorized interval/crossfade margins and verify them independently because upstream crossfade fields and splice behavior are mode-dependent.
+
 ### Replicate Wan S2V
 
 Use Genblaze's existing Replicate connector where its current model family and input routing support the endpoint. Otherwise write a small StageMe-specific adapter only after verifying the installed connector contract.
 
 Generate only a 3–5 second replaceable hero interval. Keep the deterministic Revideo render for the same interval and use it automatically when the S2V result fails, times out, drifts, or is rejected. Pin Revideo, Chromium, fonts, and the renderer container digest as one reproducibility unit.
 
-Register mutable pricing at runtime:
+Register mutable pricing at runtime with a StageMe-specific strategy:
 
 ```python
-provider.models.register_pricing(
-    "wan-video/wan-2.2-s2v",
-    per_output_second(0.02),
-)
+estimate = input_audio_duration_seconds * 0.02
+# Reconcile the final amount against ffprobe(output).duration after fetch.
 ```
 
-Snapshot the pricing source/date in configuration and display the estimate before submission.
+The connector's generic `per_output_second(0.02)` strategy cannot calculate this endpoint automatically when the fetched Asset lacks duration. Snapshot the pricing source/date and exact prediction version in configuration, display the estimate before submission, and reconcile after fetch.
 
 ### Provider rules
 
@@ -713,12 +723,14 @@ For time-range audio repaint, also compare decoded audio outside the requested i
 | invalid/corrupt source | terminal input error | ask for rerecord; no provider call |
 | source too long | terminal input error | deterministic trim UI; new consented source asset |
 | GPU OOM | model error or capacity failure | lower supported config or alternate worker; do not infinite-retry |
+| AnyAccomp Python/Genblaze environment conflict | terminal packaging error | keep the stock Python 3.9 model worker separate from the Python 3.11/3.12 control process |
 | provider timeout/5xx | retryable | one bounded retry with checkpoint |
 | auth/entitlement failure | terminal configuration | disable branch and surface operator action |
 | accompaniment fails QC | candidate rejection | one alternate seed/path within budget |
 | all source-conditioned candidates weak | product stop condition | do not disguise unrelated text-to-music |
 | generated art fails | degraded branch | deterministic stage theme |
 | Wan S2V fails/rejected | optional branch failure | retain deterministic stage |
+| Revideo repeat render detaches/crashes | renderer failure | use pinned FFmpeg/MoviePy Phase-0 renderer; do not claim Revideo reproduced |
 | B2 upload interrupted | recoverable | idempotent multipart/reupload then checksum verify |
 | worker restart | recoverable | resume from last persisted checkpoint |
 | manifest fetch mismatch | terminal integrity failure | quarantine output; do not publish |
@@ -822,7 +834,7 @@ create project
 - measured model load size, cold start, VRAM, and warm latency;
 - installed Genblaze package versions and custom-provider packaging;
 - B2 credentials and actual account/API limits;
-- measured Revideo + pinned-Chromium render time, memory, font packaging, and deployment runtime;
+- Revideo 15-second StageMe benchmark: three consecutive cold/warm renders, pinned Chromium/fonts, A/V sync, memory, cleanup, container, and deployment (one smoke passed but two immediate rerenders failed on 2026-07-27);
 - durable queue/database hosting;
 - public functional-app URL;
 - provider data-retention terms;

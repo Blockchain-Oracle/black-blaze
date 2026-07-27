@@ -21,18 +21,21 @@
 
 | Need | Library | Interface we need | License | Pin observed | Decision |
 |---|---|---|---|---|---|
-| Python audio/music analysis | [librosa](https://github.com/librosa/librosa) | `load`, beat/onset, chroma/pitch, RMS, duration | ISC | `b7e7bf486353821311f68d756e487f65d09cf319` | Adopt for server/spike analysis; pin released package after compatibility test |
-| Loudness measurement | [pyloudnorm](https://github.com/csteinmetz1/pyloudnorm) | `Meter(...).integrated_loudness(...)` | MIT | `b8d67bfd3ce5deef872f688fcfa491a0ca69fddd` | Adopt for QC, not automatic taste/mastering |
-| Stem separation support | [python-audio-separator](https://github.com/nomadkaraoke/python-audio-separator) | `Separator`, `load_model`, `separate`; CLI and Docker | MIT wrapper; verify chosen model | `4fe3540c249ff130bd5395c0e9377b3d16970c1a` | Adopt only when separation/diagnosis is needed; not arranger |
-| Speech transcription | [Whisper](https://github.com/openai/whisper) | local transcription | MIT | `04f449b8a437f1bbd3dba5c9f826aca972e7709a` | Optional for sung/spoken phrase hints; never assume singing accuracy |
-| Word alignment | [WhisperX](https://github.com/m-bain/whisperX) | word timestamps/alignment | BSD-2-Clause | `2cfd7b7c5c7bba144954364db747319b50e8232b` | Evaluate for lyric timing; do not make core |
-| Headless TS video rendering | [Revideo](https://github.com/midrender/revideo) | `renderVideo()`, Node/headless-browser server rendering | MIT | `b5de67a009a55aa2768a1e178b0446b2479a0b4e` | Default renderer architecture; benchmark with pinned Chromium before product promotion |
+| Numeric arrays | [NumPy](https://github.com/numpy/numpy) 2.4.6 | deterministic QC/null-test math | BSD-3-Clause core; bundled notices apply | `25c89980fcffe59af8ac12b39cf41bd4b07d09ce` | Adopt Python 3.11-compatible release; do not float to 2.5.x on Python 3.11 |
+| Signal support | [SciPy](https://github.com/scipy/scipy) 1.17.1 | librosa/scientific signal primitives | BSD-3-Clause plus bundled notices | `e0134f43e13f376a59d9aabaf7c193403131c8f9` | Adopt transitively; keep StageMe DSP narrow |
+| Lossless audio I/O | [SoundFile](https://github.com/bastibe/python-soundfile) 0.14.0 | float WAV/FLAC read/write | BSD-3-Clause; libsndfile boundary | `350394191a2af890fc464d0f11a1690e7a4f4c64` | Adopt and record libsndfile build/version |
+| Python audio/music analysis | [librosa](https://github.com/librosa/librosa) 0.11.0 | `load`, beat/onset, chroma/pitch, RMS, duration | ISC | `b7e7bf486353821311f68d756e487f65d09cf319` | Adopt for server/spike analysis; synthetic plumbing executed, not StageMe-reproduced |
+| Loudness measurement | [pyloudnorm](https://github.com/csteinmetz1/pyloudnorm) 0.2.0 | `Meter(...).integrated_loudness(...)` | MIT | `b8d67bfd3ce5deef872f688fcfa491a0ca69fddd` | Adopt for QC, not automatic taste/mastering |
+| Stem separation support | [python-audio-separator](https://github.com/nomadkaraoke/python-audio-separator) 0.44.5 | `Separator`, `load_model`, `separate`; CLI and Docker | MIT wrapper; verify chosen model | `4fe3540c249ff130bd5395c0e9377b3d16970c1a` | Defer until separation/diagnosis is necessary; not arranger |
+| Speech transcription | [Whisper](https://github.com/openai/whisper) 20250625 | local transcription | MIT code; record downloaded model | `04f449b8a437f1bbd3dba5c9f826aca972e7709a` | Defer until lyric timing adds value; never assume singing accuracy |
+| Word alignment | [WhisperX](https://github.com/m-bain/whisperX) 3.8.6 | word timestamps/alignment | BSD-2-Clause wrapper; alignment models separate | `2cfd7b7c5c7bba144954364db747319b50e8232b` | Defer; do not make core |
+| Headless TS video rendering | [Revideo](https://github.com/midrender/revideo) 0.11.0 | `renderVideo()`, Node/headless-browser server rendering | MIT | `b5de67a009a55aa2768a1e178b0446b2479a0b4e` | Intended architecture; one smoke passed but two rerenders failed, so keep fallback active |
 | Motion-graphics authoring | [Motion Canvas](https://github.com/motion-canvas/motion-canvas) | generator-based TypeScript scenes and 2D renderer | MIT | `7b91435c301d530351dcf5ebb91dd139c002e405` | Learn scene patterns; choose directly only if export/deployment is simpler than Revideo |
-| Python video fallback | [MoviePy](https://github.com/Zulko/moviepy) | clips, compositing, encoding | MIT | `7ffa4f00376237137a25fe1c777355c37753e9af` | Adopt for spike/fallback where TS renderer adds friction |
-| Web/player graphics | [PixiJS](https://github.com/pixijs/pixijs) | accelerated 2D WebGL scenes | MIT | `1d90a20c62433ba68dff78466e06ee372a5a5232` | Optional for interactive preview; not needed for server render by default |
-| Browser capture and revision selection | [wavesurfer.js](https://github.com/katspaugh/wavesurfer.js) | Record, Regions, Timeline, waveform player | BSD-3-Clause | `98297a9ff4c47fc5099de85d03f6384af954a5b0` | Adopt for capture/player/region UI; it is not an editor |
-| Browser feature preview | [Meyda](https://github.com/meyda/meyda) | JS audio feature extraction | MIT | `ecf256616d43292c82cbf96e60a91b19ca10eb64` | Optional for responsive preview only; server analysis remains authoritative |
-| Media encode/inspect | [FFmpeg](https://github.com/FFmpeg/FFmpeg) | ffmpeg/ffprobe; Genblaze `FFmpegCompositor` | LGPL/GPL depends on build | `705890061467ad550ecc1dad5eea07f28ccfb43e` | Required operational dependency; document exact distributed build/license |
+| Python video fallback | [MoviePy](https://github.com/Zulko/moviepy) 2.2.1 | clips, compositing, encoding | MIT | `7ffa4f00376237137a25fe1c777355c37753e9af` | Adopt for Phase-0 fallback where Revideo is unstable |
+| Web/player graphics | [PixiJS](https://github.com/pixijs/pixijs) 8.19.0 | accelerated 2D WebGL scenes | MIT | `1d90a20c62433ba68dff78466e06ee372a5a5232` | Optional for interactive preview; not server render |
+| Browser capture and revision selection | [wavesurfer.js](https://github.com/katspaugh/wavesurfer.js) 7.12.11 | Record, Regions, Timeline, waveform player | BSD-3-Clause | `98297a9ff4c47fc5099de85d03f6384af954a5b0` | Adopt for capture/player/region UI; it is not an editor |
+| Browser feature preview | [Meyda](https://github.com/meyda/meyda) 5.6.3 | JS audio feature extraction | MIT | `ecf256616d43292c82cbf96e60a91b19ca10eb64` | Optional preview only; maintenance activity is limited and server analysis remains authoritative |
+| Media encode/inspect | [FFmpeg](https://github.com/FFmpeg/FFmpeg) | ffmpeg/ffprobe; Genblaze `FFmpegCompositor` | LGPL/GPL depends on build | `a757b708ae7d43fdec89545a55cbc11ae2967b19` | Required; pin the deployed binary/config. Local 8.1.1 Homebrew build enables GPL components |
 
 ### Evaluate carefully
 
@@ -53,7 +56,9 @@
 - Pin: `82604b5e3107944ad4c49fc64900b86118ae2c62`
 - Repository license: MIT.
 - Checkpoints: <https://huggingface.co/amphion/anyaccomp>; model card declares CC-BY-4.0. Preserve attribution and recheck the exact downloaded files/model card before deployment.
+- Checkpoint revision: `9aa9e62427337bf1df4caa3c4f3e6ad934522e71`; three major files total 2,078,199,136 bytes / 1.935 GiB.
 - Interface: `infer_from_folder.py` and `Sing2SongInferencePipeline`.
+- Stock environment: Python 3.9, FFmpeg 4.x, Torch/Torchaudio 2.3.1, CUDA 12.1 packages. Keep it outside the Python 3.11+ Genblaze/API process.
 - Exact useful implementation pattern:
   - load vocal at 24 kHz mono;
   - encode vocal melody/chroma;
@@ -75,11 +80,15 @@ Do not copy blindly:
 - repository-specific paths/config assumptions;
 - any quality claim not reproduced on StageMe fixtures.
 
+Current hosted boundary: the official Hugging Face Space is `CONFIG_ERROR` and the model has no hosted inference-provider mapping. The apparent CPU path is unproven. The upstream snapshot example also nests the current `pretrained/...` paths when used literally; the first-call runbook pins the model revision, downloads into the repository root, and verifies every file hash.
+
 ### ACE-Step 1.5
 
 - Repository: <https://github.com/ace-step/ACE-Step-1.5>
 - Pin: `6d467e4b5081ccb0abf1ec1bf4fdf9051a2d34b0`
 - Code/model card observed as MIT; verify weights/third-party components at installation.
+- Release `v0.1.8`; package declares 1.5.0. The five major main-plus-base tensor weights total 14,813,190,540 bytes / 13.796 GiB; the complete pinned snapshots total 14,883,895,000 bytes / 13.862 GiB including configs and auxiliary files. The 4,787,825,604-byte base checkpoint exceeds the current autonomous download boundary.
+- Stock base environment: Python 3.11–3.12, Torch 2.10/CUDA 12.8 on Linux x86-64.
 - Useful interfaces:
   - CLI and Python `GenerationParams`/`generate_music`;
   - HTTP `POST /release_task`, `POST /query_result`, `GET /v1/audio`;
@@ -102,10 +111,13 @@ Avoid:
 - presenting base-model 50-step behavior as turbo latency;
 - claiming full source preservation from documentation alone.
 
+Current API risks: jobs live in memory; unknown IDs look pending; there is no generation cancellation; the request timeout can leave CUDA work active; `complete` source validation/duration and `repaint` crossfade/splice behavior need StageMe enforcement. The official Space serves turbo/XL-turbo, not the required base `lego`/`complete` tasks.
+
 ### Wan 2.2 S2V on Replicate
 
 - Official endpoint: <https://replicate.com/wan-video/wan-2.2-s2v>
 - Inputs: reference image, audio, prompt.
+- Current exact public version observed: `09607e6e761d2f015b0d740f938ec59199f54aa623384465a5054b230405acf4`; schema requires all three inputs and returns one URI.
 - Price observed: $0.02 per output second on 2026-07-27.
 - Role: optional replaceable 3–5 second hero interval after accepted audio and human approval.
 
@@ -122,6 +134,8 @@ Avoid:
 - persistent avatar product shape;
 - silent retries or candidate fishing;
 - third-party faces.
+
+The current generic API page exposes a different version and an `interpolate` field absent from the exact latest-version schema. Revalidate immediately before payment, record the requested and returned versions, and copy success to B2 before Replicate's short output TTL expires.
 
 ## 4. Audio support patterns
 
@@ -217,6 +231,14 @@ Observed README claims:
 - media/audio components and audio export;
 - MIT license.
 
+Current measured state on 2026-07-27:
+
+- Node requirement `>=22.12.0`; Puppeteer 25.3.0 / Chrome 150.0.7871.24;
+- canonical build passed with `DISABLE_TELEMETRY=true`;
+- one bundled 7.433-second 1080-square render passed in 11.42 seconds wall with about 446 MiB maximum RSS;
+- two immediate rerenders failed, including on Node 22.12, with `Navigating frame was detached`, matching open issue #343;
+- Cloud Run remains advertised only because the linked official example is missing.
+
 StageMe use:
 
 ```text
@@ -237,6 +259,8 @@ Before adoption, prototype:
 - container/headless-browser size;
 - server concurrency/memory;
 - telemetry opt-out/data boundary.
+
+Require at least three consecutive cold and warm 15-second 720p renders with local 48 kHz audio/fonts, within-one-frame A/V sync, decoded frame/PCM repeat checks, one worker, measured RSS/temp disk, pinned container, and deployment cleanup. Until then, direct FFmpeg/MoviePy is the Phase-0 fallback.
 
 ### Motion Canvas
 

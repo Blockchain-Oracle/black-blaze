@@ -22,8 +22,9 @@
 
 ## D-005 — Public repository default for context
 
-- Decision: publish this research context publicly unless blocked by account policy.
-- Reason: all contents summarize public sources and the user wants other agents to pull it. The eventual product repository can be separately public or private.
+- Historical decision: publish this research context publicly unless blocked by account policy.
+- Superseded safety boundary: repository visibility, push, PR, or publication now requires task-specific owner authorization; an old publication preference is not standing permission for every agent.
+- Current task authority: the 2026-07-27 pre-call assignment explicitly authorizes committing and pushing completed readiness changes to `main` when authentication is available and the remote has not diverged. It does not authorize a visibility change, deployment, or media/credential publication.
 
 ## D-006 — Deprioritize ShipCast after competitor/feasibility audit
 
@@ -79,6 +80,15 @@
 - Canonical file: `STAGEME_PRODUCT_SPEC.md`. Start/handoff: `../00-start-here/STAGEME_START_HERE.md` and `STAGEME_AGENT_BUILD_HANDOFF.md`.
 - Authorization boundary: this decision does not authorize unbudgeted paid calls, credential use, deployment, commit, push, or unsupported public claims.
 
+## D-013 — StageMe is conditionally ready for one authorized AnyAccomp call
+
+- Decision: the zero-cost pre-call pass is complete enough to run one capped F1 experiment, but media execution remains blocked until the owner supplies an authorized rough-sung fixture, approves the named GPU provider/region and processing disclosure, and approves a spend cap.
+- First call: pinned AnyAccomp direct worker inference → separate accompaniment → StageMe-owned lossless source/accompaniment premaster → sample-aligned null test → deterministic QC → before/after human review.
+- Environment boundary: stock AnyAccomp Python 3.9 remains isolated from the Python 3.11/3.12 Genblaze/control process. No maintained hosted AnyAccomp endpoint is currently available.
+- Renderer boundary: Revideo remains the intended architecture, but one successful smoke followed by two failed rerenders keeps direct FFmpeg/MoviePy as the Phase-0 fallback.
+- Follow-on order: ACE base `lego`; `complete` comparison; Revideo/B2 proof; `repaint` after an accepted parent; optional Wan only after deterministic-stage success.
+- Decision evidence: `STAGEME_PRECALL_READINESS_REPORT.md` and `STAGEME_FIRST_CALL_RUNBOOK.md`.
+
 ## Pending decisions
 
-- Representative fixture consent, GPU/endpoint, paid-call budget, measured provider stack, renderer selection, deployment platform, B2 account path, retention policy, team structure, and product-repository visibility remain open.
+- Representative fixture consent, GPU account/region/live inventory, spend cap, measured model outputs, Revideo repeatability, B2 credentialed canary, deployment platform, final retention wording, team structure, and product-repository visibility remain open.

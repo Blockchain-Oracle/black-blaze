@@ -4,7 +4,7 @@
 >
 > Product authority: `STAGEME_PRODUCT_SPEC.md`.
 >
-> Current status: protocol ready; no representative media run has occurred. The present Docker environment has no visible NVIDIA GPU tooling and contains no authorized user fixture or paid-provider budget.
+> Current status: zero-cost pre-call preparation is complete and the decision is **conditionally ready**. No representative media run has occurred. The current local host has no NVIDIA worker, authorized user fixture, or paid-provider budget. Follow `STAGEME_PRECALL_READINESS_REPORT.md` and `STAGEME_FIRST_CALL_RUNBOOK.md` before E1.
 
 ## 1. Decision to make
 
@@ -48,7 +48,7 @@ Do not place consented recordings in Git.
 | ID | Input | Status | Purpose |
 |---|---|---|---|
 | F0 | synthetic tones/clicks generated locally | safe to create | plumbing, timing, mux, hashes; never quality proof |
-| F1 | 10–12s clean rough sung vocal, one phrase | user/performer must supply | canonical product lane |
+| F1 | 8–15s dry rough sung vocal, one phrase | user/performer must supply | canonical product lane |
 | F2 | 10–12s hum of a clear melody | user/performer must supply | evaluation-only lane |
 | F3 | 8–12s beatboxed rhythm | user/performer must supply | evaluation-only lane |
 | F4 | 10–12s valid but difficult phone recording with moderate room noise | user/performer must supply | robustness boundary |
@@ -95,8 +95,8 @@ For each human fixture:
 3. inspect with ffprobe;
 4. decode to float PCM;
 5. reject corrupt, too short, too long, or effectively silent input;
-6. remove DC offset if present;
-7. apply only recorded deterministic trim/fade/gain operations;
+6. reject/re-record when the absolute decoded DC mean exceeds `0.005` full scale; do not silently filter F1;
+7. apply no trim/fade/gain operation to F1 unless a later versioned experiment explicitly authorizes and records it;
 8. resample to the model's required rate with a named ffmpeg/libsoxr configuration;
 9. save canonical processing WAV;
 10. hash every derivative.
@@ -139,7 +139,7 @@ seed = 1024
 device = measured runner
 ```
 
-Run F1–F4 independently.
+Run F1 first and make the product decision. F2–F4 are later evaluation fixtures and must not be described as supported input lanes.
 
 Required outputs:
 
@@ -151,11 +151,11 @@ Required outputs:
 - deterministic QC;
 - human rubric.
 
-Literal-retention null test before mastering:
+Literal-retention null test before mastering, with recorded source/accompaniment gains `gs` and `ga`:
 
 ```text
-residual = mixture - generated_accompaniment
-compare residual to canonical source after exact length/alignment handling
+residual = mixture - ga × generated_accompaniment
+compare residual sample-for-sample with gs × canonical source
 ```
 
 Pass when:
@@ -478,7 +478,7 @@ Every run folder must include `REPORT.md` with:
 pass | fail | inconclusive
 
 ## Fixture and consent
-fixture ID, source hash, consent record reference
+fixture ID, original-byte hash, canonical-source hash/derivation, consent record reference
 
 ## Environment
 hardware, runtime, commits, model/checkpoint versions

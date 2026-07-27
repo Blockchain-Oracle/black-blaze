@@ -16,7 +16,9 @@ black-blaze/
 │   ├── 08-strategy/                judge optimization and competitive landscape
 │   ├── 09-planning/                risks, open questions, working decisions
 │   └── 10-sources/                 source ledger and machine-readable provenance
-└── templates/                      project, evidence, scoring, demo, submission
+├── scripts/                        context validator and StageMe preflight/null test
+├── tests/                          zero-secret preflight and null-test checks
+└── templates/                      project, consent, evidence, scoring, demo, submission
 ```
 
 ## Agent retrieval guide
@@ -27,7 +29,8 @@ black-blaze/
 - "Which non-photo concepts fit best?" → `08-strategy/CONCEPT_SHORTLIST.md`
 - "What is the current public competitive field?" → `08-strategy/PUBLIC_FIELD_AUDIT_2026-07-27.md`
 - "What generative-media behaviors and transformations are attracting attention?" → `08-strategy/GEN_MEDIA_SIGNAL_MAP_2026-07-27.md`
-- "What product are we building?" → StageMe is selected for a feasibility-first build. Start with `STAGEME_START_HERE.md`, then `../09-planning/STAGEME_PRODUCT_SPEC.md`, `../09-planning/STAGEME_SPIKE_PROTOCOL.md`, and `../09-planning/STAGEME_AGENT_BUILD_HANDOFF.md`.
+- "What product are we building?" → StageMe is selected for a feasibility-first build. Start with `STAGEME_START_HERE.md`, then the canonical product spec.
+- "Are we ready for the first real model call?" → `../09-planning/STAGEME_PRECALL_READINESS_REPORT.md`, then `../09-planning/STAGEME_FIRST_CALL_RUNBOOK.md` and `../09-planning/STAGEME_F1_RECORDING_CHECKLIST.md`.
 - "What is the exact architecture?" → `../06-technical/STAGEME_SYSTEM_DESIGN.md`
 - "Which libraries and projects may we learn from?" → `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md`
 - "How does Genblaze work?" → `06-technical/GENBLAZE_GUIDE.md`

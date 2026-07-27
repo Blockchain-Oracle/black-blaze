@@ -5,8 +5,10 @@
     "url": "https://github.com/backblaze-labs/genblaze",
     "commit": "293beade3e705d69b29dbf57402800f8a868313f",
     "kind": "official",
+    "purpose": "Official Genblaze provider, pipeline, storage-sink, manifest, streaming, and compliance contract authority",
     "license": "MIT",
-    "inspected_at": "2026-07-25"
+    "inspected_at": "2026-07-27T10:18:12Z",
+    "release": "v0.6.0; distribution versions are independent"
   },
   {
     "owner": "backblaze-labs",
@@ -14,6 +16,7 @@
     "url": "https://github.com/backblaze-labs/genblaze-gen-media-multi-provider-sample",
     "commit": "2e31577b7a9d5a7b0309d814f2d0282088b33fe8",
     "kind": "official-sample",
+    "purpose": "Architecture reference for Genblaze streaming, B2 persistence, manifests, progress, and provider orchestration",
     "license": "MIT per official blog/repo LICENSE",
     "inspected_at": "2026-07-25"
   },
@@ -23,6 +26,7 @@
     "url": "https://github.com/backblaze-labs/genblaze-gmicloud-pipeline",
     "commit": "355a539ecf99f8d6fcfc5ba40cc5f9a95523100b",
     "kind": "official-sample",
+    "purpose": "Official queued GMI/Genblaze/B2 sample and compatibility-risk reference",
     "license": "MIT",
     "inspected_at": "2026-07-25"
   },
@@ -32,6 +36,7 @@
     "url": "https://github.com/upgradedev/cinemory",
     "commit": "fababdc10521f30bef2b8ba1f6ab4956173eef8c",
     "kind": "competitive-signal",
+    "purpose": "Execution-bar calibration for polished B2-backed generative-media entries; no product/code imitation",
     "license": "MIT stated in README",
     "inspected_at": "2026-07-25"
   },
@@ -41,6 +46,7 @@
     "url": "https://github.com/yaredtekile/proofrelay",
     "commit": "700cc77898677e6434bd331dbfbbbd29087ba690",
     "kind": "competitive-signal",
+    "purpose": "Calibration for approval-gated media transformation and factual control; no code/product copying",
     "license": "not verified",
     "inspected_at": "2026-07-25"
   },
@@ -50,6 +56,7 @@
     "url": "https://github.com/woadi-vector/reel",
     "commit": "41ba8b53a2e06222ff024d57e107996eab921853",
     "kind": "competitive-signal",
+    "purpose": "Calibration for multi-stage media orchestration, provider drift, and private B2 handoff",
     "license": "MIT",
     "inspected_at": "2026-07-25"
   },
@@ -59,8 +66,10 @@
     "url": "https://github.com/AmphionTeam/AnyAccomp",
     "commit": "82604b5e3107944ad4c49fc64900b86118ae2c62",
     "kind": "core-model",
+    "purpose": "Primary StageMe source-conditioned accompaniment and literal-retention candidate",
     "license": "MIT code; checkpoints declared CC-BY-4.0 on model card; attribution required",
-    "inspected_at": "2026-07-27"
+    "inspected_at": "2026-07-27T10:13:00Z",
+    "artifact_revision": "9aa9e62427337bf1df4caa3c4f3e6ad934522e71"
   },
   {
     "owner": "ace-step",
@@ -68,8 +77,21 @@
     "url": "https://github.com/ace-step/ACE-Step-1.5",
     "commit": "6d467e4b5081ccb0abf1ec1bf4fdf9051a2d34b0",
     "kind": "core-model",
-    "license": "MIT observed; verify weights and bundled dependencies",
-    "inspected_at": "2026-07-27"
+    "purpose": "Secondary StageMe named-layer, full-mix comparison, and bounded-revision candidate",
+    "license": "MIT code/model cards; bundled Qwen3-derived components originate under Apache-2.0",
+    "inspected_at": "2026-07-27T10:13:00Z",
+    "release": "v0.1.8",
+    "model_card_repository": "ACE-Step/Ace-Step1.5",
+    "model_card_revision": "19671f406d603126926c1b7e2adc169acbcade22",
+    "artifact_repository": "ACE-Step/acestep-v15-base",
+    "artifact_revision": "e432212fec32b8965a14ffa57ae653438d6abd14",
+    "artifact_sha256": "4177f600501a6d4bd81cadaa0abac557ffd15c54e5c8cb52053cdb24a0844d6b",
+    "base_model_weight_bytes": 4787825604,
+    "main_snapshot_bytes": 10092102593,
+    "base_snapshot_bytes": 4791792407,
+    "major_weight_bytes": 14813190540,
+    "full_snapshot_download_bytes": 14883895000,
+    "artifact_inspected_at": "2026-07-27T11:49:07Z"
   },
   {
     "owner": "TierraLinn",
@@ -77,6 +99,7 @@
     "url": "https://github.com/TierraLinn/onefield-by-ariyus-one",
     "commit": "f88d7103172824dc33d6f49c899c46fff19ed0db",
     "kind": "competitive-signal",
+    "purpose": "Public entrant overlap check for microphone/consent/music interaction; behavior reference only",
     "license": "no recognized license; do not copy code/assets",
     "inspected_at": "2026-07-27"
   },
@@ -86,6 +109,7 @@
     "url": "https://github.com/p-to-q/murmur",
     "commit": "c49882ea42cfba9c94f790c2569eefe355e40503",
     "kind": "competitive-signal",
+    "purpose": "Hum-to-song competitor calibration and differentiation check; behavior reference only",
     "license": "no recognized license; do not copy code/assets",
     "inspected_at": "2026-07-27"
   },
@@ -95,6 +119,7 @@
     "url": "https://github.com/jeremystiffler/instantbandai",
     "commit": "51f4791acd1ad6b29fbd074c86cf83b20d231b22",
     "kind": "competitive-signal",
+    "purpose": "Instant-band workflow overlap and product-execution calibration; behavior reference only",
     "license": "no recognized license; do not copy code/assets",
     "inspected_at": "2026-07-27"
   },
@@ -104,6 +129,7 @@
     "url": "https://github.com/itsjwill/vanta",
     "commit": "350b053ee18fb856a87516cfbfd1ad2295c26a73",
     "kind": "reference-project",
+    "purpose": "Reference for audio-reactive video direction patterns without code reuse until licensing is clear",
     "license": "NOASSERTION; verify before code reuse",
     "inspected_at": "2026-07-27"
   },
@@ -113,6 +139,7 @@
     "url": "https://github.com/librosa/librosa",
     "commit": "b7e7bf486353821311f68d756e487f65d09cf319",
     "kind": "candidate-library",
+    "purpose": "Canonical server-side music/audio feature analysis and synthetic plumbing checks",
     "license": "ISC",
     "inspected_at": "2026-07-27"
   },
@@ -122,6 +149,7 @@
     "url": "https://github.com/csteinmetz1/pyloudnorm",
     "commit": "b8d67bfd3ce5deef872f688fcfa491a0ca69fddd",
     "kind": "candidate-library",
+    "purpose": "Integrated loudness measurement for StageMe media QC",
     "license": "MIT",
     "inspected_at": "2026-07-27"
   },
@@ -131,6 +159,7 @@
     "url": "https://github.com/nomadkaraoke/python-audio-separator",
     "commit": "4fe3540c249ff130bd5395c0e9377b3d16970c1a",
     "kind": "candidate-library",
+    "purpose": "Deferred diagnostic/source-separation wrapper when full-mix analysis genuinely requires it",
     "license": "MIT wrapper; verify chosen model",
     "inspected_at": "2026-07-27"
   },
@@ -140,6 +169,7 @@
     "url": "https://github.com/openai/whisper",
     "commit": "04f449b8a437f1bbd3dba5c9f826aca972e7709a",
     "kind": "candidate-library",
+    "purpose": "Deferred lyric/transcript hinting if sung-word timing proves valuable",
     "license": "MIT",
     "inspected_at": "2026-07-27"
   },
@@ -149,6 +179,7 @@
     "url": "https://github.com/m-bain/whisperX",
     "commit": "2cfd7b7c5c7bba144954364db747319b50e8232b",
     "kind": "candidate-library",
+    "purpose": "Deferred word-alignment reference for optional lyric-driven stage cues",
     "license": "BSD-2-Clause",
     "inspected_at": "2026-07-27"
   },
@@ -158,8 +189,10 @@
     "url": "https://github.com/midrender/revideo",
     "commit": "b5de67a009a55aa2768a1e178b0446b2479a0b4e",
     "kind": "candidate-library",
+    "purpose": "Intended deterministic TypeScript stage renderer; repeatability currently fails",
     "license": "MIT",
-    "inspected_at": "2026-07-27"
+    "inspected_at": "2026-07-27T10:18:12Z",
+    "release": "npm 0.11.0"
   },
   {
     "owner": "motion-canvas",
@@ -167,6 +200,7 @@
     "url": "https://github.com/motion-canvas/motion-canvas",
     "commit": "7b91435c301d530351dcf5ebb91dd139c002e405",
     "kind": "candidate-library",
+    "purpose": "Scripted vector-motion design and alternate deterministic renderer reference",
     "license": "MIT",
     "inspected_at": "2026-07-27"
   },
@@ -176,6 +210,7 @@
     "url": "https://github.com/Zulko/moviepy",
     "commit": "7ffa4f00376237137a25fe1c777355c37753e9af",
     "kind": "candidate-library",
+    "purpose": "Phase-0 Python/FFmpeg deterministic video fallback while Revideo repeatability is red",
     "license": "MIT",
     "inspected_at": "2026-07-27"
   },
@@ -185,6 +220,7 @@
     "url": "https://github.com/pixijs/pixijs",
     "commit": "1d90a20c62433ba68dff78466e06ee372a5a5232",
     "kind": "candidate-library",
+    "purpose": "Optional interactive browser stage preview; not the authoritative MP4 renderer",
     "license": "MIT",
     "inspected_at": "2026-07-27"
   },
@@ -194,6 +230,7 @@
     "url": "https://github.com/katspaugh/wavesurfer.js",
     "commit": "98297a9ff4c47fc5099de85d03f6384af954a5b0",
     "kind": "candidate-library",
+    "purpose": "Browser recording, waveform playback, timeline, and bounded-region selection",
     "license": "BSD-3-Clause",
     "inspected_at": "2026-07-27"
   },
@@ -203,6 +240,7 @@
     "url": "https://github.com/meyda/meyda",
     "commit": "ecf256616d43292c82cbf96e60a91b19ca10eb64",
     "kind": "candidate-library",
+    "purpose": "Optional browser-side preview features; server QC remains authoritative",
     "license": "MIT",
     "inspected_at": "2026-07-27"
   },
@@ -212,6 +250,7 @@
     "url": "https://github.com/timoncool/ACE-Step-Studio",
     "commit": "ebe16f46b51a32b25e36a62bbbe10dfaf7d5c747",
     "kind": "reference-project",
+    "purpose": "ACE packaging/setup pitfall reference; no product identity or code copying",
     "license": "MIT",
     "inspected_at": "2026-07-27"
   },
@@ -221,6 +260,7 @@
     "url": "https://github.com/audiohacking/AceForge",
     "commit": "6103f5df9d9f6e7e0a80496194c841595bfd1add",
     "kind": "reference-project",
+    "purpose": "ACE/Demucs/audio integration-boundary reference; no product identity copying",
     "license": "Apache-2.0",
     "inspected_at": "2026-07-27"
   },
@@ -230,7 +270,68 @@
     "url": "https://github.com/RowanUnderwood/Synesthesia-AI-Video-Director",
     "commit": "ccf9bb843dfbfe40b15934d01c21dfa69bfdcb8a",
     "kind": "reference-project",
+    "purpose": "Audio-reactive video-direction reference for stage cues; not a code/product template",
     "license": "MIT",
     "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "Wan-Video",
+    "repo": "Wan2.2",
+    "url": "https://github.com/Wan-Video/Wan2.2",
+    "commit": "42bf4cfaa384bc21833865abc2f9e6c0e67233dc",
+    "kind": "core-model-reference",
+    "purpose": "Upstream implementation and license authority for the optional Replicate Wan 2.2 S2V interval",
+    "license": "Apache-2.0 code/model materials per repository and model card",
+    "inspected_at": "2026-07-27T10:16:21Z"
+  },
+  {
+    "owner": "numpy",
+    "repo": "numpy",
+    "url": "https://github.com/numpy/numpy",
+    "commit": "25c89980fcffe59af8ac12b39cf41bd4b07d09ce",
+    "kind": "candidate-library",
+    "purpose": "StageMe deterministic audio-array, metric, correlation, and null-test calculations",
+    "license": "BSD-3-Clause core; repository LICENSE includes bundled-component notices; GitHub metadata NOASSERTION",
+    "inspected_at": "2026-07-27T10:29:00Z"
+  },
+  {
+    "owner": "scipy",
+    "repo": "scipy",
+    "url": "https://github.com/scipy/scipy",
+    "commit": "e0134f43e13f376a59d9aabaf7c193403131c8f9",
+    "kind": "candidate-library",
+    "purpose": "Scientific signal support required by the pinned StageMe/librosa QC environment",
+    "license": "BSD-3-Clause plus bundled-component notices",
+    "inspected_at": "2026-07-27T10:29:00Z"
+  },
+  {
+    "owner": "bastibe",
+    "repo": "python-soundfile",
+    "url": "https://github.com/bastibe/python-soundfile",
+    "commit": "350394191a2af890fc464d0f11a1690e7a4f4c64",
+    "kind": "candidate-library",
+    "purpose": "Lossless float WAV/FLAC I/O for deterministic mixing and literal-retention tests",
+    "license": "BSD-3-Clause wrapper; libsndfile build/license remains a runtime boundary",
+    "inspected_at": "2026-07-27T10:29:00Z"
+  },
+  {
+    "owner": "FFmpeg",
+    "repo": "FFmpeg",
+    "url": "https://github.com/FFmpeg/FFmpeg",
+    "commit": "a757b708ae7d43fdec89545a55cbc11ae2967b19",
+    "kind": "runtime-tool",
+    "purpose": "Canonical media decode, probe, resample, mix, mux, QC, and low-data export runtime",
+    "license": "LGPL/GPL depends on exact compiled configuration and linked components",
+    "inspected_at": "2026-07-27T10:29:00Z"
+  },
+  {
+    "owner": "fspecii",
+    "repo": "ace-step-ui",
+    "url": "https://github.com/fspecii/ace-step-ui",
+    "commit": "a1fdf91829ec6f7b98844f80e323529cd155dbf2",
+    "kind": "workflow-reference-only",
+    "purpose": "ACE-Step local workflow, history, editing, and integration-risk calibration; no code or identity reuse",
+    "license": "NOASSERTION: README badge says MIT, but no LICENSE/COPYING file and GitHub license metadata is null",
+    "inspected_at": "2026-07-27T11:15:00Z"
   }
 ]

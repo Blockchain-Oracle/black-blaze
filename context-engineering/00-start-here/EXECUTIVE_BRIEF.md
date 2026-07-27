@@ -43,7 +43,7 @@ The official Backblaze blog says "the pipeline is becoming the moat" and calls o
 
 - **StageMe is selected for a feasibility-first build.** The full application remains gated by a real media proof; selection does not promote upstream model claims to product capability.
 - Canonical promise: an authorized 8–15 second rough sung performance receives source-conditioned accompaniment while the original recording remains literally present, followed by a staged audiovisual artifact and one bounded revision.
-- Start with `STAGEME_START_HERE.md`, then the canonical `STAGEME_PRODUCT_SPEC.md`, spike protocol, system design, reference ledger, and agent handoff.
+- Start with `STAGEME_START_HERE.md`, then the canonical `STAGEME_PRODUCT_SPEC.md`, pre-call readiness report, first-call runbook, F1 recording checklist, spike protocol, system design, reference ledger, and agent handoff.
 - AnyAccomp is the primary preservation spike because its pinned source writes a separate accompaniment and a mixture containing the original waveform. ACE-Step `lego`, `complete`, and gated `repaint` are comparison/layer/edit paths.
 - Mandatory visual path: a polished deterministic audio-reactive stage. Wan 2.2 S2V is an optional budgeted hero shot after accepted audio, never a completion dependency.
 - Preserve MediaSpec's QC, manifests, recovery, and verification as internal components rather than a standalone product.

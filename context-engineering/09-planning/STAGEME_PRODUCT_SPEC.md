@@ -144,14 +144,16 @@ Public product copy may rely only on product-proven behavior. Demo narration may
 
 | Claim | Current level | Product status |
 |---|---|---|
-| AnyAccomp generates a separate accompaniment from vocal input | Implemented in pinned source | Spike candidate; not reproduced here |
-| AnyAccomp mixture keeps the original vocal | Implemented as generated accompaniment plus original waveform | Primary preservation candidate |
-| ACE-Step `lego` generates a named instrument in audio context | Documented, reachable, implemented | Secondary layer candidate |
-| ACE-Step `complete` completes a partial track with specified instruments | Documented, reachable, implemented | Comparison candidate |
-| ACE-Step `repaint` preserves audio outside a time range | Documented/reachable claim | Must be reproduced and compared |
-| Replicate Wan 2.2 S2V accepts image + audio + prompt | Reachable official endpoint | Optional renderer only |
-| Wan S2V costs $0.02/output-second | Official endpoint price observed 2026-07-27 | Budget input; mutable |
-| StageMe produces a magical retained-vocal arrangement | Not reproduced | The load-bearing spike |
+| AnyAccomp generates a separate accompaniment from vocal input | Implemented | Pinned source contains the operation; StageMe has not reproduced it |
+| AnyAccomp upstream mixture adds the decoded source waveform | Implemented | StageMe has not reproduced it and must ignore the un-gain-staged upstream mix, construct its own float premaster, and null-test it |
+| ACE-Step `lego` generates a named instrument in audio context | Implemented | Secondary layer candidate; not reproduced by StageMe |
+| ACE-Step `complete` completes a partial track with specified instruments | Implemented | Comparison candidate; not reproduced by StageMe |
+| ACE-Step `repaint` preserves audio outside a time range in some modes | Implemented | Current-main caveats apply; StageMe must restore/hash locked parent regions independently |
+| Replicate Wan 2.2 S2V accepts image + audio + prompt | Documented | Current exact-version schema is documented; optional renderer only; revalidate before payment |
+| Wan S2V costs $0.02/output-second | Documented | Official endpoint price observed 2026-07-27; mutable budget input |
+| StageMe produces a magical retained-vocal arrangement | Advertised | Product promise and acceptance gate exist; no working outcome is reproduced and this remains the load-bearing spike |
+
+Outcomes such as **not reproduced** or **failed gate** are status, not evidence-level labels.
 
 ## 6. Minimum magical artifact
 
@@ -248,7 +250,7 @@ Do not expose fake percentages. Use Genblaze progress events or stage completion
 
 1. Keep the original uploaded bytes immutable.
 2. Decode to a canonical processing WAV.
-3. Remove DC offset and apply only documented deterministic gain/fade/format operations.
+3. Measure DC offset. For F1, reject/re-record when absolute decoded mean exceeds `0.005` full scale; otherwise do not alter it. Any later correction must be explicit, versioned, and hashed.
 4. Do not pitch-correct, time-warp, denoise aggressively, or synthesize a replacement in the first build.
 5. Hash the normalized source and record every transformation.
 
@@ -275,7 +277,9 @@ The inference script:
 - writes `accompaniment/<file>`;
 - writes `mixture/<file>` as generated accompaniment plus the original vocal waveform.
 
-This is the primary candidate for literal vocal retention.
+This is the primary candidate for literal vocal retention. The upstream addition has no explicit gain/headroom policy. StageMe accepts only the separate accompaniment, creates its own lossless premaster with recorded gains, and verifies `premaster - accompaniment == retained source` within the declared sample tolerance.
+
+The stock worker declares Python 3.9 while current Genblaze requires Python 3.11 or newer. Keep the model in a dedicated worker/container and never import it into the FastAPI process.
 
 #### Candidate B — ACE-Step `lego`
 
@@ -311,7 +315,7 @@ The core renderer must work without full generative video:
 
 ### 9.2 Optional hero shot
 
-Wan 2.2 S2V may generate one 10–15 second audio-bound shot after audio acceptance.
+Wan 2.2 S2V may replace one **3–5 second** audio-bound interval after audio acceptance. The complete deterministic stage, including the same interval, must already exist and remain the immediate fallback.
 
 It remains optional until StageMe measures:
 
@@ -323,7 +327,7 @@ It remains optional until StageMe measures:
 - consent and deletion behavior;
 - preference over the deterministic stage.
 
-If unavailable or rejected, the deterministic stage remains the valid output.
+If unavailable, timed out, drifted, rejected, or disliked, the deterministic interval remains the valid output. Pin and record the exact Replicate prediction version because the current generic and version-specific API pages expose conflicting schemas.
 
 ## 10. Accessibility and affordability
 
