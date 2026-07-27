@@ -67,7 +67,7 @@
     "gmi_promotional_credits_assumption": "treat as unavailable unless already credited"
   },
   "stageme_pre_call": {
-    "checked_at_utc": "2026-07-27T17:14:05Z",
+    "checked_at_utc": "2026-07-27T17:28:04Z",
     "verdict": "conditionally ready",
     "canonical_lane": "authorized 8–15 second rough sung performance",
     "f1_local_readiness": {
@@ -77,7 +77,7 @@
       "analyzed_frames": 1329,
       "median_f0_hz": 166.73,
       "robust_pitch_span_semitones": 8.5,
-      "rights_attestations_complete": false,
+      "rights_attestations_complete": true,
       "provider_processing_consent_complete": false
     },
     "first_model": {
@@ -125,7 +125,6 @@
       "authenticated_inventory_checked": false
     },
     "human_blockers_for_first_call": [
-      "F1 authorized-voices-only and no-unauthorized-backing attestations",
       "accepted provider/region-specific consent",
       "working approved GPU account and secure inventory",
       "approved spend cap"

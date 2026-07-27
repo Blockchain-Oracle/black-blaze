@@ -131,7 +131,7 @@ Current StageMe core status: **implemented upstream, not reproduced in the Stage
 
 ## Known blockers
 
-- an owner-supplied 14.256-second F1 is technically ready outside Git, but its “authorized voices only / no unauthorized backing media” attestations and provider-processing consent remain unset;
+- an owner-supplied 14.256-second F1 is technically ready outside Git and its fixture-scoped voice/backing-media rights attestations are complete; provider-processing consent remains unset;
 - no selected/approved NVIDIA GPU account, region, or live secure inventory;
 - no measured AnyAccomp or ACE quality/latency/VRAM;
 - no approved hosted-inference budget;

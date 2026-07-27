@@ -2,13 +2,13 @@
 
 > **Current verdict:** **conditionally ready** for the first authorized call.
 >
-> **Checked:** 2026-07-27, primary mutable-source and policy pass completed 11:20 UTC; ACE artifact and storage-rate consistency pass completed 11:49 UTC; private F1 and RunPod CLI-contract refresh completed 17:12 UTC.
+> **Checked:** 2026-07-27, primary mutable-source and policy pass completed 11:20 UTC; ACE artifact and storage-rate consistency pass completed 11:49 UTC; private F1 and RunPod CLI-contract refresh completed 17:12 UTC; fixture-scoped F1 rights affirmation and preflight refresh completed 17:28 UTC.
 >
 > **Repository baseline:** remote `main` at assignment start was `a8df5a9b46e2f427ae4192e6e0d2d8d9eac7399d`, newer than the supplied reference `5411be2b3d3ac2d381898edeedfb7ec08a85f198`.
 >
 > **Product authority:** `STAGEME_PRODUCT_SPEC.md`.
 
-The zero-cost research, source inspection, dependency resolution, synthetic plumbing proof, consent/fixture preparation, preflight tooling, failure policy, and exact first-call procedure are ready. An owner-supplied F1 is now preserved in a private local bundle and passes deterministic media QC plus a conservative pitch-bearing signal check. The magical transformation is **not** ready to claim and the call still cannot start autonomously: the owner must affirm the clip contains only authorized voice and no unauthorized backing media, approve a named GPU account/region and live offer, set a finite spend cap, and permit processing on that worker after the provider disclosure.
+The zero-cost research, source inspection, dependency resolution, synthetic plumbing proof, consent/fixture preparation, preflight tooling, failure policy, and exact first-call procedure are ready. An owner-supplied F1 is preserved in a private local bundle, passes deterministic media QC plus a conservative pitch-bearing signal check, and has a fixture-scoped owner affirmation for authorized voice and absence of unauthorized backing media. The magical transformation is **not** ready to claim and the call still cannot start autonomously: the owner must approve a named GPU account/region and live offer, set a finite spend cap, and permit processing on that worker after the provider disclosure.
 
 ## 1. Decision-grade answer
 
@@ -48,7 +48,7 @@ The capability-level column uses only the canonical six-level vocabulary. Execut
 | Genblaze contracts | Implemented | Selected source tests passed | Current provider/storage/streaming contracts execute without live providers | A working StageMe provider |
 | B2 path | Documented | Canary not run | Exact private-bucket, scoped-key, canary, integrity, and deletion design | Account/CORS/credentialed canary |
 | Wan endpoint | Documented | Not called | Current official input schema, lifecycle, version, and price | Accepted 3–5 second result or Genblaze routing with credentials |
-| F1 local fixture/QC | Reproduced | Private ingest, canonicalization, QC, and pitch-bearing analysis passed | The selected 14.256 s clip is technically usable and contains sustained pitched signal | Rights, subjective singing quality, provider consent, or model-output quality |
+| F1 local fixture/QC | Reproduced | Private ingest, canonicalization, QC, pitch-bearing analysis, and fixture-scoped rights affirmation passed | The selected 14.256 s clip is technically usable, contains sustained pitched signal, and has the required owner rights attestations | Independent rights verification, subjective singing quality, provider consent, or model-output quality |
 | StageMe retained-performance magic | Advertised | Not reproduced | The product promise and falsification gate are explicit | Any working or desirable transformation |
 
 No media claim in this report is product-proven.
@@ -364,7 +364,7 @@ The low case assumes compatible cached images and that both models fit 48 GB. Ru
 
 ## 13. F1 fixture, consent, and handling
 
-**Current local status, 2026-07-27:** an owner-supplied M4A was copied into an owner-only private bundle before the temporary macOS share path expired. A deterministic 14.256-second selection and 24 kHz mono float32 derivative passed byte/hash, decode, duration, clipping, silence, non-finite, DC, loudness, and reproducibility checks. Conservative pYIN analysis found two phrase-like pitched regions and supports only the statement “pitch-bearing rough-vocal candidate.” It cannot prove rights, absence of backing audio, singing quality, or expected AnyAccomp quality. No media, private path, or media hash is committed to Git.
+**Current local status, 2026-07-27:** an owner-supplied M4A was copied into an owner-only private bundle before the temporary macOS share path expired. A deterministic 14.256-second selection and 24 kHz mono float32 derivative passed byte/hash, decode, duration, clipping, silence, non-finite, DC, loudness, and reproducibility checks. Conservative pYIN analysis found two phrase-like pitched regions and supports only the statement “pitch-bearing rough-vocal candidate.” [OBSERVED] At 17:26:55 UTC, the owner affirmatively answered the exact fixture-scoped statement that F1 contains only authorized voice and no copyrighted or otherwise unauthorized backing audio; the private record expressly does not authorize provider upload, payment, B2, publication, or training reuse. Waveform analysis still cannot independently prove rights, absence of backing audio, singing quality, or expected AnyAccomp quality. No media, private path, or media hash is committed to Git.
 
 Required fixture:
 
@@ -432,7 +432,6 @@ Do not build the broad app or use polished visuals to defer this decision.
 
 | Blocker | Why autonomous work stops | Exact human action |
 |---|---|---|
-| F1 rights attestations | Waveform analysis cannot prove every voice/backing sound is authorized | Affirm that the selected F1 contains only authorized voice and no copyrighted or otherwise unauthorized backing media |
 | Consent | Provider processing and retention require the performer's decision | Complete the project/file-bound consent record after provider/region is selected |
 | GPU account/entitlement | Registration, payment, region, and secure inventory are external | Confirm RunPod account/payment works and select a secure Ampere/Ada 24 GB+ offer |
 | Budget | Any GPU run spends money and RunPod credits are non-refundable | Approve a live rate, hard provider deadline, noncompute reserve, and first-session cap; recommended expected cap is $5 after funding terms are understood |
@@ -440,7 +439,7 @@ Do not build the broad app or use polished visuals to defer this decision.
 | ACE base weights | Required checkpoint is individually >2 GB | Approve download only after AnyAccomp result justifies comparison |
 | Wan | Paid, optional, schema mutable | No action until accepted audio and deterministic stage exist |
 
-Only the first four are required to press the first AnyAccomp button. B2, ACE, and Wan are later gates.
+Only the first three are required to press the first AnyAccomp button. B2, ACE, and Wan are later gates.
 
 ## 17. Recommendation and what would change it
 

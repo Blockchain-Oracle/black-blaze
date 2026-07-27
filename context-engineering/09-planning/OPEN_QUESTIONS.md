@@ -6,7 +6,7 @@ Current primary audit: `STAGEME_PRECALL_READINESS_REPORT.md`. Historical selecti
 
 ## Product proof
 
-- [x] Has an owner-supplied rough-vocal F1 passed local technical readiness? Yes: the private 14.256-second selection passed deterministic canonicalization/media QC and contains sustained pitch-bearing signal; rights attestations and model quality remain separate gates.
+- [x] Has an owner-supplied rough-vocal F1 passed local technical readiness? Yes: the private 14.256-second selection passed deterministic canonicalization/media QC and contains sustained pitch-bearing signal; fixture-scoped rights attestations are complete, while model quality remains a separate gate.
 - [ ] Does one pinned AnyAccomp run on authorized F1 produce a coherent, source-connected accompaniment, and what are measured cold/warm latency, VRAM, RAM, and cost?
 - [ ] Does the StageMe premaster pass the sample-aligned null test while keeping F1 audible and emotionally stronger?
 - [ ] Does ACE-Step 1.5 base `lego` produce a useful separate instrument layer on the same F1?
@@ -68,6 +68,7 @@ Current primary audit: `STAGEME_PRECALL_READINESS_REPORT.md`. Historical selecti
 ## Voice consent and rights
 
 - [x] Is a pre-call consent/recording template prepared? Yes: the checklist and consent template bind original/canonical hashes, deterministic derivation evidence, exact model/checkpoint, provider/region/spend cap, retention, deletion, and `training_reuse=false`.
+- [x] Has the owner affirmed the exact F1 contains only authorized voice and no unauthorized backing media? Yes: recorded privately against fixture `F1-beb7138cae96` on 2026-07-27; this does not authorize provider processing or payment.
 - [ ] Does the owner approve the final provider/region-specific consent and seven-day user-bundle retention wording?
 - [ ] How can a user delete/revoke the source and derived private artifacts?
 - [ ] Which derived project metadata may remain after revocation, if any?
