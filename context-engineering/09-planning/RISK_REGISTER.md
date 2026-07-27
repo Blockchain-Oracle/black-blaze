@@ -39,6 +39,8 @@
 | Custom Genblaze provider defects | Medium | High | reproduce direct semantics first; 16-method compliance suite plus task/retention tests; SyncProvider only in dedicated worker | provider compliance + fault injection |
 | Genblaze manifest overclaim | Medium | Critical | manifest verification does not fetch bytes and excludes transport URLs/parent ID from canonical hash; bind StageMe lineage and fetch/hash assets separately | fetched-byte/lineage audit |
 | GPU account/payment unavailable in Nigeria | Medium | Critical | check RunPod/Modal account before F1; Lambda is no-go absent explicit support; keep one contingency | account and secure-inventory preflight |
+| RunPod CLI/docs hard-stop drift | High | Critical | pin checksum-installed `runpodctl` 2.7.2; pass an absolute RFC 3339 UTC deadline; explicit Secure Cloud/data center; confirm deadline in authenticated console before F1 transfer | recorded CLI version/help, budget plan, console confirmation, immediate deletion |
+| RunPod content-processing terms rejected | Medium | Critical | disclose current ownership/service/aggregated-anonymized-use terms and shared-security boundary before consent; use no provider if owner declines | exact terms URL/version + project-bound consent |
 | GPU idle/cache cost | Medium | High | hard session cap; terminate Pod and unwanted volumes; verify billing stopped | provider dashboard/deletion evidence |
 | B2 version/deletion mismatch | Medium | Critical | content-addressed keys; record VersionId/fileId; delete exact versions; avoid Object Lock on MVP bucket | post-delete head/read plus version audit |
 | Presigned POST assumed available | Medium | High | B2 supports presigned PUT, not browser POST; use exact-key PUT or API proxy | real browser/CORS canary |

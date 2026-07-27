@@ -70,10 +70,12 @@ STAGEME_NONCOMPUTE_RESERVE_USD="<storage-and-rounding-reserve>"
 STAGEME_HARD_TERMINATE_AFTER_HOURS="<integer-hours-1-through-24>"
 STAGEME_GPU_OFFER_LABEL="<exact-gpu-offer-label>"
 STAGEME_WORKER_IMAGE="<immutable-image@sha256:digest>"
+STAGEME_EXPECTED_RUNPODCTL_VERSION="2.7.2-309512b"
 STAGEME_PROVIDER_PRICE_CHECKED_AT_UTC="<ISO-8601-UTC-check-time>"
 STAGEME_PROVIDER_PRICE_SOURCE_URL="https://www.runpod.io/pricing"
 RUNPOD_GPU_ID="<exact-runpod-gpu-id>"
 RUNPOD_COUNTRY_CODE="<exact-approved-country-code>"
+RUNPOD_DATA_CENTER_ID="<exact-approved-runpod-data-center-id>"
 test -d "$STAGEME_REPO_ROOT/.git"
 test ! -e "$STAGEME_RUN_ROOT" || exit 73
 mkdir -p "$STAGEME_RUN_ROOT"/{fixture,input,environment,run,output,qc,review,transfer}
@@ -133,7 +135,10 @@ plan = {
     "noncompute_reserve_usd": float(reserve),
     "approved_spend_cap_usd": float(cap),
     "hard_terminate_after_hours": int(terminate_hours),
+    "hard_terminate_at_utc": None,
     "hard_termination_control": "runpodctl pod create --terminate-after",
+    "hard_termination_argument_semantics": "absolute-rfc3339-utc",
+    "runpodctl_version": None,
     "model": "AmphionTeam/AnyAccomp",
     "model_commit": "82604b5e3107944ad4c49fc64900b86118ae2c62",
     "checkpoint_revision": "9aa9e62427337bf1df4caa3c4f3e6ad934522e71",
@@ -325,24 +330,123 @@ PY
 ### First paid boundary: provision with a hard provider deadline
 
 The local/control shell must still be open. `runpodctl` reads its API key from
-`RUNPOD_API_KEY` or the user's private config; never put that value in this
-repository or a command argument. The current official CLI exposes
-`--terminate-after` at Pod creation. Its provider-side deadline is the failsafe;
-the operator still deletes the Pod immediately after verified copy-out.
+the session-local `RUNPOD_API_KEY` or the user's private config; never put that
+value in this repository or a command argument. Prefer the session variable:
+the current `config` command is deprecated, and interactive setup/doctor flows
+may also create or upload an SSH key. If a private config is used, require
+owner-only permissions.
+
+There is a current upstream documentation conflict. The prose CLI page describes
+`--terminate-after` using relative durations such as `1h`, but the released
+`runpodctl` v2.7.2 help and source at commit
+`309512b4926eb7d218bbc8a8f11d380ce54f59c4` define an **absolute datetime**
+such as `2026-04-15T00:00:00Z` and pass it unchanged to the API. This runbook
+pins that reproduced CLI contract. Never pass `${hours}h`. Calculate a fresh
+RFC 3339 UTC deadline immediately before provisioning, record it in the budget
+plan, and confirm the exact same deadline in the authenticated RunPod console
+before transferring F1. Released v2.7.2 `pod create` and `pod get` output do not
+return the configured termination deadline, so CLI output alone is not enough
+evidence. The provider-side deadline is the failsafe; the operator still deletes
+the Pod immediately after verified copy-out.
 
 ```bash
 command -v runpodctl >/dev/null
-test -n "${RUNPOD_API_KEY:-}" || test -s "$HOME/.runpod/config.toml"
+RUNPODCTL_VERSION="$(runpodctl version | awk 'NR == 1 {print $2}')"
+test "$RUNPODCTL_VERSION" = "$STAGEME_EXPECTED_RUNPODCTL_VERSION"
+runpodctl pod create --help 2>&1 \
+  | grep -F -- '--terminate-after string     auto-terminate datetime' >/dev/null
+test -n "${RUNPOD_API_KEY:-}" || {
+  test -s "$HOME/.runpod/config.toml"
+  test "$(stat -f '%Lp' "$HOME/.runpod/config.toml")" = "600"
+}
 runpodctl pod list >/dev/null
+runpodctl datacenter list \
+  > "$STAGEME_RUN_ROOT/environment/runpod-datacenters-live.json"
+runpodctl gpu list \
+  > "$STAGEME_RUN_ROOT/environment/runpod-gpus-live.json"
+
+# Reconfirm that the approved GPU/data-center/rate are present in these live
+# account-scoped results before continuing. Then bind a fresh absolute deadline.
+STAGEME_HARD_TERMINATE_AT_UTC="$(
+  "$STAGEME_QC_PYTHON" - \
+    "$STAGEME_BUDGET_PLAN" "$RUNPODCTL_VERSION" \
+    "$STAGEME_HARD_TERMINATE_AFTER_HOURS" <<'PY'
+import json
+import pathlib
+import sys
+from datetime import datetime, timedelta, timezone
+
+path = pathlib.Path(sys.argv[1])
+version = sys.argv[2]
+hours = int(sys.argv[3])
+generated = datetime.now(timezone.utc)
+deadline = generated + timedelta(hours=hours)
+record = json.loads(path.read_text())
+record["deadline_generated_at_utc"] = generated.isoformat(timespec="seconds").replace("+00:00", "Z")
+record["hard_terminate_at_utc"] = deadline.isoformat(timespec="seconds").replace("+00:00", "Z")
+record["hard_termination_argument_semantics"] = "absolute-rfc3339-utc"
+record["runpodctl_version"] = version
+path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n")
+print(record["hard_terminate_at_utc"])
+PY
+)"
+
+# Replace the transferred plan and its hash after deadline binding. Do not reuse
+# the earlier transfer hash after this mutation.
+cp "$STAGEME_BUDGET_PLAN" "$STAGEME_RUN_ROOT/transfer/budget-plan.json"
+"$STAGEME_QC_PYTHON" - "$STAGEME_RUN_ROOT/transfer" \
+  > "$STAGEME_RUN_ROOT/transfer/transfer.sha256.new" <<'PY'
+import hashlib
+import pathlib
+import sys
+
+root = pathlib.Path(sys.argv[1])
+for name in (
+    "black-blaze-readiness.tar",
+    "F1-24k-mono-f32.wav",
+    "consent-run.json",
+    "budget-plan.json",
+    "readiness-code-commit.txt",
+):
+    print(f"{hashlib.sha256((root / name).read_bytes()).hexdigest()}  {name}")
+PY
+mv "$STAGEME_RUN_ROOT/transfer/transfer.sha256.new" \
+  "$STAGEME_RUN_ROOT/transfer/transfer.sha256"
+
+"$STAGEME_QC_PYTHON" "$STAGEME_REPO_ROOT/scripts/stageme_preflight.py" \
+  --phase anyaccomp-binding \
+  --repo-root "$STAGEME_REPO_ROOT" \
+  --work-root "$STAGEME_RUN_ROOT" \
+  --fixture "$STAGEME_CANONICAL" \
+  --consent "$STAGEME_EXECUTION_CONSENT" \
+  --budget-plan "$STAGEME_BUDGET_PLAN" \
+  --json > "$STAGEME_RUN_ROOT/qc/preflight-provisioning-binding.json"
+
+"$STAGEME_QC_PYTHON" - \
+  "$STAGEME_RUN_ROOT/qc/preflight-provisioning-binding.json" <<'PY'
+import json
+import pathlib
+import sys
+
+report = json.loads(pathlib.Path(sys.argv[1]).read_text())
+status = {item["check_id"]: item["status"] for item in report["checks"]}
+if status.get("budget.hard-plan") != "pass":
+    raise SystemExit("absolute provider deadline/budget binding failed")
+PY
 
 runpodctl pod create \
   --name "stageme-${STAGEME_PROJECT_ID}" \
   --gpu-id "$RUNPOD_GPU_ID" \
   --gpu-count 1 \
   --image "$STAGEME_WORKER_IMAGE" \
+  --cloud-type SECURE \
   --container-disk-in-gb 40 \
+  --volume-in-gb 0 \
+  --env '{}' \
   --country-code "$RUNPOD_COUNTRY_CODE" \
-  --terminate-after "${STAGEME_HARD_TERMINATE_AFTER_HOURS}h" \
+  --data-center-ids "$RUNPOD_DATA_CENTER_ID" \
+  --min-cuda-version 12.1 \
+  --terminate-after "$STAGEME_HARD_TERMINATE_AT_UTC" \
   > "$STAGEME_RUN_ROOT/environment/runpod-create.txt"
 
 RUNPOD_POD_ID="<pod-id-returned-by-runpodctl>"
@@ -351,13 +455,28 @@ runpodctl pod get "$RUNPOD_POD_ID" \
   > "$STAGEME_RUN_ROOT/environment/runpod-provisioned.txt"
 printf '%s\n' "$RUNPOD_POD_ID" \
   > "$STAGEME_RUN_ROOT/environment/runpod-pod-id.txt"
+
+# REQUIRED MANUAL GATE: inspect this Pod in the authenticated RunPod console.
+# Continue only after the console shows the exact value of
+# $STAGEME_HARD_TERMINATE_AT_UTC. Record only the non-secret evidence fields.
+STAGEME_TERMINATION_CONSOLE_CONFIRMED_AT_UTC="<confirmation-time-ISO-8601-UTC>"
+test -n "$STAGEME_TERMINATION_CONSOLE_CONFIRMED_AT_UTC"
+printf 'expected_terminate_at_utc=%s\nconfirmed_at_utc=%s\n' \
+  "$STAGEME_HARD_TERMINATE_AT_UTC" \
+  "$STAGEME_TERMINATION_CONSOLE_CONFIRMED_AT_UTC" \
+  > "$STAGEME_RUN_ROOT/environment/runpod-termination-console-confirmation.txt"
 ```
 
-Do not proceed if the returned Pod does not show the selected GPU, region,
-immutable image, and termination deadline. Move the six transfer files (the
-five hashed payloads plus `transfer.sha256`) through the approved encrypted
-channel. Do not use a public URL. Keep this local/control shell open so it can
-terminate the Pod independently of the worker session.
+Do not proceed unless CLI/console evidence together shows the selected GPU,
+exact data center, Secure Cloud tier, immutable image, and exact value of
+`$STAGEME_HARD_TERMINATE_AT_UTC`. The v2.7.2 GraphQL create path uses only the
+first data-center ID, so this runbook permits exactly one approved ID. Do not
+use `runpodctl send`: an active upstream issue reports stalled transfers. Move the
+six transfer files (the
+five hashed payloads plus `transfer.sha256`) through owner-approved SSH/SCP or
+another encrypted channel, then verify `transfer.sha256` on the worker. Do not
+use a public URL. Keep this local/control shell open so it can terminate the Pod
+independently of the worker session.
 
 ## 5. Dedicated worker and two isolated environments
 

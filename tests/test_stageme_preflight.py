@@ -7,6 +7,7 @@ import sys
 import tempfile
 import unittest
 import wave
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -280,6 +281,7 @@ class StageMePreflightTests(unittest.TestCase):
     def test_hard_budget_plan_enforces_provider_deadline_cost(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             plan_path = Path(directory) / "budget-plan.json"
+            hard_terminate_at = datetime.now(timezone.utc) + timedelta(hours=2)
             plan = {
                 "schema_version": "1",
                 "project_id": "stageme-project-test",
@@ -293,7 +295,10 @@ class StageMePreflightTests(unittest.TestCase):
                 "noncompute_reserve_usd": 0.5,
                 "approved_spend_cap_usd": 5.0,
                 "hard_terminate_after_hours": 3,
+                "hard_terminate_at_utc": hard_terminate_at.isoformat(),
                 "hard_termination_control": "runpodctl pod create --terminate-after",
+                "hard_termination_argument_semantics": "absolute-rfc3339-utc",
+                "runpodctl_version": "2.7.2",
                 "model": "AmphionTeam/AnyAccomp",
                 "model_commit": stageme_preflight.ANYACCOMP_CODE_COMMIT,
                 "checkpoint_revision": stageme_preflight.ANYACCOMP_CHECKPOINT_REVISION,
@@ -317,7 +322,128 @@ class StageMePreflightTests(unittest.TestCase):
                 "anyaccomp-local", plan_path, environment
             )[0]
             self.assertEqual(failed.status, stageme_preflight.BLOCKER)
-            self.assertIn("exceeds approved cap", failed.detail)
+            self.assertIn("approved_spend_cap_usd", failed.detail)
+
+    def test_hard_budget_plan_rejects_relative_deadline_and_semantics(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            plan_path = Path(directory) / "budget-plan.json"
+            plan = {
+                "schema_version": "1",
+                "project_id": "stageme-project-test",
+                "provider": "RunPod Secure Cloud",
+                "region": "US-KS-2",
+                "gpu_offer_label": "NVIDIA A100 80GB PCIe",
+                "worker_image": "runpod/pytorch@sha256:" + "a" * 64,
+                "provider_price_source_url": "https://www.runpod.io/pricing",
+                "price_checked_at_utc": "2026-07-27T12:00:00Z",
+                "gpu_rate_usd_per_hour": 1.0,
+                "noncompute_reserve_usd": 0.0,
+                "approved_spend_cap_usd": 5.0,
+                "hard_terminate_after_hours": 3,
+                "hard_terminate_at_utc": "1h",
+                "hard_termination_control": "runpodctl pod create --terminate-after",
+                "hard_termination_argument_semantics": "relative-duration",
+                "runpodctl_version": "2.7.2",
+                "model": "AmphionTeam/AnyAccomp",
+                "model_commit": stageme_preflight.ANYACCOMP_CODE_COMMIT,
+                "checkpoint_revision": stageme_preflight.ANYACCOMP_CHECKPOINT_REVISION,
+                "owner_approved": True,
+            }
+            plan_path.write_text(json.dumps(plan), encoding="utf-8")
+
+            failed = stageme_preflight.budget_plan_checks(
+                "anyaccomp-local", plan_path, {}
+            )[0]
+            binding_failed = stageme_preflight.budget_plan_checks(
+                "anyaccomp-binding", plan_path, {}
+            )[0]
+
+            self.assertEqual(failed.status, stageme_preflight.BLOCKER)
+            self.assertEqual(binding_failed.status, stageme_preflight.BLOCKER)
+            self.assertIn("hard_terminate_at_utc", failed.detail)
+            self.assertIn("hard_termination_argument_semantics", failed.detail)
+            self.assertNotIn("1h", failed.detail)
+            self.assertNotIn("relative-duration", failed.detail)
+
+    def test_hard_budget_plan_rejects_stale_absolute_deadline(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            plan_path = Path(directory) / "budget-plan.json"
+            stale = datetime.now(timezone.utc) - timedelta(minutes=1)
+            plan = {
+                "schema_version": "1",
+                "project_id": "stageme-project-test",
+                "provider": "RunPod Secure Cloud",
+                "region": "US-KS-2",
+                "gpu_offer_label": "NVIDIA A100 80GB PCIe",
+                "worker_image": "runpod/pytorch@sha256:" + "a" * 64,
+                "provider_price_source_url": "https://www.runpod.io/pricing",
+                "price_checked_at_utc": "2026-07-27T12:00:00Z",
+                "gpu_rate_usd_per_hour": 1.0,
+                "noncompute_reserve_usd": 0.0,
+                "approved_spend_cap_usd": 5.0,
+                "hard_terminate_after_hours": 3,
+                "hard_terminate_at_utc": stale.isoformat(),
+                "hard_termination_control": "runpodctl pod create --terminate-after",
+                "hard_termination_argument_semantics": "absolute-rfc3339-utc",
+                "runpodctl_version": "2.7.2",
+                "model": "AmphionTeam/AnyAccomp",
+                "model_commit": stageme_preflight.ANYACCOMP_CODE_COMMIT,
+                "checkpoint_revision": stageme_preflight.ANYACCOMP_CHECKPOINT_REVISION,
+                "owner_approved": True,
+            }
+            plan_path.write_text(json.dumps(plan), encoding="utf-8")
+
+            failed = stageme_preflight.budget_plan_checks(
+                "anyaccomp-local", plan_path, {}
+            )[0]
+
+            self.assertEqual(failed.status, stageme_preflight.BLOCKER)
+            self.assertEqual(
+                failed.detail,
+                "Missing/invalid field names only: hard_terminate_at_utc",
+            )
+
+    def test_deadline_fields_are_optional_for_binding_but_required_locally(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            plan_path = Path(directory) / "budget-plan.json"
+            plan = {
+                "schema_version": "1",
+                "project_id": "stageme-project-test",
+                "provider": "RunPod Secure Cloud",
+                "region": "US-KS-2",
+                "gpu_offer_label": "NVIDIA A100 80GB PCIe",
+                "worker_image": "runpod/pytorch@sha256:" + "a" * 64,
+                "provider_price_source_url": "https://www.runpod.io/pricing",
+                "price_checked_at_utc": "2026-07-27T12:00:00Z",
+                "gpu_rate_usd_per_hour": 1.0,
+                "noncompute_reserve_usd": 0.0,
+                "approved_spend_cap_usd": 5.0,
+                "hard_terminate_after_hours": 3,
+                "hard_terminate_at_utc": None,
+                "hard_termination_control": "runpodctl pod create --terminate-after",
+                "hard_termination_argument_semantics": None,
+                "runpodctl_version": None,
+                "model": "AmphionTeam/AnyAccomp",
+                "model_commit": stageme_preflight.ANYACCOMP_CODE_COMMIT,
+                "checkpoint_revision": stageme_preflight.ANYACCOMP_CHECKPOINT_REVISION,
+                "owner_approved": True,
+            }
+            plan_path.write_text(json.dumps(plan), encoding="utf-8")
+
+            binding = stageme_preflight.budget_plan_checks(
+                "anyaccomp-binding", plan_path, {}
+            )[0]
+            local = stageme_preflight.budget_plan_checks(
+                "anyaccomp-local", plan_path, {}
+            )[0]
+            all_phase = stageme_preflight.budget_plan_checks("all", plan_path, {})[0]
+
+            self.assertEqual(binding.status, stageme_preflight.PASS)
+            self.assertEqual(local.status, stageme_preflight.BLOCKER)
+            self.assertEqual(all_phase.status, stageme_preflight.BLOCKER)
+            self.assertIn("hard_terminate_at_utc", local.detail)
+            self.assertIn("hard_termination_argument_semantics", local.detail)
+            self.assertIn("runpodctl_version", local.detail)
 
     def test_precall_binds_original_before_canonical_derivation_exists(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

@@ -333,5 +333,15 @@
     "purpose": "ACE-Step local workflow, history, editing, and integration-risk calibration; no code or identity reuse",
     "license": "NOASSERTION: README badge says MIT, but no LICENSE/COPYING file and GitHub license metadata is null",
     "inspected_at": "2026-07-27T11:15:00Z"
+  },
+  {
+    "owner": "runpod",
+    "repo": "runpodctl",
+    "url": "https://github.com/runpod/runpodctl",
+    "commit": "309512b4926eb7d218bbc8a8f11d380ce54f59c4",
+    "kind": "runtime-tool",
+    "purpose": "StageMe first-call Secure Cloud GPU control plane, absolute termination deadline, inventory, and deletion verification",
+    "license": "GPL-3.0",
+    "inspected_at": "2026-07-27T17:14:05Z"
   }
 ]

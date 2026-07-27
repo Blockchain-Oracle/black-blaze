@@ -67,9 +67,19 @@
     "gmi_promotional_credits_assumption": "treat as unavailable unless already credited"
   },
   "stageme_pre_call": {
-    "checked_at_utc": "2026-07-27T11:49:07Z",
+    "checked_at_utc": "2026-07-27T17:14:05Z",
     "verdict": "conditionally ready",
     "canonical_lane": "authorized 8–15 second rough sung performance",
+    "f1_local_readiness": {
+      "status": "technical-ready-private",
+      "duration_seconds": 14.256,
+      "high_confidence_pitched_frames": 735,
+      "analyzed_frames": 1329,
+      "median_f0_hz": 166.73,
+      "robust_pitch_span_semitones": 8.5,
+      "rights_attestations_complete": false,
+      "provider_processing_consent_complete": false
+    },
     "first_model": {
       "repository": "AmphionTeam/AnyAccomp",
       "code_commit": "82604b5e3107944ad4c49fc64900b86118ae2c62",
@@ -106,8 +116,16 @@
       "repeat_render_gate_status": "failed",
       "phase_zero_fallback": "FFmpeg/MoviePy"
     },
+    "runpod_control": {
+      "runpodctl_version": "2.7.2-309512b",
+      "repository_commit": "309512b4926eb7d218bbc8a8f11d380ce54f59c4",
+      "hard_termination_argument_semantics": "absolute-rfc3339-utc",
+      "secure_cloud_and_single_data_center_required": true,
+      "console_deadline_confirmation_required": true,
+      "authenticated_inventory_checked": false
+    },
     "human_blockers_for_first_call": [
-      "authorized F1 fixture",
+      "F1 authorized-voices-only and no-unauthorized-backing attestations",
       "accepted provider/region-specific consent",
       "working approved GPU account and secure inventory",
       "approved spend cap"
@@ -116,7 +134,10 @@
       "paid_calls_made": false,
       "provider_credentials_used": false,
       "b2_writes_made": false,
-      "human_audio_processed": false,
+      "human_audio_processed": true,
+      "human_audio_processed_locally": true,
+      "human_audio_uploaded": false,
+      "provider_calls_made": false,
       "oversized_checkpoints_downloaded": false
     }
   },

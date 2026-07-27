@@ -270,6 +270,25 @@ def validate_json(errors: list[str]) -> None:
         {"code_commit": "commit"},
     )
 
+    runpod_entry = ledger_by_repo.get(("runpod", "runpodctl"))
+    runpod_control = stageme.get("runpod_control")
+    if runpod_entry is None:
+        errors.append("RunPod control repository missing from repositories.json")
+    elif not isinstance(runpod_control, dict):
+        errors.append("facts.json stageme_pre_call.runpod_control must be an object")
+    else:
+        if runpod_control.get("repository_commit") != runpod_entry.get("commit"):
+            errors.append(
+                "StageMe RunPod control commit does not match repositories.json"
+            )
+        if (
+            runpod_control.get("hard_termination_argument_semantics")
+            != "absolute-rfc3339-utc"
+        ):
+            errors.append("StageMe RunPod control has stale deadline semantics")
+        if runpod_control.get("console_deadline_confirmation_required") is not True:
+            errors.append("StageMe RunPod control must require console deadline confirmation")
+
     ace_entry = ledger_by_repo.get(("ace-step", "ace-step-1.5"))
     if ace_entry is not None:
         required_ace_fields = (
@@ -437,9 +456,35 @@ def validate_stageme_readiness(errors: list[str]) -> None:
             "clean up",
             "roll back",
             "sha-256",
+            "absolute-rfc3339-utc",
+            "--cloud-type secure",
+            "runpod_data_center_id",
+            "runpod-termination-console-confirmation.txt",
         ):
             if term not in runbook:
                 errors.append(f"first-call runbook missing required term: {term}")
+        if re.search(
+            r"--terminate-after\s+[\"']?\$\{?stageme_hard_terminate_after_hours\}?h",
+            runbook,
+        ):
+            errors.append(
+                "first-call runbook uses a relative RunPod termination value; "
+                "v2.7.2 requires an absolute RFC 3339 UTC datetime"
+            )
+
+    preflight_path = ROOT / "scripts/stageme_preflight.py"
+    if preflight_path.is_file():
+        preflight = preflight_path.read_text(encoding="utf-8")
+        for term in (
+            '"hard_terminate_at_utc"',
+            '"hard_termination_argument_semantics"',
+            '"runpodctl_version"',
+            '"absolute-rfc3339-utc"',
+        ):
+            if term not in preflight:
+                errors.append(
+                    f"StageMe preflight missing absolute RunPod deadline contract: {term}"
+                )
 
     env_path = ROOT / ".env.example"
     if env_path.is_file():

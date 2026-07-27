@@ -2,13 +2,13 @@
 
 > **Current verdict:** **conditionally ready** for the first authorized call.
 >
-> **Checked:** 2026-07-27, primary mutable-source and policy pass completed 11:20 UTC; ACE artifact and storage-rate consistency pass completed 11:49 UTC.
+> **Checked:** 2026-07-27, primary mutable-source and policy pass completed 11:20 UTC; ACE artifact and storage-rate consistency pass completed 11:49 UTC; private F1 and RunPod CLI-contract refresh completed 17:12 UTC.
 >
 > **Repository baseline:** remote `main` at assignment start was `a8df5a9b46e2f427ae4192e6e0d2d8d9eac7399d`, newer than the supplied reference `5411be2b3d3ac2d381898edeedfb7ec08a85f198`.
 >
 > **Product authority:** `STAGEME_PRODUCT_SPEC.md`.
 
-The zero-cost research, source inspection, dependency resolution, synthetic plumbing proof, consent/fixture preparation, preflight tooling, failure policy, and exact first-call procedure are ready. The magical transformation is **not** ready to claim and the call cannot start autonomously: it still needs one authorized F1 recording, an approved GPU account/region, a small spend cap, and permission to process that recording on the named worker.
+The zero-cost research, source inspection, dependency resolution, synthetic plumbing proof, consent/fixture preparation, preflight tooling, failure policy, and exact first-call procedure are ready. An owner-supplied F1 is now preserved in a private local bundle and passes deterministic media QC plus a conservative pitch-bearing signal check. The magical transformation is **not** ready to claim and the call still cannot start autonomously: the owner must affirm the clip contains only authorized voice and no unauthorized backing media, approve a named GPU account/region and live offer, set a finite spend cap, and permit processing on that worker after the provider disclosure.
 
 ## 1. Decision-grade answer
 
@@ -48,6 +48,7 @@ The capability-level column uses only the canonical six-level vocabulary. Execut
 | Genblaze contracts | Implemented | Selected source tests passed | Current provider/storage/streaming contracts execute without live providers | A working StageMe provider |
 | B2 path | Documented | Canary not run | Exact private-bucket, scoped-key, canary, integrity, and deletion design | Account/CORS/credentialed canary |
 | Wan endpoint | Documented | Not called | Current official input schema, lifecycle, version, and price | Accepted 3–5 second result or Genblaze routing with credentials |
+| F1 local fixture/QC | Reproduced | Private ingest, canonicalization, QC, and pitch-bearing analysis passed | The selected 14.256 s clip is technically usable and contains sustained pitched signal | Rights, subjective singing quality, provider consent, or model-output quality |
 | StageMe retained-performance magic | Advertised | Not reproduced | The product promise and falsification gate are explicit | Any working or desirable transformation |
 
 No media claim in this report is product-proven.
@@ -64,8 +65,8 @@ Research inspection is intentionally excluded from this execution list.
 | Synthetic F0 pitch/loudness plumbing | Passed | 10.0 s, 48 kHz mono; pYIN median 221.274 Hz for a 220 Hz tone; LUFS −42.019 |
 | Synthetic F0 null test | Passed | 480,000 frames; max error `9.313225746e-10`; RMS error `2.913929974e-10`; correlation `0.9999999999999786`; error −149.636 dB relative |
 | Intentional wrong/zero-gain null tests | Failed as required | Wrong source gain returned exit 2 and max error `0.006248475`; zero source gain was rejected with exit 2; proves fail-closed behavior |
-| StageMe script tests in QC environment | Passed | 29/29 tests, including project/media binding, exact ACE model revision, B2 prefix, provider-native hard-cap math, zero-source-gain, canonical-format, and worker-source regressions |
-| StageMe script tests in system environment | Passed with expected optional skips | 24 passed, 5 null-test cases skipped because QC dependencies are isolated |
+| StageMe script tests in QC environment | Passed | 32/32 tests, including project/media binding, exact ACE model revision, B2 prefix, provider-native absolute-deadline/cap math, relative/stale deadline rejection, zero-source-gain, canonical-format, and worker-source regressions |
+| StageMe script tests in system environment | Passed with expected optional skips | 27 passed, 5 null-test cases skipped because QC dependencies are isolated |
 | Embedded runbook media-QC gate | Passed/fail-closed on synthetic audio | Valid 24 kHz source/accompaniment/premaster passed; a silent accompaniment exited nonzero and recorded three exact failures |
 | Runbook shell/Python syntax | Passed | 26 Bash fences and 15 embedded Python programs parsed successfully; syntax is not paid-worker reproduction |
 | Revideo canonical build | Passed | 10 projects built with telemetry disabled |
@@ -73,8 +74,11 @@ Research inspection is intentionally excluded from this execution list.
 | Revideo immediate rerenders | Failed twice | Node 25 and supported Node 22.12 both hit `Navigating frame was detached` |
 | Genblaze selected source tests | Passed | 210 passed, 3 skipped; separate clean-room evidence also records 388 core + 26 S3 passes |
 | Official multi-provider sample | Passed selected checks | pnpm 10.32.1 frozen install, Next 16.1.6 build, TypeScript check |
+| Owner F1 local ingest and canonicalization | Passed | Immutable source copy retained outside Git; deterministic selected segment and 24 kHz mono float32 derivative are separately hashed; no gain, denoise, pitch correction, or external transfer |
+| Owner F1 media and pitch-bearing checks | Passed | 14.256 s; no clipping/non-finite samples; 735/1,329 high-confidence pitched frames, 166.73 Hz median robust F0, 8.5-semitone robust span; evidence remains in the private bundle |
+| RunPod CLI install/contract check | Passed locally; account gate closed | Checksum-pinned Homebrew `runpodctl` 2.7.2 installed; binary help reproduced absolute-datetime `--terminate-after`; unauthenticated inventory failed cleanly because no API key is configured |
 
-Provider calls made: **none**. No model inference, paid API, credential use, B2 request, human-audio processing, public deployment, or oversized checkpoint download occurred.
+Provider calls made: **none**. Local human-audio selection, canonicalization, media QC, and pitch-bearing analysis occurred with the owner's supplied recording. No media upload, model inference, paid API, usable credential, B2 request, public deployment, or oversized checkpoint download occurred.
 
 ## 4. Track A — AnyAccomp
 
@@ -326,7 +330,9 @@ Live secure inventory, exact region, cold start, cache behavior, outbound B2 can
 
 **[OBSERVED] RunPod cache-rate source:** the [RunPod Storage options page](https://docs.runpod.io/pods/storage/types), checked 2026-07-27 11:49:07 UTC, lists volume disk at $0.10/GB-month while a Pod is running and $0.20/GB-month while stopped. Therefore the expected cache row is `50 GB × $0.10 × 1/30 = $0.1667`, and the high row is `100 GB × $0.20 × 1/30 = $0.6667`. These are storage-only estimates; provider billing remains mutable.
 
-**[OBSERVED] Hard-cap control:** the [current RunPod Pod CLI reference](https://docs.runpod.io/runpodctl/reference/runpodctl-pod), checked 2026-07-27 12:01:10 UTC, exposes `pod create --terminate-after <duration>` and `pod delete <pod-id>`. The first-call runbook now requires a price/rate plan whose `rate × hard-deadline + noncompute reserve` is no greater than the owner-approved cap, provider-side `--terminate-after` at creation, and immediate deletion after verified copy-out. A declared environment cap alone is not sufficient.
+**[OBSERVED] Hard-cap control and documentation conflict:** the [RunPod prose CLI reference](https://docs.runpod.io/runpodctl/reference/runpodctl-pod) describes relative duration examples such as `1h`, but the checksum-pinned [`runpodctl` v2.7.2 release](https://github.com/runpod/runpodctl/releases/tag/v2.7.2), installed and checked at 17:12 UTC, reports `--terminate-after` as an absolute datetime and its pinned [source at commit `309512b`](https://github.com/runpod/runpodctl/blob/309512b4926eb7d218bbc8a8f11d380ce54f59c4/cmd/pod/create.go) passes that string unchanged to the API. The runbook now forbids `${hours}h`, calculates a fresh RFC 3339 UTC deadline immediately before creation, records CLI version and semantics, and explicitly requests Secure Cloud plus one approved data-center ID. Because v2.7.2 `pod create`/`pod get` output does not return the configured deadline, the operator must confirm the exact timestamp in the authenticated console before F1 transfer. The budget still uses `rate × declared maximum hours + noncompute reserve ≤ owner-approved cap`, followed by immediate deletion after verified copy-out.
+
+**[OBSERVED] Provider-processing disclosure:** the [RunPod Terms of Service](https://www.runpod.io/legal/terms-of-service), last updated 2026-03-24 and checked 2026-07-27 17:12 UTC, say the customer retains ownership but grants RunPod access/use needed to provide the service and permits aggregated/anonymized use for improvement; the customer is responsible for content permissions and application/data security. The [security page](https://docs.runpod.io/references/security-and-compliance) describes container isolation and enhanced Secure Cloud controls. These terms are not silently accepted by this research pass and must be disclosed with the exact region and deletion plan before performer consent.
 
 ## 12. Cost and time envelope
 
@@ -357,6 +363,8 @@ B2 = storage formula + egress formula + applicable Class D requests
 The low case assumes compatible cached images and that both models fit 48 GB. RunPod still requires an initial account credit purchase even when actual compute is lower. Replace every time range with measured cold/warm data after the first session.
 
 ## 13. F1 fixture, consent, and handling
+
+**Current local status, 2026-07-27:** an owner-supplied M4A was copied into an owner-only private bundle before the temporary macOS share path expired. A deterministic 14.256-second selection and 24 kHz mono float32 derivative passed byte/hash, decode, duration, clipping, silence, non-finite, DC, loudness, and reproducibility checks. Conservative pYIN analysis found two phrase-like pitched regions and supports only the statement “pitch-bearing rough-vocal candidate.” It cannot prove rights, absence of backing audio, singing quality, or expected AnyAccomp quality. No media, private path, or media hash is committed to Git.
 
 Required fixture:
 
@@ -424,7 +432,7 @@ Do not build the broad app or use polished visuals to defer this decision.
 
 | Blocker | Why autonomous work stops | Exact human action |
 |---|---|---|
-| F1 recording | Human media cannot be fabricated or assumed authorized | Record one phrase using the checklist and keep it outside Git |
+| F1 rights attestations | Waveform analysis cannot prove every voice/backing sound is authorized | Affirm that the selected F1 contains only authorized voice and no copyrighted or otherwise unauthorized backing media |
 | Consent | Provider processing and retention require the performer's decision | Complete the project/file-bound consent record after provider/region is selected |
 | GPU account/entitlement | Registration, payment, region, and secure inventory are external | Confirm RunPod account/payment works and select a secure Ampere/Ada 24 GB+ offer |
 | Budget | Any GPU run spends money and RunPod credits are non-refundable | Approve a live rate, hard provider deadline, noncompute reserve, and first-session cap; recommended expected cap is $5 after funding terms are understood |

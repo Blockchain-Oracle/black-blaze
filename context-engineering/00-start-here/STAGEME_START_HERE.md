@@ -4,9 +4,9 @@
 >
 > **Canonical product file:** `../09-planning/STAGEME_PRODUCT_SPEC.md`.
 >
-> **Pre-call verdict:** conditionally ready; no real media call is authorized or executed yet.
+> **Pre-call verdict:** conditionally ready; an owner-supplied F1 has passed private local ingest/QC, but no provider/model call is authorized or executed yet.
 >
-> **Last updated:** 2026-07-27.
+> **Last updated:** 2026-07-27 17:12 UTC.
 
 ## What StageMe is
 
@@ -92,6 +92,8 @@ This directly supports literal source retention, but quality, hardware, latency,
 
 The official Hugging Face Space is currently unavailable and no official maintained hosted inference mapping was found. The first call therefore uses a dedicated approved GPU worker. StageMe keeps only the separate accompaniment from upstream, constructs its own gain-staged float premaster, and runs the repository null-test utility.
 
+The first-call control path is pinned to `runpodctl` 2.7.2. Its released binary/source require an absolute RFC 3339 datetime for `--terminate-after`, despite a conflicting prose-doc duration example. The runbook computes and records that deadline immediately before an explicitly Secure Cloud, single-data-center provision and requires authenticated-console confirmation before F1 transfer because the CLI response omits the configured deadline.
+
 ### Secondary arrangement/editing candidate
 
 **ACE-Step 1.5**, pinned source `6d467e4b5081ccb0abf1ec1bf4fdf9051a2d34b0`.
@@ -129,7 +131,7 @@ Current StageMe core status: **implemented upstream, not reproduced in the Stage
 
 ## Known blockers
 
-- no authorized human F1 fixture has been supplied outside Git;
+- an owner-supplied 14.256-second F1 is technically ready outside Git, but its “authorized voices only / no unauthorized backing media” attestations and provider-processing consent remain unset;
 - no selected/approved NVIDIA GPU account, region, or live secure inventory;
 - no measured AnyAccomp or ACE quality/latency/VRAM;
 - no approved hosted-inference budget;

@@ -6,6 +6,7 @@ Current primary audit: `STAGEME_PRECALL_READINESS_REPORT.md`. Historical selecti
 
 ## Product proof
 
+- [x] Has an owner-supplied rough-vocal F1 passed local technical readiness? Yes: the private 14.256-second selection passed deterministic canonicalization/media QC and contains sustained pitch-bearing signal; rights attestations and model quality remain separate gates.
 - [ ] Does one pinned AnyAccomp run on authorized F1 produce a coherent, source-connected accompaniment, and what are measured cold/warm latency, VRAM, RAM, and cost?
 - [ ] Does the StageMe premaster pass the sample-aligned null test while keeping F1 audible and emotionally stronger?
 - [ ] Does ACE-Step 1.5 base `lego` produce a useful separate instrument layer on the same F1?
@@ -20,6 +21,7 @@ Current primary audit: `STAGEME_PRECALL_READINESS_REPORT.md`. Historical selecti
 ## Models and compute
 
 - [x] What is the first worker strategy? Use an approved RunPod Secure Cloud Pod for the interactive experiment; Modal is the serverless follow-on. Lambda is unavailable to a Nigeria-billed account unless explicitly confirmed.
+- [x] What exact RunPod hard-stop contract applies? Checksum-pinned `runpodctl` 2.7.2 requires an absolute RFC 3339 UTC `--terminate-after` value; prose duration examples conflict, and v2.7.2 output does not return the configured deadline, so the authenticated console must confirm it before media transfer.
 - [ ] Does the actual RunPod/Modal account accept the user's payment method and expose a secure 24 GB+ Ampere/Ada worker in an acceptable region?
 - [ ] What are measured cold-start and warm-generation times for 8–15 seconds of AnyAccomp audio?
 - [ ] What are measured peak GPU memory, CPU memory, checkpoint-download time, and worker startup time?

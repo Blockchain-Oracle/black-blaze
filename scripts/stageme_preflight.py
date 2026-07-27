@@ -21,7 +21,7 @@ import subprocess
 import sys
 from collections.abc import Mapping, Sequence
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 PASS = "pass"
@@ -36,6 +36,7 @@ ACESTEP_MODEL_ID = "ACE-Step/acestep-v15-base"
 ACESTEP_CHECKPOINT_REVISION = "e432212fec32b8965a14ffa57ae653438d6abd14"
 MIN_ANYACCOMP_VRAM_MIB = 24 * 1024
 MIN_ANYACCOMP_COMPUTE_CAPABILITY = (8, 0)
+HARD_TERMINATION_CLOCK_SKEW_SECONDS = 5 * 60
 ANYACCOMP_CHECKPOINTS = {
     "flow_matching/pytorch_model.bin": (
         880_790_586,
@@ -302,12 +303,37 @@ def environment_checks(phase: str, environ: Mapping[str, str]) -> list[Check]:
     return checks
 
 
-def _valid_utc_timestamp(value: object) -> bool:
+def _parse_rfc3339_utc_timestamp(value: object) -> datetime | None:
+    if not isinstance(value, str) or not re.fullmatch(
+        r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|\+00:00)",
+        value,
+    ):
+        return None
     try:
-        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError:
+        return None
+    if parsed.utcoffset() != timedelta(0):
+        return None
+    return parsed.astimezone(timezone.utc)
+
+
+def _valid_utc_timestamp(value: object) -> bool:
+    return _parse_rfc3339_utc_timestamp(value) is not None
+
+
+def _non_placeholder_version(value: object) -> bool:
+    if not isinstance(value, str):
         return False
-    return parsed.utcoffset() == timezone.utc.utcoffset(parsed)
+    normalized = value.strip().lower()
+    return bool(
+        normalized
+        and "<" not in normalized
+        and ">" not in normalized
+        and "example" not in normalized
+        and normalized not in {"unknown", "present", "latest", "none", "null", "n/a", "todo", "tbd"}
+        and re.search(r"\d", normalized)
+    )
 
 
 def budget_plan_checks(
@@ -361,36 +387,62 @@ def budget_plan_checks(
         if not value or "<" in value or ">" in value or "example." in value:
             invalid.append(name)
     if plan.get("schema_version") != "1":
-        invalid.append("schema_version=1")
+        invalid.append("schema_version")
     if plan.get("owner_approved") is not True:
-        invalid.append("owner_approved=true")
+        invalid.append("owner_approved")
     if plan.get("model") != "AmphionTeam/AnyAccomp":
-        invalid.append("model=AmphionTeam/AnyAccomp")
+        invalid.append("model")
     if plan.get("model_commit") != ANYACCOMP_CODE_COMMIT:
-        invalid.append(f"model_commit={ANYACCOMP_CODE_COMMIT}")
+        invalid.append("model_commit")
     if plan.get("checkpoint_revision") != ANYACCOMP_CHECKPOINT_REVISION:
-        invalid.append(f"checkpoint_revision={ANYACCOMP_CHECKPOINT_REVISION}")
+        invalid.append("checkpoint_revision")
     if plan.get("hard_termination_control") != "runpodctl pod create --terminate-after":
-        invalid.append(
-            "hard_termination_control=runpodctl pod create --terminate-after"
-        )
+        invalid.append("hard_termination_control")
     if "@sha256:" not in str(plan.get("worker_image") or ""):
-        invalid.append("worker_image (immutable image@sha256 digest)")
+        invalid.append("worker_image")
     if not str(plan.get("provider_price_source_url") or "").startswith("https://"):
-        invalid.append("provider_price_source_url=https URL")
+        invalid.append("provider_price_source_url")
     if not _valid_utc_timestamp(plan.get("price_checked_at_utc")):
-        invalid.append("price_checked_at_utc (ISO-8601 UTC timestamp)")
+        invalid.append("price_checked_at_utc")
 
     rate = finite_number("gpu_rate_usd_per_hour", positive=True)
     reserve = finite_number("noncompute_reserve_usd", positive=False)
     cap = finite_number("approved_spend_cap_usd", positive=True)
     hours = plan.get("hard_terminate_after_hours")
     if not isinstance(hours, int) or not 1 <= hours <= 24:
-        invalid.append("hard_terminate_after_hours (integer 1..24)")
+        invalid.append("hard_terminate_after_hours")
     elif all(math.isfinite(value) for value in (rate, reserve, cap)) and (
         rate * hours + reserve > cap + 1e-9
     ):
-        invalid.append("rate × hard-terminate hours + reserve exceeds approved cap")
+        invalid.append("approved_spend_cap_usd")
+
+    deadline_required = phase in BUDGET_PLAN_PHASES
+    deadline_value = plan.get("hard_terminate_at_utc")
+    semantics_value = plan.get("hard_termination_argument_semantics")
+    runpodctl_version = plan.get("runpodctl_version")
+
+    parsed_deadline: datetime | None = None
+    if deadline_required or deadline_value is not None:
+        parsed_deadline = _parse_rfc3339_utc_timestamp(deadline_value)
+        if parsed_deadline is None:
+            invalid.append("hard_terminate_at_utc")
+        else:
+            now = datetime.now(timezone.utc)
+            if parsed_deadline <= now:
+                invalid.append("hard_terminate_at_utc")
+            elif isinstance(hours, int) and 1 <= hours <= 24:
+                latest_allowed = now + timedelta(
+                    hours=hours,
+                    seconds=HARD_TERMINATION_CLOCK_SKEW_SECONDS,
+                )
+                if parsed_deadline > latest_allowed:
+                    invalid.append("hard_terminate_at_utc")
+    if deadline_required or semantics_value is not None:
+        if semantics_value != "absolute-rfc3339-utc":
+            invalid.append("hard_termination_argument_semantics")
+    if deadline_required or runpodctl_version is not None:
+        if not _non_placeholder_version(runpodctl_version):
+            invalid.append("runpodctl_version")
 
     for env_name, field in (
         ("STAGEME_PROJECT_ID", "project_id"),
@@ -399,24 +451,22 @@ def budget_plan_checks(
     ):
         configured = environment.get(env_name)
         if configured and plan.get(field) != configured:
-            invalid.append(f"{field} does not match {env_name}")
+            invalid.append(field)
     configured_cap = environment.get("STAGEME_SPEND_CAP_USD")
     if configured_cap:
         try:
             if float(configured_cap) != cap:
-                invalid.append(
-                    "approved_spend_cap_usd does not match STAGEME_SPEND_CAP_USD"
-                )
+                invalid.append("approved_spend_cap_usd")
         except ValueError:
-            invalid.append(
-                "approved_spend_cap_usd does not match STAGEME_SPEND_CAP_USD"
-            )
+            invalid.append("approved_spend_cap_usd")
+
+    invalid = list(dict.fromkeys(invalid))
 
     return [
         Check(
             "budget.hard-plan",
             PASS if not invalid else BLOCKER,
-            "Provider-native hard termination fits the approved cap"
+            "Provider-native absolute hard termination fits the approved cap"
             if not invalid
             else "Hard budget plan is incomplete or exceeds the approved cap",
             "Missing/invalid field names only: " + ", ".join(invalid)

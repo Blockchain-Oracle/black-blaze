@@ -116,9 +116,11 @@ git clone --depth 1 https://github.com/backblaze-labs/genblaze-gmicloud-pipeline
 git clone --depth 1 https://github.com/upgradedev/cinemory.git .research-clones/cinemory
 git clone --depth 1 https://github.com/yaredtekile/proofrelay.git .research-clones/proofrelay
 git clone --depth 1 https://github.com/woadi-vector/reel.git .research-clones/reel
+git clone --depth 1 --branch v2.7.2 https://github.com/runpod/runpodctl.git .research-clones/runpodctl
+git -C .research-clones/runpodctl checkout --detach v2.7.2
 ```
 
-## StageMe pre-call refresh — checked 2026-07-27 10:13–11:49 UTC
+## StageMe pre-call refresh — checked 2026-07-27 10:13–17:14 UTC
 
 All repositories below were inspected from ignored shallow clones. No third-party source or weight was copied into the project. Model-output quality remains unreproduced.
 
@@ -173,6 +175,18 @@ All repositories below were inspected from ignored shallow clones. No third-part
 | https://github.com/bastibe/python-soundfile | `350394191a2af890fc464d0f11a1690e7a4f4c64` | BSD-3 wrapper; libsndfile separate | released 0.14.0 lossless float WAV/FLAC I/O |
 | https://github.com/FFmpeg/FFmpeg | `a757b708ae7d43fdec89545a55cbc11ae2967b19` | LGPL/GPL depends on build | decode/probe/resample/mix/mux/QC; local Homebrew 8.1.1 enables GPL components and is not a default redistribution build |
 | https://github.com/Wan-Video/Wan2.2 | `42bf4cfaa384bc21833865abc2f9e6c0e67233dc` | Apache-2.0 code/model materials | upstream authority for optional 3–5 second Replicate S2V interval |
+| https://github.com/runpod/runpodctl | `309512b4926eb7d218bbc8a8f11d380ce54f59c4` (`v2.7.2`) | GPL-3.0 | first-call GPU control plane; released deadline semantics, Secure Cloud/data-center flags, credential precedence, and operational failure calibration |
+
+### RunPod CLI control-plane refresh
+
+- URL/commit: https://github.com/runpod/runpodctl at detached release `v2.7.2`, commit `309512b4926eb7d218bbc8a8f11d380ce54f59c4`; ignored shallow clone inspected 2026-07-27 17:14:05 UTC.
+- Purpose: verify the exact first-call Pod lifecycle rather than relying on mutable prose documentation.
+- License/setup: GPL-3.0; official macOS installation uses the RunPod Homebrew tap. The checksum-pinned formula installed `runpodctl 2.7.2-309512b`; upstream source declares Go 1.26.5 for source builds.
+- Architecture/implementation: Cobra CLI with REST and GraphQL clients; GPU Pod creation uses GraphQL, accepts explicit `SECURE` cloud type, one effective data-center ID, GPU/image/disk/environment controls, and passes `terminateAfter` unchanged.
+- Reproduced local behavior: version/help executed; unauthenticated GPU inventory failed cleanly because no API key is configured. No Pod, media transfer, account mutation, or paid action occurred.
+- Documentation conflict: the live prose page shows relative values such as `1h`, but v2.7.2 help/source define `--terminate-after` as an absolute RFC 3339 datetime. Create/get output does not return that configured deadline, so the runbook requires authenticated-console confirmation before F1 transfer.
+- Activity/risks: open PR [#303](https://github.com/runpod/runpodctl/pull/303) adds missing checksum verification to self-update/install script; do not use `runpodctl update`. Open PR [#294](https://github.com/runpod/runpodctl/pull/294) reports silent template disk/volume/environment inheritance; use an immutable custom image and explicit values. Open issue [#43](https://github.com/runpod/runpodctl/issues/43) reports stalled `send`; use SSH/SCP plus SHA-256 verification.
+- Credential boundary: prefer a session-local `RUNPOD_API_KEY`, which source inspection shows takes precedence over the config file. Never place it in Git, commands, screenshots, or logs.
 
 ### Official multi-provider sample refresh
 
