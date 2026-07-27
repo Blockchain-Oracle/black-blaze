@@ -1,6 +1,6 @@
 # MediaSpec Project Brief
 
-> Status: selected product direction. The immediate gate is a real end-to-end technical spike; implementation details remain provisional until that spike passes.
+> Status: historical/provisional concept brief. Standalone MediaSpec was reopened after the 2026-07-27 public-field audit found direct overlap with several active projects. Reuse this document for the contract engine, not as build authorization. See `../08-strategy/PUBLIC_FIELD_AUDIT_2026-07-27.md`.
 
 ## One sentence
 

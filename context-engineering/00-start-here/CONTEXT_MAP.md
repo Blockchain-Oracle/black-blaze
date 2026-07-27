@@ -25,7 +25,11 @@ black-blaze/
 - "Can we participate from Nigeria?" → `02-rules/ELIGIBILITY_AND_RULES.md`
 - "What will win?" → `08-strategy/JUDGE_OPTIMIZATION.md`
 - "Which non-photo concepts fit best?" → `08-strategy/CONCEPT_SHORTLIST.md`
-- "What product are we building?" → `09-planning/MEDIASPEC_PROJECT_BRIEF.md`
+- "What is the current public competitive field?" → `08-strategy/PUBLIC_FIELD_AUDIT_2026-07-27.md`
+- "What generative-media behaviors and transformations are attracting attention?" → `08-strategy/GEN_MEDIA_SIGNAL_MAP_2026-07-27.md`
+- "What product are we building?" → StageMe is selected for a feasibility-first build. Start with `STAGEME_START_HERE.md`, then `../09-planning/STAGEME_PRODUCT_SPEC.md`, `../09-planning/STAGEME_SPIKE_PROTOCOL.md`, and `../09-planning/STAGEME_AGENT_BUILD_HANDOFF.md`.
+- "What is the exact architecture?" → `../06-technical/STAGEME_SYSTEM_DESIGN.md`
+- "Which libraries and projects may we learn from?" → `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md`
 - "How does Genblaze work?" → `06-technical/GENBLAZE_GUIDE.md`
 - "How should B2 be used?" → `06-technical/B2_GUIDE.md`
 - "What changed recently?" → `07-live-signals/UPDATES.md`

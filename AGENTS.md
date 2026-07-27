@@ -9,14 +9,20 @@ Help the entrant build and submit a polished, useful, production-shaped generati
 ## Mandatory reading order
 
 1. `context-engineering/00-start-here/EXECUTIVE_BRIEF.md`
-2. `context-engineering/01-official-brief/HACKATHON_OVERVIEW.md`
-3. `context-engineering/02-rules/ELIGIBILITY_AND_RULES.md`
-4. `context-engineering/03-submission/SUBMISSION_CHECKLIST.md`
-5. `context-engineering/04-judging-and-prizes/JUDGING_AND_PRIZES.md`
-6. `context-engineering/06-technical/GENBLAZE_GUIDE.md`
-7. `context-engineering/06-technical/B2_GUIDE.md`
-8. `context-engineering/08-strategy/JUDGE_OPTIMIZATION.md`
-9. `context-engineering/09-planning/OPEN_QUESTIONS.md`
+2. `context-engineering/00-start-here/STAGEME_START_HERE.md`
+3. `context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md` — canonical product authority
+4. `context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md`
+5. `context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md`
+6. `context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md`
+7. `context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md`
+8. `context-engineering/01-official-brief/HACKATHON_OVERVIEW.md`
+9. `context-engineering/02-rules/ELIGIBILITY_AND_RULES.md`
+10. `context-engineering/03-submission/SUBMISSION_CHECKLIST.md`
+11. `context-engineering/04-judging-and-prizes/JUDGING_AND_PRIZES.md`
+12. `context-engineering/06-technical/GENBLAZE_GUIDE.md`
+13. `context-engineering/06-technical/B2_GUIDE.md`
+14. `context-engineering/08-strategy/JUDGE_OPTIMIZATION.md`
+15. `context-engineering/09-planning/OPEN_QUESTIONS.md`
 
 ## Evidence labels
 

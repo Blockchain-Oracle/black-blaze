@@ -2,6 +2,8 @@
 
 > These are **strategic inferences**, not official categories or commitments. Scores are directional planning aids, not predicted judge scores. Every concept still needs user/problem validation and provider-access tests.
 
+> **Status update — 2026-07-27:** The ranking below is historical and predates the broadened generative-media signal search. `StageMe` is now the leading candidate because it combines personal performance, an emotionally obvious audiovisual transformation, and persistent revision. It is not yet finally selected; singing/voice transformation, video latency, provider access, cost, and rights must pass a narrow spike. See `../09-planning/STAGEME_CONCEPT_BRIEF.md` and `GEN_MEDIA_SIGNAL_MAP_2026-07-27.md`.
+
 ## Ranking method
 
 Each concept is scored 1–5 on seven dimensions: real-world utility, production-readiness potential, B2 depth, Genblaze depth, differentiation, deadline feasibility, and demo impact. Maximum: 35.

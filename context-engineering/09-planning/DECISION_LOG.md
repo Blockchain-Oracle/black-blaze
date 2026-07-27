@@ -35,12 +35,50 @@
 - Decision: the next spike should test a narrow media quality-gate and recovery loop, not a general observability platform.
 - Reason: deterministic checks are auditable and feasible; Genblaze retry/fallback and B2 artifact verification remain central rather than decorative.
 
-## D-008 — Select MediaSpec as the product direction
+## D-008 — Select MediaSpec provisionally, then reopen after field audit
 
-- Decision: MediaSpec is the selected concept; implementation commitment is gated on its end-to-end technical spike.
-- Reason: it is the first shortlisted concept with explicit founder-product-fit evidence—the entrant stated they would personally buy it—and it preserves meaningful Genblaze and B2 roles while avoiding ShipCast's autonomous-capture risk.
-- Product brief: `MEDIASPEC_PROJECT_BRIEF.md`.
+- Initial decision: MediaSpec became the provisional concept because it was the first idea with explicit founder-product-fit evidence and it preserved meaningful Genblaze and B2 roles while avoiding ShipCast's autonomous-capture risk.
+- Reopening evidence: the 2026-07-27 public-field audit found direct overlap with Waystation, Genblaze Studio QC, Crucible, ReproFrame, and VeriGen. More importantly, generic MediaSpec still lacked a concrete buyer outcome independent of its infrastructure. The hidden Devpost gallery had masked a technically advanced execution bar.
+- Current decision: do not default to generic MediaSpec. Competitor presence is not a veto; learn from the visible builds without reactively imitating or fleeing them. Preserve the contract engine inside a coherent own-game product unless a stronger standalone buyer thesis emerges. ReachPack / AccessSpec is the leading validation candidate; DemoSpec and AssetMemory remain alternatives.
+- Historical product brief: `MEDIASPEC_PROJECT_BRIEF.md`. Current field evidence: `../08-strategy/PUBLIC_FIELD_AUDIT_2026-07-27.md`.
+
+## D-009 — Stop narrowing around MediaSpec or ReachPack
+
+- Decision: neither MediaSpec nor ReachPack is selected. Stop treating ReachPack as the leading default and reopen discovery across video, audio, music, animation, VFX, and cross-modal experiences.
+- Reason: the concepts had rational sponsor and architecture fit but did not create a strong founder reaction. The user wants the eventual direction to combine that personal recognition with evidence from what people are building, sharing, and struggling to do.
+- Research implication: investigate current social behavior, visible transformations, repeated workarounds, implementation waves, and adjacent products before producing another recommendation. Competitor evidence is for calibration, not automatic rejection.
+- Current signal map: `../08-strategy/GEN_MEDIA_SIGNAL_MAP_2026-07-27.md`.
+
+## D-010 — StageMe becomes the leading candidate, with Perform the Prompt as its interaction
+
+- Decision state: **StageMe is the current leading candidate, not yet an irreversible product selection or implementation authorization.** It must pass a narrow provider/latency/cost spike before commitment.
+- Product distinction: StageMe is the outcome and product; **Perform the Prompt** is its input method. A user hums, sings imperfectly, speaks lyrics, taps a rhythm, or describes the intended performance instead of writing a technical generation prompt.
+- Founder signal: this is the first broadened-search direction to produce a clear positive reaction from the user. That signal matters alongside—not instead of—technical and market evidence.
+- Evidence adjustment: direct inspection of the ElevenMusic demo shows voice-sample approval and a conventional studio/recent-work interface. The feature “song in your voice” already exists; StageMe cannot differentiate as a voice-cloning wrapper.
+- Demo insight: direct inspection of the multi-era wedding film shows that its emotional power comes from a recurring personal premise, a final real-life payoff, and the couple's visible reaction. StageMe's demonstration should likewise show imperfect human input, transformation, a finished audiovisual performance, the person's reaction, and one bounded revision.
+- Feasibility gate: verify an authorized singing/voice-transformation path. Generic TTS is not equivalent to singing enhancement. If unavailable, preserve the user's real recorded vocal as the identity anchor and generate accompaniment, arrangement, and visual performance around it.
+- Working brief: `STAGEME_CONCEPT_BRIEF.md`.
+
+## D-011 — Narrow StageMe before any build commitment
+
+- Decision state: StageMe remains a hypothesis, not the selected build. The earlier concept was too broad and assumed unverified singing/video capabilities.
+- Credible audio path: preserve the user's real authorized recording and spike ACE-Step 1.5 base-model `complete` for backing-track arrangement plus `repaint` for bounded revision. The advertised `Vocal2BGM` label was found only in descriptive documentation, not as a dedicated API task or source implementation.
+- Credible visual path: generated stage art plus deterministic animation/composition. An official Replicate Wan 2.2 S2V endpoint priced at $0.02/output-second makes one audio-bound hero shot a plausible optional spike after audio succeeds; full local video diffusion and synthetic performers remain nonessential.
+- Affordability principle: open-source weights do not make a product accessible if users need expensive GPUs. Use browser capture, scale-to-zero compute, hard duration/retry budgets, B2 caching, and low-data exports.
+- Competition adjustment: ONEFIELD directly overlaps inside the event, while Murmur already offers a substantial hum-to-song workflow. StageMe must prove a narrower real end-to-end transformation, retained vocal identity, staged reveal, and bounded revision.
+- Judge-fit adjustment: individual judges are undisclosed. Optimize for the four official criteria and Backblaze's public thesis that the pipeline—not one model—is the moat.
+- Evidence: `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md`.
+
+## D-012 — Select StageMe for a feasibility-first build
+
+- Decision: the user authorized StageMe documentation, research, and build preparation. StageMe is now the active direction, not merely a candidate. The full application and final submission remain conditional on the retained-performance media gate.
+- Canonical core: one authorized 8–15 second rough sung performance → separate source-conditioned accompaniment/layer → literal original-source retention in the accepted mix → staged audiovisual artifact → one bounded child revision.
+- New primary candidate: AnyAccomp, whose pinned implementation writes accompaniment separately and computes its mixture from accompaniment plus the original vocal waveform. ACE-Step `lego`, `complete`, and gated `repaint` remain required comparison/layer/edit experiments.
+- Build order: magical artifact bundle first; deterministic contracts/QC/renderer may proceed in parallel; broad product UI follows only after source connection and emotional lift pass.
+- Optional video: official Replicate Wan 2.2 S2V may produce one budgeted hero shot after audio acceptance; deterministic stage output remains mandatory.
+- Canonical file: `STAGEME_PRODUCT_SPEC.md`. Start/handoff: `../00-start-here/STAGEME_START_HERE.md` and `STAGEME_AGENT_BUILD_HANDOFF.md`.
+- Authorization boundary: this decision does not authorize unbudgeted paid calls, credential use, deployment, commit, push, or unsupported public claims.
 
 ## Pending decisions
 
-- First media kind, team structure, provider stack, deployment platform, B2 access model, and product-repository visibility remain open. MediaSpec remains subject to the end-to-end spike gate.
+- Representative fixture consent, GPU/endpoint, paid-call budget, measured provider stack, renderer selection, deployment platform, B2 account path, retention policy, team structure, and product-repository visibility remain open.

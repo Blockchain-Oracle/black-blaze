@@ -16,7 +16,13 @@
 | Secret exposure | Medium | Critical | `.env` ignore, secret manager, gitleaks/history scan | pre-submit scan |
 | Nigeria prize payment friction | Low–Medium | Medium | verify bank details/forms if selected; account for fees/W-8BEN | winner onboarding only |
 | SDK release breaks build | Medium | High | pin exact packages after final validation | clean install CI |
-| Copycat/low differentiation | Medium | High | avoid visible concepts and official-sample reskin | concept scorecard |
+| Copycat/low differentiation | High | High | differentiate StageMe from ONEFIELD, Murmur, InstantBandAI, and official sample through real retained-vocal arrangement, staged reveal, and bounded revision | blind before/after test + competitor comparison |
+| ACE-Step `complete` quality unknown | High | Critical | run authorized rough-vocal/hum/beatbox spike; measure source survival, coherence, latency, and failure rate | real GPU outputs + human review |
+| ACE-Step advertised capability mismatch | Medium | High | rely only on documented `complete`/`lego`/`repaint`; do not claim a dedicated Vocal2BGM API | adapter contract tests + source audit |
+| Open source requires inaccessible compute | High | High | browser-first UI, scale-to-zero GPU, short jobs, cached outputs, audio-only/low-data variants | measured cold/warm cost and latency |
+| Full AI video scope/cost | High | Critical | generated stage art + deterministic animation for MVP; full diffusion optional | timed render spike |
+| Voice consent/impersonation | Medium | Critical | preserve user's own recording, explicit consent, no celebrity cloning, revocation path | consent fixture + manifest audit |
+| Custom Genblaze provider defects | Medium | High | implement compliance-tested async ACE-Step connector with explicit capability/error contracts | Genblaze provider compliance suite |
 | Autonomous PR-to-demo scope | High | Critical | ShipCast deprioritized; do not depend on universal app discovery/capture | competitor audit + constrained spike only |
-| Subjective media evaluation | High | High | MediaSpec MVP uses deterministic contracts; label any model judgment | fixture tests + human review |
-| Generic observability overlap | High | High | do not build a trace viewer alone; focus on enforcement, fallback, and verified delivery | compare against MLflow multimodal tracing |
+| Subjective media evaluation | High | High | deterministic audio/video checks plus explicit human taste and identity review | fixture tests + blind human review |
+| Generic observability overlap | High | High | keep validation/provenance inside a user-facing transformation instead of shipping a trace viewer | compare against visible field |

@@ -52,5 +52,185 @@
     "kind": "competitive-signal",
     "license": "MIT",
     "inspected_at": "2026-07-25"
+  },
+  {
+    "owner": "AmphionTeam",
+    "repo": "AnyAccomp",
+    "url": "https://github.com/AmphionTeam/AnyAccomp",
+    "commit": "82604b5e3107944ad4c49fc64900b86118ae2c62",
+    "kind": "core-model",
+    "license": "MIT code; checkpoints declared CC-BY-4.0 on model card; attribution required",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "ace-step",
+    "repo": "ACE-Step-1.5",
+    "url": "https://github.com/ace-step/ACE-Step-1.5",
+    "commit": "6d467e4b5081ccb0abf1ec1bf4fdf9051a2d34b0",
+    "kind": "core-model",
+    "license": "MIT observed; verify weights and bundled dependencies",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "TierraLinn",
+    "repo": "onefield-by-ariyus-one",
+    "url": "https://github.com/TierraLinn/onefield-by-ariyus-one",
+    "commit": "f88d7103172824dc33d6f49c899c46fff19ed0db",
+    "kind": "competitive-signal",
+    "license": "no recognized license; do not copy code/assets",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "p-to-q",
+    "repo": "murmur",
+    "url": "https://github.com/p-to-q/murmur",
+    "commit": "c49882ea42cfba9c94f790c2569eefe355e40503",
+    "kind": "competitive-signal",
+    "license": "no recognized license; do not copy code/assets",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "jeremystiffler",
+    "repo": "instantbandai",
+    "url": "https://github.com/jeremystiffler/instantbandai",
+    "commit": "51f4791acd1ad6b29fbd074c86cf83b20d231b22",
+    "kind": "competitive-signal",
+    "license": "no recognized license; do not copy code/assets",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "itsjwill",
+    "repo": "vanta",
+    "url": "https://github.com/itsjwill/vanta",
+    "commit": "350b053ee18fb856a87516cfbfd1ad2295c26a73",
+    "kind": "reference-project",
+    "license": "NOASSERTION; verify before code reuse",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "librosa",
+    "repo": "librosa",
+    "url": "https://github.com/librosa/librosa",
+    "commit": "b7e7bf486353821311f68d756e487f65d09cf319",
+    "kind": "candidate-library",
+    "license": "ISC",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "csteinmetz1",
+    "repo": "pyloudnorm",
+    "url": "https://github.com/csteinmetz1/pyloudnorm",
+    "commit": "b8d67bfd3ce5deef872f688fcfa491a0ca69fddd",
+    "kind": "candidate-library",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "nomadkaraoke",
+    "repo": "python-audio-separator",
+    "url": "https://github.com/nomadkaraoke/python-audio-separator",
+    "commit": "4fe3540c249ff130bd5395c0e9377b3d16970c1a",
+    "kind": "candidate-library",
+    "license": "MIT wrapper; verify chosen model",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "openai",
+    "repo": "whisper",
+    "url": "https://github.com/openai/whisper",
+    "commit": "04f449b8a437f1bbd3dba5c9f826aca972e7709a",
+    "kind": "candidate-library",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "m-bain",
+    "repo": "whisperX",
+    "url": "https://github.com/m-bain/whisperX",
+    "commit": "2cfd7b7c5c7bba144954364db747319b50e8232b",
+    "kind": "candidate-library",
+    "license": "BSD-2-Clause",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "midrender",
+    "repo": "revideo",
+    "url": "https://github.com/midrender/revideo",
+    "commit": "b5de67a009a55aa2768a1e178b0446b2479a0b4e",
+    "kind": "candidate-library",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "motion-canvas",
+    "repo": "motion-canvas",
+    "url": "https://github.com/motion-canvas/motion-canvas",
+    "commit": "7b91435c301d530351dcf5ebb91dd139c002e405",
+    "kind": "candidate-library",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "Zulko",
+    "repo": "moviepy",
+    "url": "https://github.com/Zulko/moviepy",
+    "commit": "7ffa4f00376237137a25fe1c777355c37753e9af",
+    "kind": "candidate-library",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "pixijs",
+    "repo": "pixijs",
+    "url": "https://github.com/pixijs/pixijs",
+    "commit": "1d90a20c62433ba68dff78466e06ee372a5a5232",
+    "kind": "candidate-library",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "katspaugh",
+    "repo": "wavesurfer.js",
+    "url": "https://github.com/katspaugh/wavesurfer.js",
+    "commit": "98297a9ff4c47fc5099de85d03f6384af954a5b0",
+    "kind": "candidate-library",
+    "license": "BSD-3-Clause",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "meyda",
+    "repo": "meyda",
+    "url": "https://github.com/meyda/meyda",
+    "commit": "ecf256616d43292c82cbf96e60a91b19ca10eb64",
+    "kind": "candidate-library",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "timoncool",
+    "repo": "ACE-Step-Studio",
+    "url": "https://github.com/timoncool/ACE-Step-Studio",
+    "commit": "ebe16f46b51a32b25e36a62bbbe10dfaf7d5c747",
+    "kind": "reference-project",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "audiohacking",
+    "repo": "AceForge",
+    "url": "https://github.com/audiohacking/AceForge",
+    "commit": "6103f5df9d9f6e7e0a80496194c841595bfd1add",
+    "kind": "reference-project",
+    "license": "Apache-2.0",
+    "inspected_at": "2026-07-27"
+  },
+  {
+    "owner": "RowanUnderwood",
+    "repo": "Synesthesia-AI-Video-Director",
+    "url": "https://github.com/RowanUnderwood/Synesthesia-AI-Video-Director",
+    "commit": "ccf9bb843dfbfe40b15934d01c21dfa69bfdcb8a",
+    "kind": "reference-project",
+    "license": "MIT",
+    "inspected_at": "2026-07-27"
   }
 ]

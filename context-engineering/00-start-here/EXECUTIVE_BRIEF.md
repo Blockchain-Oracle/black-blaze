@@ -41,13 +41,15 @@ The official Backblaze blog says "the pipeline is becoming the moat" and calls o
 
 ## Immediate strategic decisions
 
-- **Selected direction: MediaSpec** — quality gates and automatic recovery for generated media. The entrant described it as a product they would personally buy.
-- The next gate is a real vertical slice: generate → fail a deterministic contract → recover → store evidence in B2 → fetch and byte-verify the accepted asset.
-- Avoid generic prompt-to-image/video wrappers.
-- Avoid direct imitation of publicly visible participant concepts: photo-memory reels, screenplay previsualization, and evidence-to-brief provenance tools already have active repositories.
-- Prefer a narrow user with a high-frequency or high-stakes media workflow.
-- Build the first end-to-end slice before polishing peripheral features.
-- Submit a substantive Genblaze issue for the feedback prize only if it is based on real use and includes reproduction/evidence.
+- **StageMe is selected for a feasibility-first build.** The full application remains gated by a real media proof; selection does not promote upstream model claims to product capability.
+- Canonical promise: an authorized 8–15 second rough sung performance receives source-conditioned accompaniment while the original recording remains literally present, followed by a staged audiovisual artifact and one bounded revision.
+- Start with `STAGEME_START_HERE.md`, then the canonical `STAGEME_PRODUCT_SPEC.md`, spike protocol, system design, reference ledger, and agent handoff.
+- AnyAccomp is the primary preservation spike because its pinned source writes a separate accompaniment and a mixture containing the original waveform. ACE-Step `lego`, `complete`, and gated `repaint` are comparison/layer/edit paths.
+- Mandatory visual path: a polished deterministic audio-reactive stage. Wan 2.2 S2V is an optional budgeted hero shot after accepted audio, never a completion dependency.
+- Preserve MediaSpec's QC, manifests, recovery, and verification as internal components rather than a standalone product.
+- Build the magical artifact bundle before the broad web shell. Stop or reframe if source connection, emotional lift, bounded revision, cost, or provider reliability fails.
+- Do not copy participant code or identity. Use `STAGEME_REFERENCE_IMPLEMENTATIONS.md` for clean-room learning and license boundaries.
+- Submit a substantive Genblaze issue for the feedback prize only if based on real use and reproducible evidence.
 
 ## Eligibility snapshot for an adult in Nigeria
 
