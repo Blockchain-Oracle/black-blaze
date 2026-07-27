@@ -17,3 +17,6 @@
 | Nigeria prize payment friction | Low–Medium | Medium | verify bank details/forms if selected; account for fees/W-8BEN | winner onboarding only |
 | SDK release breaks build | Medium | High | pin exact packages after final validation | clean install CI |
 | Copycat/low differentiation | Medium | High | avoid visible concepts and official-sample reskin | concept scorecard |
+| Autonomous PR-to-demo scope | High | Critical | ShipCast deprioritized; do not depend on universal app discovery/capture | competitor audit + constrained spike only |
+| Subjective media evaluation | High | High | MediaSpec MVP uses deterministic contracts; label any model judgment | fixture tests + human review |
+| Generic observability overlap | High | High | do not build a trace viewer alone; focus on enforcement, fallback, and verified delivery | compare against MLflow multimodal tracing |

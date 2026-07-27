@@ -41,6 +41,8 @@ The official Backblaze blog says "the pipeline is becoming the moat" and calls o
 
 ## Immediate strategic decisions
 
+- **Selected direction: MediaSpec** — quality gates and automatic recovery for generated media. The entrant described it as a product they would personally buy.
+- The next gate is a real vertical slice: generate → fail a deterministic contract → recover → store evidence in B2 → fetch and byte-verify the accepted asset.
 - Avoid generic prompt-to-image/video wrappers.
 - Avoid direct imitation of publicly visible participant concepts: photo-memory reels, screenplay previsualization, and evidence-to-brief provenance tools already have active repositories.
 - Prefer a narrow user with a high-frequency or high-stakes media workflow.

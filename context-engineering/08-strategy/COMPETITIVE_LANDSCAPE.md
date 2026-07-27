@@ -21,6 +21,29 @@ The organizer already provides:
 
 A submission that only deploys or lightly modifies these samples will look like infrastructure demonstration, not a distinct useful application.
 
+## Focused release-demo competitor audit (2026-07-26)
+
+The original ShipCast hypothesis is not whitespace:
+
+| Product/project | Publicly claimed workflow | Strategic consequence |
+|---|---|---|
+| [PageBolt](https://pagebolt.dev/blog/auto-generate-pr-demo-video) | GitHub Action reads a PR diff/title, inspects a preview deployment, chooses a browser flow, records it, adds narration, and comments with MP4/GIF; optional YAML specs provide reliability | This is almost the exact autonomous PR-to-demo proposition |
+| [PushPlay](https://www.pushplay.dev/) | Watches GitHub merges, extracts/render real frontend components, writes scripts, and produces client-ready videos without screen recording; currently presented as launching soon/waitlist | Exact positioning overlap, including “show what you shipped” and no Loom |
+| [RepoClip](https://repoclip.io/) | Reads a repository and creates a script plus AI visuals, narration, music, and MP4; offers an official GitHub Action | Repo-to-promotional-video is already commercialized, though it may show generated visuals rather than a truthful live product flow |
+| [makedemo](https://github.com/profullstack/makedemo) | Open-source Puppeteer/LLM/ElevenLabs/ffmpeg CLI that logs into a URL, plans interactions, records, narrates, and exports MP4 | Demonstrates technical feasibility but also exposes auth, CAPTCHA/2FA, browser, and rendering failure surfaces |
+| [Trupeer](https://www.trupeer.ai/) / [Arcade](https://www.arcade.software/post/ai-demo-generator) | Polish a user-created screen recording into narrated, captioned, branded demos | Confirms demand, but also confirms that reliable incumbents keep the human capture step |
+
+Conclusion: autonomous capture is possible in constrained web-app environments, but robust universal capture is not a safe hackathon scope. Manual capture is feasible but does not satisfy the entrant's desired “no screenshots or recordings” value proposition.
+
+## Media quality-gate opportunity and competition
+
+- Google Cloud publicly recommends generative-media workflows with QA parameters, governance guardrails, and a self-correction loop when an asset fails evaluation.
+- TwelveLabs describes production video QC as a CI-like gate: failed clips return to generation rather than shipping.
+- MLflow 3.11+ now offers multimodal tracing with inline image/audio/file artifacts, so a generic “trace viewer for media” is not differentiated enough.
+- Search did not surface a clear developer product specifically centered on simple, auditable output contracts plus Genblaze fallback and B2 verification. This is a promising gap, not proof of absence.
+
+Implication: narrow RenderGuard into **MediaSpec**, a concrete contract-checking and recovery product, rather than building broad observability or subjective quality scoring.
+
 ## Whitespace aligned with entrant preferences
 
 Potentially less crowded strategic spaces—not validated concepts yet:

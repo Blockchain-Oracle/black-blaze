@@ -1,13 +1,15 @@
 # Open Questions
 
-Resolve these before product commitment or submission.
+Resolve these before implementation commitment or submission. The product direction is MediaSpec; its exact first media kind and provider stack remain open until the vertical-slice spike passes.
 
 ## Product
 
-- [ ] Which single audience/problem will the build serve?
-- [ ] What is the one-sentence outcome?
-- [ ] Why is generative media essential?
-- [ ] What concept is sufficiently different from official samples and visible participant projects?
+- [x] Which single audience/problem will the build serve? Developers and small teams shipping automated generative-media workflows that need enforceable output requirements and recovery.
+- [x] What is the one-sentence outcome? Turn a creative brief plus output contract into a generated, validated, recovery-ready, B2-verified media asset.
+- [x] Why is generative media essential? MediaSpec generates and repairs media candidates rather than merely analyzing uploaded files.
+- [x] What concept is sufficiently different from official samples and visible participant projects? MediaSpec adds auditable contract enforcement, bounded recovery, and verified delivery rather than another generation wrapper.
+- [ ] Which one media kind and contract preset will make the clearest vertical slice?
+- [ ] Which deterministic failure should be deliberately demonstrated?
 
 ## Provider access
 

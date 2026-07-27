@@ -25,6 +25,7 @@ black-blaze/
 - "Can we participate from Nigeria?" → `02-rules/ELIGIBILITY_AND_RULES.md`
 - "What will win?" → `08-strategy/JUDGE_OPTIMIZATION.md`
 - "Which non-photo concepts fit best?" → `08-strategy/CONCEPT_SHORTLIST.md`
+- "What product are we building?" → `09-planning/MEDIASPEC_PROJECT_BRIEF.md`
 - "How does Genblaze work?" → `06-technical/GENBLAZE_GUIDE.md`
 - "How should B2 be used?" → `06-technical/B2_GUIDE.md`
 - "What changed recently?" → `07-live-signals/UPDATES.md`

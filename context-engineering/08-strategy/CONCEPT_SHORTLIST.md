@@ -8,15 +8,46 @@ Each concept is scored 1–5 on seven dimensions: real-world utility, production
 
 | Rank | Concept | Score | Strategic read |
 |---:|---|---:|---|
-| 1 | **ShipCast** — release-demo generator for agent-built software | 32/35 | Best entrant fit and fastest polished story |
-| 2 | **RenderGuard** — regression and replay lab for media pipelines | 32/35 | Strongest pure Genblaze/B2 architecture fit |
+| 1 | **MediaSpec** — quality gates and automatic recovery for generated media | 33/35 | Best current balance of product value, Genblaze/B2 depth, and deadline feasibility |
+| 2 | **RenderGuard** — regression and replay lab for media pipelines | 32/35 | Strong architecture fit, but should be narrowed to concrete checks |
 | 3 | **AccessForge** — accessibility package generator | 30/35 | Clear human utility and excellent demo |
 | 4 | **DubGuard** — dubbing/localization workflow with QA gates | 30/35 | Strong audio pipeline, but provider/cost complexity |
 | 5 | **Provenance Gate** — generated-media release approval and verification | 30/35 | Distinctive B2 story, but trust model must be explained carefully |
+| — | **ShipCast** — release-demo generator for agent-built software | Deprioritized | Exact competitors exist and the autonomous capture promise is too risky for the deadline |
 
-The tie between ShipCast and RenderGuard is broken in favor of ShipCast because its user story and demo are easier to understand quickly, and it aligns with the entrant's interest in tools that complement coding agents without becoming an IDE or coding agent.
+The ranking changed after focused feasibility and competitor research. PageBolt already claims PR-diff + preview-deployment analysis, autonomous browser recording, narration, and PR comments. PushPlay claims merged-PR-to-video generation using extracted real UI components. RepoClip generates videos from repositories and exposes a GitHub Action. The open-source `makedemo` project also combines browser automation, AI interaction planning, narration, and MP4 output. ShipCast is therefore both crowded and difficult to differentiate within the remaining build window.
 
-## 1. ShipCast — recommended first concept to validate
+## 1. MediaSpec — recommended concept to validate
+
+### Job
+
+Give developers a media-output contract: generate an asset, verify that it meets concrete publishing requirements, and automatically retry or fall back when it does not.
+
+Example requirements include duration range, aspect ratio, codec, file integrity, caption presence, transcript coverage, loudness range, maximum latency/cost, and required manifest fields. Semantic checks may be optional and must be labeled as model judgments.
+
+### Genblaze role
+
+- Generate one or more candidate outputs across providers.
+- Stream progress and preserve every run step.
+- Run cheap deterministic checks before expensive semantic evaluation.
+- Retry a failed step or fall back to another provider under a fixed budget.
+- Produce parent-linked manifests for rejected and accepted candidates.
+
+### B2 role
+
+- Store source inputs, all candidates, validation reports, manifests, and the final accepted asset.
+- Preserve a reusable history by project/spec/version.
+- Byte-verify the final remote object against its manifest.
+
+### Demo
+
+Enter a brief plus a simple media specification. Show candidate A fail a concrete requirement, automatic recovery/fallback produce candidate B, and the accepted B2 object receive a green verification report. Use a pre-seeded run so the value is visible immediately while a live small run proves the integration.
+
+### Main risk
+
+Do not attempt universal aesthetic scoring. Keep the MVP to deterministic and auditable checks, with at most one clearly labeled model-based evaluator.
+
+## Deprioritized: ShipCast
 
 ### Job
 
@@ -47,9 +78,9 @@ ShipCast does not write code or replace the IDE. It begins after work exists and
 
 Provide a real PR/release bundle; show ShipCast produce a short narrated launch video, captions, platform variants, and a verification screen.
 
-### Main risk
+### Decisive feasibility finding
 
-A fully automatic screencast is too broad for the deadline. Scope version one to supplied clips/screenshots plus generated narration, captions, composition, and evidence-linked claims.
+A fully automatic version is technically possible, but it requires a runnable preview deployment, credentials/test data for authenticated flows, reliable browser control, and correct inference about which user journey proves the PR. Existing products are already pursuing this exact promise. A version that asks users to provide screenshots or recordings is easier, but removes the specific value the entrant wanted. Do not pursue ShipCast for this hackathon unless it is intentionally reduced to a narrow vertical that the existing products do not cover.
 
 ## 2. RenderGuard — strongest architecture concept
 
@@ -158,14 +189,14 @@ A SHA-256 manifest is not a complete public-trust system. Explain the trust boun
 
 ## Recommendation
 
-Validate **ShipCast** and **RenderGuard** with two short spikes before selecting:
+Validate **MediaSpec** with a short vertical-slice spike before selecting:
 
 1. Can the core Genblaze pipeline execute with currently available providers?
 2. Can B2 store and retrieve the complete run package with verifiable hashes?
 3. Can a stranger understand the before/after in under 20 seconds?
 4. Can one vertical slice be deployed within 48 hours?
 
-Choose ShipCast if polished user experience and an immediately relatable demo dominate. Choose RenderGuard if the implementation team can make technical pipeline evidence visually compelling and wants the strongest developer-tool architecture.
+Proceed only if one generated asset can be checked, rejected, retried/fallen back, stored in B2, fetched, and byte-verified end to end. If that spike is too costly or slow, fall back to AccessForge with a narrow caption/transcript/audio-description package.
 
 ## Concepts to avoid
 

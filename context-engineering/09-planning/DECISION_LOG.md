@@ -25,6 +25,22 @@
 - Decision: publish this research context publicly unless blocked by account policy.
 - Reason: all contents summarize public sources and the user wants other agents to pull it. The eventual product repository can be separately public or private.
 
+## D-006 — Deprioritize ShipCast after competitor/feasibility audit
+
+- Decision: do not select ShipCast as the current hackathon build.
+- Reason: PageBolt, PushPlay, RepoClip, and `makedemo` materially overlap the concept. The differentiating no-capture experience requires reliable preview deployments, authenticated test state, flow discovery, browser automation, and truthful feature verification. Requiring manual screenshots/recordings removes the value proposition the entrant cared about.
+
+## D-007 — Validate MediaSpec before committing
+
+- Decision: the next spike should test a narrow media quality-gate and recovery loop, not a general observability platform.
+- Reason: deterministic checks are auditable and feasible; Genblaze retry/fallback and B2 artifact verification remain central rather than decorative.
+
+## D-008 — Select MediaSpec as the product direction
+
+- Decision: MediaSpec is the selected concept; implementation commitment is gated on its end-to-end technical spike.
+- Reason: it is the first shortlisted concept with explicit founder-product-fit evidence—the entrant stated they would personally buy it—and it preserves meaningful Genblaze and B2 roles while avoiding ShipCast's autonomous-capture risk.
+- Product brief: `MEDIASPEC_PROJECT_BRIEF.md`.
+
 ## Pending decisions
 
-- Product concept, team structure, provider stack, deployment platform, B2 access model, and product-repository visibility remain open.
+- First media kind, team structure, provider stack, deployment platform, B2 access model, and product-repository visibility remain open. MediaSpec remains subject to the end-to-end spike gate.
