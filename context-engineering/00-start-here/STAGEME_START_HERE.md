@@ -43,6 +43,10 @@ real authorized performance
 8. `../06-technical/GENBLAZE_GUIDE.md`, `B2_GUIDE.md`
 9. `../10-sources/SOURCE_LEDGER.md`
 
+## Ready-to-run agent prompt
+
+Use [`STAGEME_PRECALL_AGENT_PROMPT.md`](../09-planning/STAGEME_PRECALL_AGENT_PROMPT.md) to launch the complete zero-cost pre-call research and execution-readiness pass. It authorizes research, validation, preparation artifacts, and Git delivery while stopping before paid inference, real credentials, human-audio upload, B2 writes, or deployment.
+
 If a derivative summary conflicts with the canonical product specification, the product specification wins unless a later decision-log entry explicitly supersedes it.
 
 ## The first real deliverable
