@@ -21,6 +21,8 @@ The repository slug follows the requested working name, **Black Blaze**. The spo
 
 ## Start here
 
+**Launching another research/ideation agent?** Copy [`prompts/AGENT_IDEA_DISCOVERY_BOOTSTRAP.md`](prompts/AGENT_IDEA_DISCOVERY_BOOTSTRAP.md).
+
 1. [`AGENTS.md`](AGENTS.md) — operating rules for AI agents.
 2. [`context-engineering/00-start-here/EXECUTIVE_BRIEF.md`](context-engineering/00-start-here/EXECUTIVE_BRIEF.md) — fastest complete orientation.
 3. [`context-engineering/00-start-here/CONTEXT_MAP.md`](context-engineering/00-start-here/CONTEXT_MAP.md) — folder map and reading order.
