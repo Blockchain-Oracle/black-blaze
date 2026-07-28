@@ -1,6 +1,10 @@
 # StageMe Feasibility, Affordability, Competition, and Judge-Fit Audit
 
-> **Historical selection-time audit:** evidence-bound research as of 2026-07-27. StageMe has since been selected for a feasibility-first build. This file is supporting history, not an execution authority. Do not execute its procedures or rely on its duration/model instructions; read `STAGEME_PRODUCT_SPEC.md`, `STAGEME_PRECALL_READINESS_REPORT.md`, and `STAGEME_FIRST_CALL_RUNBOOK.md` for the current contract. No media transformation has yet been reproduced in the StageMe environment.
+> **Historical, unselected selection-time audit:** evidence-bound research as of 2026-07-27. StageMe
+> was subsequently selected for a feasibility-first pass, then decision D-014 reopened product selection
+> on 2026-07-28. This file is supporting history, not execution authority. Do not execute its procedures
+> unless a later decision explicitly reselects StageMe. No media transformation was reproduced in the
+> StageMe environment during this audit.
 
 ## Why this audit exists
 

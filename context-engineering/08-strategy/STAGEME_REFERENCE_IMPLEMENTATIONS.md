@@ -2,7 +2,10 @@
 
 > Purpose: help implementation agents learn from existing tools without copying product identity, unlicensed code, mocks, or unsupported claims.
 >
-> Status: direct audit plus focused agent research in progress. Repository metadata and source pins were observed on 2026-07-27. Recheck mutable repositories, releases, and model licenses before installation.
+> **Historical, unselected candidate packet:** decision D-014 reopened product selection on 2026-07-28.
+> These audits remain calibration evidence; they do not authorize StageMe implementation or establish
+> its stack as the default. Recheck mutable repositories, releases, and model licenses if StageMe is
+> explicitly selected again.
 
 ## 1. Clean-room rules
 
@@ -11,8 +14,8 @@
 3. A code license does not automatically cover model weights, datasets, fonts, sample media, or third-party dependencies.
 4. Record commit, license, copied concept/code boundary, and attribution for every adopted dependency.
 5. Prefer official APIs and upstream examples over scraping another product's implementation.
-6. Reimplement StageMe's product flow, visual identity, copy, and data model independently.
-7. Competitors calibrate the execution bar; they do not define StageMe's roadmap.
+6. If StageMe is reselected, implement its product flow, visual identity, copy, and data model independently.
+7. Competitors calibrate the historical execution bar; they do not select or define a current roadmap.
 8. Never copy secrets, provider endpoints, copyrighted fixtures, branding, prompts, or generated demo assets from another project.
 
 ## 2. Recommended default stack

@@ -1,6 +1,9 @@
 # StageMe — Historical Provisional Concept Brief
 
-> Status: historical concept exploration preserved for rationale. StageMe has since been selected for a feasibility-first build and narrowed to the contract in `STAGEME_PRODUCT_SPEC.md`, which is canonical. Read `../00-start-here/STAGEME_START_HERE.md` first. Broad input/video language below is not an implementation promise.
+> **Historical, unselected concept:** StageMe was narrowed and selected for a feasibility-first pass,
+> but decision D-014 reopened product selection on 2026-07-28. The rationale remains useful; this file
+> is not current selection or implementation authority. Broad input/video language below is not an
+> implementation promise.
 
 ## Feasibility correction
 
@@ -37,7 +40,7 @@ The system interprets those human signals as the creative brief.
 
 The reveal is not merely that AI generated a song. It is that the rough, private fragment in the user's head became something they can hear, watch, revise, and share.
 
-## Why this is currently first
+## Why this ranked first in its historical snapshot
 
 StageMe is the first broadened-search direction to combine:
 

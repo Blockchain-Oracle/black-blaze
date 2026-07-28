@@ -1,5 +1,7 @@
 # Public Field Audit — 2026-07-27
 
+> **Historical field snapshot:** decision D-014 reopened product selection on 2026-07-28. The evidence remains useful; the former “leading direction” language below is not current routing.
+
 > Purpose: prevent concept selection from relying on the unpublished Devpost gallery or on idea novelty assumptions.
 
 ## Evidence boundary
@@ -142,11 +144,11 @@ remote B2 bytes      VERIFIED
 
 This preserves the personally compelling part of MediaSpec without entering the event as another generic QC console.
 
-## Provisional recommendation
+## Historical provisional recommendation
 
-**Leading direction:** validate ReachPack / AccessSpec first—not because the component market is empty, but because the integrated publication outcome provides a coherent own-game thesis.
+**State at the time:** the audit proposed validating ReachPack / AccessSpec first—not because the component market was empty, but because the integrated publication outcome provided a coherent own-game thesis. D-014 later superseded this lead.
 
-Why it currently leads:
+Why it led in this snapshot:
 
 - immediately understandable user outcome;
 - visibly multimodal pipeline;

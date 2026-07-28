@@ -16,7 +16,7 @@ black-blaze/
 │   ├── 08-strategy/                judge optimization and competitive landscape
 │   ├── 09-planning/                risks, open questions, working decisions
 │   └── 10-sources/                 source ledger and machine-readable provenance
-├── scripts/                        context validator and StageMe preflight/null test
+├── scripts/                        context validator plus preserved StageMe preflight/null test
 ├── tests/                          zero-secret preflight and null-test checks
 └── templates/                      project, consent, evidence, scoring, demo, submission
 ```
@@ -24,15 +24,17 @@ black-blaze/
 ## Agent retrieval guide
 
 - "What must we submit?" → `03-submission/`
+- "What is true right now?" → `HACKATHON_REALITY_BRIEF_2026-07-28.md`
 - "Can we participate from Nigeria?" → `02-rules/ELIGIBILITY_AND_RULES.md`
 - "What will win?" → `08-strategy/JUDGE_OPTIMIZATION.md`
 - "Which non-photo concepts fit best?" → `08-strategy/CONCEPT_SHORTLIST.md`
 - "What is the current public competitive field?" → `08-strategy/PUBLIC_FIELD_AUDIT_2026-07-27.md`
 - "What generative-media behaviors and transformations are attracting attention?" → `08-strategy/GEN_MEDIA_SIGNAL_MAP_2026-07-27.md`
-- "What product are we building?" → StageMe is selected for a feasibility-first build. Start with `STAGEME_START_HERE.md`, then the canonical product spec.
-- "Are we ready for the first real model call?" → `../09-planning/STAGEME_PRECALL_READINESS_REPORT.md`, then `../09-planning/STAGEME_FIRST_CALL_RUNBOOK.md` and `../09-planning/STAGEME_F1_RECORDING_CHECKLIST.md`.
-- "What is the exact architecture?" → `../06-technical/STAGEME_SYSTEM_DESIGN.md`
-- "Which libraries and projects may we learn from?" → `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md`
+- "What product are we building?" → No product is currently selected; read `HACKATHON_REALITY_BRIEF_2026-07-28.md` and the latest decision-log entry before ideation.
+- "What StageMe work already exists?" → Historical candidate packet: `STAGEME_START_HERE.md`. Use it only if a later decision explicitly reopens StageMe.
+- "Was StageMe ready for its first real model call?" → Historical evidence in `../09-planning/STAGEME_PRECALL_READINESS_REPORT.md`, `../09-planning/STAGEME_FIRST_CALL_RUNBOOK.md`, and `../09-planning/STAGEME_F1_RECORDING_CHECKLIST.md`; this is not current call authorization.
+- "What architecture was prepared for StageMe?" → Historical design in `../06-technical/STAGEME_SYSTEM_DESIGN.md`.
+- "Which StageMe libraries and projects were inspected?" → `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md`.
 - "How does Genblaze work?" → `06-technical/GENBLAZE_GUIDE.md`
 - "How should B2 be used?" → `06-technical/B2_GUIDE.md`
 - "What changed recently?" → `07-live-signals/UPDATES.md`

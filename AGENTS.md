@@ -9,23 +9,30 @@ Help the entrant build and submit a polished, useful, production-shaped generati
 ## Mandatory reading order
 
 1. `context-engineering/00-start-here/EXECUTIVE_BRIEF.md`
-2. `context-engineering/00-start-here/STAGEME_START_HERE.md`
-3. `context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md` — canonical product authority
-4. `context-engineering/09-planning/STAGEME_PRECALL_READINESS_REPORT.md`
-5. `context-engineering/09-planning/STAGEME_FIRST_CALL_RUNBOOK.md`
-6. `context-engineering/09-planning/STAGEME_F1_RECORDING_CHECKLIST.md`
-7. `context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md`
-8. `context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md`
-9. `context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md`
-10. `context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md`
-11. `context-engineering/01-official-brief/HACKATHON_OVERVIEW.md`
-12. `context-engineering/02-rules/ELIGIBILITY_AND_RULES.md`
-13. `context-engineering/03-submission/SUBMISSION_CHECKLIST.md`
-14. `context-engineering/04-judging-and-prizes/JUDGING_AND_PRIZES.md`
-15. `context-engineering/06-technical/GENBLAZE_GUIDE.md`
-16. `context-engineering/06-technical/B2_GUIDE.md`
-17. `context-engineering/08-strategy/JUDGE_OPTIMIZATION.md`
-18. `context-engineering/09-planning/OPEN_QUESTIONS.md`
+2. `context-engineering/00-start-here/HACKATHON_REALITY_BRIEF_2026-07-28.md` — current facts-only authority
+3. `context-engineering/00-start-here/CONTEXT_MAP.md`
+4. `context-engineering/01-official-brief/HACKATHON_OVERVIEW.md`
+5. `context-engineering/02-rules/ELIGIBILITY_AND_RULES.md`
+6. `context-engineering/03-submission/SUBMISSION_CHECKLIST.md`
+7. `context-engineering/04-judging-and-prizes/JUDGING_AND_PRIZES.md`
+8. `context-engineering/05-schedule/SCHEDULE.md`
+9. `context-engineering/06-technical/GENBLAZE_GUIDE.md`
+10. `context-engineering/06-technical/B2_GUIDE.md`
+11. `context-engineering/07-live-signals/UPDATES.md`
+12. `context-engineering/07-live-signals/DISCUSSIONS.md`
+13. `context-engineering/08-strategy/JUDGE_OPTIMIZATION.md`
+14. `context-engineering/09-planning/DECISION_LOG.md`
+15. `context-engineering/09-planning/OPEN_QUESTIONS.md`
+16. `context-engineering/10-sources/SOURCE_LEDGER.md`
+
+## Current product-selection state
+
+- Product selection was reopened by the owner on 2026-07-28. No concept is currently selected.
+- StageMe, MediaSpec, ShipCast, and other concept documents are preserved as historical research; they are not default build instructions.
+- Do not enter a concept-specific handoff, runbook, provider call, or implementation unless a later decision-log entry explicitly selects that direction.
+- Do not generate or rank new ideas while performing a facts-only context refresh.
+- Official example categories are allowed territory. Competitor overlap is calibration, not an automatic veto; original work and rights compliance remain mandatory.
+- If StageMe is explicitly reopened, then read `context-engineering/00-start-here/STAGEME_START_HERE.md` and its linked packet before acting.
 
 ## Evidence labels
 

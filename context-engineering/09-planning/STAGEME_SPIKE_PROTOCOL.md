@@ -2,7 +2,7 @@
 
 > Purpose: prove or kill StageMe's load-bearing transformation before building the broad application.
 >
-> Product authority: `STAGEME_PRODUCT_SPEC.md`.
+> Historical status: decision D-014 left StageMe unselected on 2026-07-28. `STAGEME_PRODUCT_SPEC.md` remains authoritative only for this preserved candidate packet.
 >
 > Current status: zero-cost pre-call preparation is complete and the decision is **conditionally ready**. No representative media run has occurred. The current local host has no NVIDIA worker, authorized user fixture, or paid-provider budget. Follow `STAGEME_PRECALL_READINESS_REPORT.md` and `STAGEME_FIRST_CALL_RUNBOOK.md` before E1.
 

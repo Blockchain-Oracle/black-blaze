@@ -1,6 +1,10 @@
 # StageMe F1 Recording Checklist
 
-Use this after the pre-call report names the proposed processing location. The
+> **Historical, unselected procedure:** decision D-014 reopened product selection on 2026-07-28.
+> Do not request, process, or upload a fixture from this checklist unless a later decision explicitly
+> selects StageMe and revalidates the consent/provider boundary.
+
+If StageMe is reselected, use this after the pre-call report names the proposed processing location. The
 checklist takes under five minutes and produces the rough-singing recording that
 will be bound to consent by its exact local SHA-256 before it leaves the device.
 It does not authorize humming, beatboxing, voice cloning, public release, or

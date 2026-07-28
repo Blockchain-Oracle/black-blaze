@@ -1,6 +1,6 @@
 # StageMe First Authorized Call Runbook
 
-> **Status:** prepared and mechanically validated; never executed with human media.
+> **Historical runbook:** prepared and mechanically validated; never executed with human media. Decision D-014 left StageMe unselected, so do not run it unless a later owner decision explicitly reselects StageMe and renews every gate below.
 >
 > **First-call model:** `AmphionTeam/AnyAccomp@82604b5e3107944ad4c49fc64900b86118ae2c62`, checkpoint revision `9aa9e62427337bf1df4caa3c4f3e6ad934522e71`.
 >

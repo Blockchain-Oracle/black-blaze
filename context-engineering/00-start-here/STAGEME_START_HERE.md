@@ -1,6 +1,6 @@
 # StageMe — Start Here
 
-> **Current decision:** StageMe is the active product direction for a feasibility-first build. The full application is gated on proving the magical retained-performance transformation.
+> **Historical candidate notice:** StageMe's active-selection status was superseded by decision D-014 on 2026-07-28. This packet preserves completed research and a safe experiment design; it is not the current build direction or call authorization.
 >
 > **Canonical product file:** `../09-planning/STAGEME_PRODUCT_SPEC.md`.
 >

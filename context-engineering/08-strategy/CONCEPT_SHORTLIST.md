@@ -2,7 +2,7 @@
 
 > These are **strategic inferences**, not official categories or commitments. Scores are directional planning aids, not predicted judge scores. Every concept still needs user/problem validation and provider-access tests.
 
-> **Status update — 2026-07-27:** The ranking below is historical and predates the broadened generative-media signal search. `StageMe` is now the leading candidate because it combines personal performance, an emotionally obvious audiovisual transformation, and persistent revision. It is not yet finally selected; singing/voice transformation, video latency, provider access, cost, and rights must pass a narrow spike. See `../09-planning/STAGEME_CONCEPT_BRIEF.md` and `GEN_MEDIA_SIGNAL_MAP_2026-07-27.md`.
+> **Status update — 2026-07-28:** The entire ranking below is historical. Decision D-014 reopened product selection; StageMe is preserved as a researched candidate but is not the current leader or selected build. Read `../00-start-here/HACKATHON_REALITY_BRIEF_2026-07-28.md` before another idea pass.
 
 ## Ranking method
 

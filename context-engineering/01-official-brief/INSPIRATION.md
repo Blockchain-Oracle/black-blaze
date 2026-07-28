@@ -25,7 +25,9 @@ Active public participant repositories found through Genblaze feedback issues in
 - **ProofRelay** — approved field reports to provenance-aware media briefs;
 - **Reel** — screenplay scenes to previsualized cuts.
 
-These are useful architecture signals but should not be copied. Competing head-on wastes differentiation unless the proposed product has a materially different audience and workflow.
+These are useful architecture signals but should not be copied.
+
+**[OFFICIAL]** The organizer explicitly invites familiar categories, and the published scoring model has no separate novelty criterion. **[INFERENCE]** Broad overlap is therefore not an automatic veto. It should force a sharper audience, painful job, workflow, first result, and evidence package. A familiar category can remain viable when it is materially better for its chosen user; a longer feature list alone is not differentiation.
 
 ## Concept quality test
 

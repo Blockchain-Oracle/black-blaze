@@ -1,6 +1,6 @@
 # Devpost Discussions and Manager Clarifications
 
-Checked 2026-07-25. Forum: https://backblaze-generative-media.devpost.com/forum_topics
+Checked 2026-07-28 19:22 UTC. Forum: https://backblaze-generative-media.devpost.com/forum_topics
 
 ## 1. B2 2,500/day cap report
 
@@ -28,6 +28,18 @@ A participant asked whether a private backend repository plus a non-compilable p
 
 Manager confirmed the multi-provider sample as the starter showing Genblaze + B2 across providers.
 
+## 5. New private-repository question
+
+On 2026-07-28, a participant asked which collaborator to invite for a private repository. The topic had zero replies when checked:
+
+https://backblaze-generative-media.devpost.com/forum_topics/44607-can-i-keep-my-github-repo-private-if-yes-who-should-i-invite-as-a-collaborator
+
+The written rules already identify `b2genblaze`. Recheck the rules and topic immediately before submission rather than treating the unanswered post as new guidance.
+
+## 6. Gallery and participant access
+
+The project gallery remained unpublished. The public participant page displayed 1,146 but required login to browse names. The official Devpost connector exposes no participant-list endpoint, and the available browser sessions did not produce authenticated participant access. No participant concept was inferred from the count.
+
 ## All observed topic URLs
 
 - https://backblaze-generative-media.devpost.com/forum_topics/44557-2500-max-day-rate-limits-for-free-buckets-on-b2-blaze
@@ -38,6 +50,7 @@ Manager confirmed the multi-provider sample as the starter showing Genblaze + B2
 - https://backblaze-generative-media.devpost.com/forum_topics/44231-gmi-cloud-key-not-working
 - https://backblaze-generative-media.devpost.com/forum_topics/44229-the-credits-request-form-this-promotion-has-reached-its-redemption-limit
 - https://backblaze-generative-media.devpost.com/forum_topics/44224-starter-repo-for-genblaze-b2
+- https://backblaze-generative-media.devpost.com/forum_topics/44607-can-i-keep-my-github-repo-private-if-yes-who-should-i-invite-as-a-collaborator
 
 ## Monitoring rule
 

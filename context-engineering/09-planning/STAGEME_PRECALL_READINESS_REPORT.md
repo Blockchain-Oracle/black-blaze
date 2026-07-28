@@ -1,6 +1,6 @@
 # StageMe Pre-Call Readiness Report
 
-> **Current verdict:** **conditionally ready** for the first authorized call.
+> **Historical verdict:** this packet reached **conditionally ready** on 2026-07-27. Decision D-014 superseded StageMe's active-selection status on 2026-07-28, so no StageMe call is currently authorized by repository routing.
 >
 > **Checked:** 2026-07-27, primary mutable-source and policy pass completed 11:20 UTC; ACE artifact and storage-rate consistency pass completed 11:49 UTC; private F1 and RunPod CLI-contract refresh completed 17:12 UTC; fixture-scoped F1 rights affirmation and preflight refresh completed 17:28 UTC.
 >

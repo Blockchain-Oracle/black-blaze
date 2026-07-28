@@ -1,6 +1,10 @@
 # StageMe Pre-Call Research and Execution-Readiness Agent Prompt
 
-Copy everything below this line into a new agent session.
+> **Historical, unselected packet:** decision D-014 reopened product selection on 2026-07-28.
+> Do not copy or execute this prompt unless a later decision-log entry explicitly selects StageMe.
+
+If StageMe is explicitly selected again, copy everything below this line into a new agent session
+after reconciling it against the then-current `AGENTS.md` and official sources.
 
 ---
 
@@ -58,11 +62,12 @@ Read these completely before changing the product definition:
 15. `context-engineering/10-sources/SOURCE_LEDGER.md`
 16. `context-engineering/10-sources/repositories.json`
 
-## Canonical product contract
+## Historical StageMe product contract
 
-Treat `STAGEME_PRODUCT_SPEC.md` as canonical.
+For an explicitly reselected StageMe direction, treat `STAGEME_PRODUCT_SPEC.md` as the candidate's
+canonical contract unless a later decision supersedes it.
 
-The current product promise is:
+The StageMe product promise at the time of this archived prompt was:
 
 > StageMe turns an authorized 8–15 second rough sung performance into an arranged stage moment while keeping the original recording literally present, then lets the user revise one generated layer or bounded section without starting over.
 

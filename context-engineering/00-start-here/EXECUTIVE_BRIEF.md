@@ -39,16 +39,15 @@ The official Backblaze blog says "the pipeline is becoming the moat" and calls o
 - **Team size:** no numeric maximum found in the rules.
 - **Multiple entries:** permitted if each is unique and substantially different.
 
-## Immediate strategic decisions
+## Current strategic state
 
-- **StageMe is selected for a feasibility-first build.** The full application remains gated by a real media proof; selection does not promote upstream model claims to product capability.
-- Canonical promise: an authorized 8–15 second rough sung performance receives source-conditioned accompaniment while the original recording remains literally present, followed by a staged audiovisual artifact and one bounded revision.
-- Start with `STAGEME_START_HERE.md`, then the canonical `STAGEME_PRODUCT_SPEC.md`, pre-call readiness report, first-call runbook, F1 recording checklist, spike protocol, system design, reference ledger, and agent handoff.
-- AnyAccomp is the primary preservation spike because its pinned source writes a separate accompaniment and a mixture containing the original waveform. ACE-Step `lego`, `complete`, and gated `repaint` are comparison/layer/edit paths.
-- Mandatory visual path: a polished deterministic audio-reactive stage. Wan 2.2 S2V is an optional budgeted hero shot after accepted audio, never a completion dependency.
-- Preserve MediaSpec's QC, manifests, recovery, and verification as internal components rather than a standalone product.
-- Build the magical artifact bundle before the broad web shell. Stop or reframe if source connection, emotional lift, bounded revision, cost, or provider reliability fails.
-- Do not copy participant code or identity. Use `STAGEME_REFERENCE_IMPLEMENTATIONS.md` for clean-room learning and license boundaries.
+- **Product selection is reopened.** The owner's 2026-07-28 direction supersedes StageMe's former active-selection status. No build direction is currently selected.
+- Read `HACKATHON_REALITY_BRIEF_2026-07-28.md` before another idea pass. It captures the refreshed Devpost, B2, Genblaze, repository, and field facts without recommending a product.
+- Preserve StageMe, MediaSpec, ShipCast, and other concept work as historical evidence. Do not delete it, but do not route implementation into it without a later explicit selection.
+- The official brief deliberately lists familiar product categories, and the scoring criteria contain no separate novelty score. Category overlap is calibration, not an automatic veto.
+- Originality, rights compliance, a real user problem, reliable operation, and meaningful B2/Genblaze use remain non-negotiable.
+- Treat add-ons as valuable only when they improve the user's result or a judged dimension; feature count alone is not evidence.
+- Do not copy participant code, identity, wording, branding, or assets.
 - Submit a substantive Genblaze issue for the feedback prize only if based on real use and reproducible evidence.
 
 ## Eligibility snapshot for an adult in Nigeria

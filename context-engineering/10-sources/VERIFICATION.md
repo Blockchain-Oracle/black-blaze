@@ -1,8 +1,46 @@
 # Verification Report
 
-**Latest verification date:** 2026-07-27 UTC
+**Latest verification date:** 2026-07-28 UTC
 
 This is a local/read-only verification snapshot. It contains no provider credential, human audio, paid model output, or B2 write.
+
+## 2026-07-28 product-context reset
+
+The product decision was reopened under D-014. The validator now checks that no product is selected,
+that the current routing authority is the hackathon reality brief, that the retained StageMe packet is
+marked historical/unselected, and that the current Genblaze commit agrees across the fact and repository
+ledgers.
+
+Commands:
+
+```bash
+python3 scripts/validate_context.py
+git diff --check
+python3 -m py_compile scripts/validate_context.py
+python3 -m json.tool context-engineering/10-sources/facts.json
+python3 -m json.tool context-engineering/10-sources/repositories.json
+python3 scripts/check_external_links.py --timeout 30
+```
+
+Results:
+
+```text
+PASS: context integrity checks succeeded
+- markdown files checked: 53
+- JSON files checked: 5
+- repository ledger entries checked: 35
+- required context/readiness files checked: 22
+
+Checked 251 URLs: 251 reachable, 0 failed
+```
+
+`git diff --check`, bytecode compilation, and both JSON parser checks exited 0 with no output.
+The current Genblaze zero-credential split suite reproduced 345 passes and 3 skips on the inspected
+main commit; the exact commands, scopes, runtime, initial duplicate-`conftest` collection failure, and
+limitations are recorded in `../06-technical/REPOSITORY_AUDITS.md`. No provider call, B2 request, or
+media generation was executed.
+
+## 2026-07-27 StageMe pre-call baseline
 
 ## Context integrity
 

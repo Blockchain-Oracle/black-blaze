@@ -1,8 +1,21 @@
 # Open Questions
 
-StageMe is the selected feasibility-first direction. Resolve the load-bearing items below before broad application implementation or submission. Questions answered by the 2026-07-27 pre-call pass are checked; a checked infrastructure question does not promote the media transformation above its evidence level.
+Product selection was reopened on 2026-07-28. No direction is currently selected. Resolve the general selection questions first; the StageMe-specific questions below are preserved as candidate evidence and become active only if a later decision explicitly returns to StageMe.
 
-Current primary audit: `STAGEME_PRECALL_READINESS_REPORT.md`. Historical selection audit: `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md`.
+Current primary orientation: `../00-start-here/HACKATHON_REALITY_BRIEF_2026-07-28.md`. Historical StageMe audits: `STAGEME_PRECALL_READINESS_REPORT.md` and `STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md`.
+
+## Product selection
+
+- [ ] Which specific user and repeated painful job should the entry serve?
+- [ ] Which evidence-backed alternatives produce a useful result or diagnostic within roughly 30 seconds?
+- [ ] For each alternative, which Genblaze behavior is load-bearing rather than decorative?
+- [ ] For each alternative, which B2-backed history, asset, metadata, or recovery behavior is load-bearing?
+- [ ] Does a familiar category become materially better through the proposed wedge/add-ons, or merely larger?
+- [ ] What 24-hour proof and kill criteria should precede a full build commitment?
+- [ ] What provider/model/account entitlement must be proven before architecture depends on it?
+- [ ] What would change the owner's emotional conviction about the direction?
+
+## Preserved StageMe candidate questions
 
 ## Product proof
 

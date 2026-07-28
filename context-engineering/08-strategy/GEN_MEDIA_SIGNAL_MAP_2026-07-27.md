@@ -1,5 +1,7 @@
 # Generative Media Signal Map — 2026-07-27
 
+> **Historical discovery snapshot:** decision D-014 reopened product selection on 2026-07-28. The signals and territories remain evidence, but the prior StageMe lead is superseded.
+
 > Status: active discovery artifact, not a concept decision. Observed at 2026-07-27T02:09:28Z unless otherwise stated. Counts are volatile snapshots, not market-size estimates.
 
 ## Why this exists
@@ -313,7 +315,7 @@ Crowded does not mean forbidden. It means a concept must win on a coherent user 
 
 ## Current candidate state
 
-MediaSpec and ReachPack remain reference architectures, not selected products. After reviewing the recovered direct-X evidence and playable videos, **StageMe is the leading candidate** while `Perform the Prompt` is its proposed interaction model rather than a separate product.
+MediaSpec, ReachPack, and StageMe remain reference concepts. The 2026-07-27 pass had elevated StageMe and `Perform the Prompt`; decision D-014 later superseded that lead and returned the repository to no selected product.
 
 The observed video pattern changes the intended demonstration:
 

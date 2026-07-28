@@ -1,17 +1,19 @@
 # Repository Audits
 
-Core repositories were shallow-cloned for direct source inspection. Additional StageMe libraries and reference projects were inspected through GitHub repository metadata, README/source endpoints, or prior direct audits where a full clone was unnecessary. Exact commits and inspection methods are recorded below or in `../10-sources/repositories.json`. Third-party source is not vendored.
+Core repositories were shallow-cloned for direct source inspection. Additional libraries and reference projects were inspected through GitHub repository metadata, README/source endpoints, or prior direct audits where a full clone was unnecessary. Exact commits and inspection methods are recorded below or in `../10-sources/repositories.json`. Third-party source is not vendored.
 
 ## Official: backblaze-labs/genblaze
 
 - URL: https://github.com/backblaze-labs/genblaze
-- Commit: `293beade3e705d69b29dbf57402800f8a868313f`
-- Last commit inspected: 2026-07-23
+- Commit: `c5a57085a0ca78339eea65b91786f0edad7959e1`
+- Last commit inspected: 2026-07-28 18:06:47 UTC
 - License: MIT (verified in repository README/LICENSE; GitHub API metadata returned unknown)
 - Purpose: core pipeline SDK, connectors, manifests, storage, CLI.
 - Shape: Python monorepo with core, provider connectors, schema/TS types, CLI, docs, examples.
 - Important files: `README.md`, `ARCHITECTURE.md`, `examples/quickstart.py`, `examples/quickstart_local.py`, `docs/features/`, connector READMEs.
 - Finding: the product's strongest differentiators are provider portability, durable B2 sink, provenance, fallback, streaming, fan-in/concurrency, and agent loops.
+- Release boundary: latest release remains `v0.6.0` at `ce651213daa6eb90cca738e5ae2c56055a2f56e1`; open PR #236 prepares but does not release v0.7.0.
+- Current-main reproduction: 345 passed, 3 skipped across five zero-credential package suites. No provider call, B2 operation, or media generation was performed.
 
 ## Official: backblaze-labs/genblaze-gen-media-multi-provider-sample
 
@@ -39,6 +41,27 @@ Core repositories were shallow-cloned for direct source inspection. Additional S
 - Pipeline: prompt → anchor image → iterative refinement → approve → concurrent fan-out to three video models → B2 manifests/assets.
 - Important pattern: under ~100 lines of Genblaze-specific integration, typed SSE events, strict layer boundary, Object Lock option.
 - Risk: older model slugs or env conventions may drift; verify against current v0.6 and provider account.
+
+## Official: backblaze-labs/nvidia-nemotron-genblaze-b2
+
+- URL: https://github.com/backblaze-labs/nvidia-nemotron-genblaze-b2
+- Commit: `71e1f12040b011340f90aba99bc07bd07a7661c7`
+- Last commit inspected: 2026-05-26
+- License: MIT.
+- Stack: Next.js 16.1.6/React 19.2.3 + FastAPI/Python 3.11 + Genblaze + B2.
+- Pipeline: uploaded image/audio/video → Nemotron structured briefing → parallel image/TTS/music and optional video → hierarchical B2 assets plus manifest.
+- Finding: useful official reference for multimodal ingestion, schema-constrained planning, provider fan-out, and Genblaze isolation. Its tests deliberately make no NVIDIA/B2 calls, so they do not prove entitlement or media quality.
+- Boundary: architecture reference only; do not copy its product identity or assume its older locked Genblaze packages are current API authority.
+
+## Official: backblaze-labs/ai-saas-starter-kit
+
+- URL: https://github.com/backblaze-labs/ai-saas-starter-kit
+- Commit: `79085c93b01c7ac547f9cd959b0d00fd1bb972e1`
+- Last commit inspected: 2026-07-27
+- License: MIT.
+- Stack: Next.js 16.2.11/React 19.2.3 + FastAPI + local/hosted Supabase + optional Stripe + B2 file manager + NVIDIA/Genblaze image path.
+- Finding: official reference for production-shaped auth, jobs, admin, storage, and SDK containment. Its broad SaaS shell does not supply a hackathon user's painful job or differentiated generative-media product.
+- Boundary: do not inherit billing/account complexity unless the selected workflow needs it; exact dependencies trail current Genblaze packages.
 
 ## Competitive signal: upgradedev/cinemory
 
@@ -113,6 +136,8 @@ See `../08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md` for interface-level ad
 git clone --depth 1 https://github.com/backblaze-labs/genblaze.git .research-clones/genblaze
 git clone --depth 1 https://github.com/backblaze-labs/genblaze-gen-media-multi-provider-sample.git .research-clones/genblaze-gen-media-multi-provider-sample
 git clone --depth 1 https://github.com/backblaze-labs/genblaze-gmicloud-pipeline.git .research-clones/genblaze-gmicloud-pipeline
+git clone --depth 1 https://github.com/backblaze-labs/nvidia-nemotron-genblaze-b2.git .research-clones/nvidia-nemotron-genblaze-b2
+git clone --depth 1 https://github.com/backblaze-labs/ai-saas-starter-kit.git .research-clones/ai-saas-starter-kit
 git clone --depth 1 https://github.com/upgradedev/cinemory.git .research-clones/cinemory
 git clone --depth 1 https://github.com/yaredtekile/proofrelay.git .research-clones/proofrelay
 git clone --depth 1 https://github.com/woadi-vector/reel.git .research-clones/reel
@@ -158,13 +183,27 @@ All repositories below were inspected from ignored shallow clones. No third-part
 
 ### Genblaze refresh and reproduction
 
-- URL/commit: https://github.com/backblaze-labs/genblaze at `293beade3e705d69b29dbf57402800f8a868313f`; release `v0.6.0`; MIT; Python ≥3.11.
+- URL/current main: https://github.com/backblaze-labs/genblaze at `c5a57085a0ca78339eea65b91786f0edad7959e1`; release `v0.6.0` tag commit `ce651213daa6eb90cca738e5ae2c56055a2f56e1`; MIT; Python ≥3.11.
 - Current distributions observed independently: umbrella 0.4.4, core 0.3.7, S3 0.3.6, CLI 0.3.5.
-- Selected provider/streaming/compositor/registry/ObjectStorageSink/URL-policy suite: 210 passed, 3 skipped.
-- Separate clean-room evidence: 388 selected core tests passed in 24.03 seconds and 26 selected S3 tests passed in 0.50 seconds after installing the optional S3 connector.
+- Previous snapshot `293beade3e705d69b29dbf57402800f8a868313f`: selected suite 210 passed, 3 skipped; separate clean-room core/S3 suites 388 and 26 passed.
+- Current main on 2026-07-28: core pipeline/retry 232 passed; CLI verify-fetch 22 passed; Google chat/Gemini image 53 passed, 3 skipped; GMI entitlement 7 passed; OpenAI chat 31 passed. Total 345 passed, 3 skipped.
+- A combined cross-package pytest command first failed with `ImportPathMismatchError` because connector packages expose the same top-level `tests` package. Separate package runs passed; issue #66 tracks this test-layout class.
+- Runtime: CPython 3.13.13, pytest 9.1.1, macOS 26.2 arm64, using the ignored clone's `.venv/bin/python`.
+- Exact passing commands from `.research-clones/genblaze`:
+
+```bash
+.venv/bin/python -m pytest -q libs/core/tests/unit/test_provider_retry.py libs/core/tests/unit/test_pipeline.py
+.venv/bin/python -m pytest -q cli/tests/test_verify_fetch.py
+.venv/bin/python -m pytest -q libs/connectors/google/tests/test_gemini_image_provider.py libs/connectors/google/tests/test_chat.py
+.venv/bin/python -m pytest -q libs/connectors/gmicloud/tests/test_entitlement_gating.py
+.venv/bin/python -m pytest -q libs/connectors/openai/tests/test_chat.py
+```
+
+- The failed combined command used those seven test files in one invocation and exited 4 while loading the GMI `conftest.py`; pytest reported `ImportPathMismatchError` against the core `tests.conftest`. This is test-layout evidence, not a product/runtime failure.
 - The current compliance class has 16 methods while two docs still say 15.
 - `SyncProvider` is blocking and non-durable despite async thread dispatch; local AnyAccomp belongs only in a dedicated worker with outer durable state. ACE and any queued AnyAccomp need real `BaseProvider` lifecycle semantics.
 - Manifest verification does not fetch remote bytes. Canonical hashes omit asset transport URLs and `parent_run_id`; StageMe must bind lineage and fetch/hash media separately.
+- Current-main changes include bounded chat retry ownership, Gemini image support, GMI/Google entitlement gates, Runway changes, and verify-fetch hardening. P1 issue #233 warns that Google examples still use delisted Imagen slugs. Open PR #236 is not a release.
 
 ### Newly cloned support/runtime repositories
 

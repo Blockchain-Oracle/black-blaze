@@ -3,12 +3,12 @@
     "owner": "backblaze-labs",
     "repo": "genblaze",
     "url": "https://github.com/backblaze-labs/genblaze",
-    "commit": "293beade3e705d69b29dbf57402800f8a868313f",
+    "commit": "c5a57085a0ca78339eea65b91786f0edad7959e1",
     "kind": "official",
     "purpose": "Official Genblaze provider, pipeline, storage-sink, manifest, streaming, and compliance contract authority",
     "license": "MIT",
-    "inspected_at": "2026-07-27T10:18:12Z",
-    "release": "v0.6.0; distribution versions are independent"
+    "inspected_at": "2026-07-28T19:24:00Z",
+    "release": "v0.6.0 at ce651213daa6eb90cca738e5ae2c56055a2f56e1; distribution versions are independent"
   },
   {
     "owner": "backblaze-labs",
@@ -18,7 +18,7 @@
     "kind": "official-sample",
     "purpose": "Architecture reference for Genblaze streaming, B2 persistence, manifests, progress, and provider orchestration",
     "license": "MIT per official blog/repo LICENSE",
-    "inspected_at": "2026-07-25"
+    "inspected_at": "2026-07-28T19:24:00Z"
   },
   {
     "owner": "backblaze-labs",
@@ -28,7 +28,27 @@
     "kind": "official-sample",
     "purpose": "Official queued GMI/Genblaze/B2 sample and compatibility-risk reference",
     "license": "MIT",
-    "inspected_at": "2026-07-25"
+    "inspected_at": "2026-07-28T19:24:00Z"
+  },
+  {
+    "owner": "backblaze-labs",
+    "repo": "nvidia-nemotron-genblaze-b2",
+    "url": "https://github.com/backblaze-labs/nvidia-nemotron-genblaze-b2",
+    "commit": "71e1f12040b011340f90aba99bc07bd07a7661c7",
+    "kind": "official-sample",
+    "purpose": "Official multimodal-ingestion, structured-planning, provider-fan-out, hierarchical-B2, and manifest architecture reference; no product identity or code copied",
+    "license": "MIT",
+    "inspected_at": "2026-07-28T19:24:00Z"
+  },
+  {
+    "owner": "backblaze-labs",
+    "repo": "ai-saas-starter-kit",
+    "url": "https://github.com/backblaze-labs/ai-saas-starter-kit",
+    "commit": "79085c93b01c7ac547f9cd959b0d00fd1bb972e1",
+    "kind": "official-starter",
+    "purpose": "Official production-shaped auth, jobs, admin, B2 file-manager, and Genblaze SDK-containment reference; not a selected product template",
+    "license": "MIT",
+    "inspected_at": "2026-07-28T19:24:00Z"
   },
   {
     "owner": "upgradedev",

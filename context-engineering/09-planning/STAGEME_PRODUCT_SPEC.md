@@ -1,8 +1,8 @@
-# StageMe Product Specification — Canonical
+# StageMe Product Specification — Historical Candidate Contract
 
-> **Authority:** This is the canonical StageMe product definition. If another StageMe summary conflicts with it, this file wins until the decision log records a later replacement.
+> **Selection notice:** Decision D-014 superseded StageMe's active-selection status on 2026-07-28. This remains canonical only for describing the preserved StageMe candidate; it is not the repository's current product authority.
 >
-> **Status:** StageMe is selected for a feasibility-first build. Documentation, research, deterministic preprocessing, adapters, test fixtures, and local scaffolding may proceed. The load-bearing audio transformation is not product-proven. Do not build the broad dream or make paid media calls without an explicit budget and credentials.
+> **Status:** historical candidate, not selected. The load-bearing audio transformation is not product-proven. Do not implement or make paid media calls unless a later owner decision explicitly reselects StageMe and supplies the required authority.
 >
 > **Research date:** 2026-07-27.
 

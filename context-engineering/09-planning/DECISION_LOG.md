@@ -91,6 +91,16 @@
 - Follow-on order: ACE base `lego`; `complete` comparison; Revideo/B2 proof; `repaint` after an accepted parent; optional Wan only after deterministic-stage success.
 - Decision evidence: `STAGEME_PRECALL_READINESS_REPORT.md` and `STAGEME_FIRST_CALL_RUNBOOK.md`.
 
+## D-014 — Reopen product selection and return to official context
+
+- Decision date: 2026-07-28.
+- Owner direction: stop treating the current StageMe work as the build, refresh the full hackathon context from Devpost, Backblaze documentation, and official repositories, and do not choose another idea yet.
+- Current decision: **no product is selected.** This entry supersedes only the active-selection status in D-012/D-013; it does not erase the StageMe research, fixture evidence, feasibility findings, or safety boundaries.
+- Research rule: official example categories are permitted territory. A competitor or participant in the same broad category is calibration, not an automatic rejection. Original work, rights compliance, a sharper user/job, and materially better judged outcomes remain required.
+- Add-on rule: an add-on matters when it improves real-world utility, production readiness, B2 orchestration, or Genblaze orchestration. Feature count is not differentiation by itself.
+- Routing authority: `../00-start-here/HACKATHON_REALITY_BRIEF_2026-07-28.md` is the current facts-only orientation. Another concept decision requires a later decision-log entry.
+- Authorization boundary: this decision does not authorize implementation, provider calls, B2 writes, spending, deployment, Devpost submission, or use/publication of private media.
+
 ## Pending decisions
 
-- Representative fixture processing consent, GPU account/region/live inventory, spend cap, measured model outputs, Revideo repeatability, B2 credentialed canary, deployment platform, final retention wording, and team structure remain open.
+- The target user, painful job, product direction, first falsification test, provider/model entitlement, B2 canary, deployment platform, budget, and team structure remain open. StageMe-specific execution questions remain preserved but dormant unless StageMe is explicitly selected again.

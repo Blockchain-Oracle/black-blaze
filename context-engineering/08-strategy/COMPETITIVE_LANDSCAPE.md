@@ -1,5 +1,7 @@
 # Competitive Landscape
 
+> **Current use:** calibration only. Decision D-014 reopened product selection on 2026-07-28. Broad category overlap is not an automatic rejection; original product identity and a materially sharper user/job remain required.
+
 ## Evidence boundary
 
 The Devpost project gallery was not published when checked. Therefore this is not a complete competitor list. It uses public repositories linked from Genblaze feedback issues and official samples.
@@ -8,7 +10,7 @@ The Devpost project gallery was not published when checked. Therefore this is no
 
 | Project | User/job | Pipeline signal | Differentiation lesson |
 |---|---|---|---|
-| Cinemory | People turning photos into memory reels | I2V, bridges, composition, provenance, B2 | Photo-to-video is already occupied by a polished entrant; avoid it |
+| Cinemory | People turning photos into memory reels | I2V, bridges, composition, provenance, B2 | A polished entrant raises the execution/differentiation bar; category overlap alone is not a veto |
 | ProofRelay | NGOs/newsrooms turning approved incidents into media briefs | Gen image + deterministic factual overlay + approval | Human approval and deterministic transforms strengthen trust |
 | Reel | Writers/directors previsualizing screenplay scenes | LLM planning, stills, I2V, score, ffmpeg, B2 | Screenplay/previs is occupied; model entitlements and handoffs are hard |
 
@@ -42,7 +44,7 @@ Conclusion: autonomous capture is possible in constrained web-app environments, 
 - MLflow 3.11+ now offers multimodal tracing with inline image/audio/file artifacts, so a generic “trace viewer for media” is not differentiated enough.
 - Search did not surface a clear developer product specifically centered on simple, auditable output contracts plus Genblaze fallback and B2 verification. This is a promising gap, not proof of absence.
 
-Implication: narrow RenderGuard into **MediaSpec**, a concrete contract-checking and recovery product, rather than building broad observability or subjective quality scoring.
+Historical implication at the time: narrow RenderGuard into **MediaSpec**, a concrete contract-checking and recovery product, rather than building broad observability or subjective quality scoring. This is not current selection guidance.
 
 ## Whitespace aligned with entrant preferences
 

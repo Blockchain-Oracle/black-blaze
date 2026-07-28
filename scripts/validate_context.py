@@ -33,6 +33,7 @@ SECRET_PATTERNS = {
 REQUIRED = [
     "AGENTS.md",
     "README.md",
+    "context-engineering/00-start-here/HACKATHON_REALITY_BRIEF_2026-07-28.md",
     "context-engineering/00-start-here/STAGEME_START_HERE.md",
     "context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md",
     "context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md",
@@ -59,23 +60,31 @@ ACTIVE_STATUS_FILES = [
     "AGENTS.md",
     "context-engineering/00-start-here/EXECUTIVE_BRIEF.md",
     "context-engineering/00-start-here/CONTEXT_MAP.md",
-    "context-engineering/00-start-here/STAGEME_START_HERE.md",
-    "context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md",
-    "context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md",
-    "context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md",
-    "context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md",
-    "context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md",
-    "context-engineering/09-planning/STAGEME_PRECALL_READINESS_REPORT.md",
+    "context-engineering/00-start-here/HACKATHON_REALITY_BRIEF_2026-07-28.md",
     "context-engineering/09-planning/OPEN_QUESTIONS.md",
 ]
 
 STALE_PATTERNS = [
-    re.compile(r"StageMe remains a hypothesis", re.IGNORECASE),
-    re.compile(r"No build is selected", re.IGNORECASE),
-    re.compile(r"StageMe[^\n]{0,80}not (?:yet )?selected", re.IGNORECASE),
+    re.compile(r"StageMe is (?:the )?active(?: product)? direction", re.IGNORECASE),
+    re.compile(r"StageMe is selected", re.IGNORECASE),
+    re.compile(r"StageMe's implementation-ready", re.IGNORECASE),
+    re.compile(r"StageMe is the current leading", re.IGNORECASE),
     re.compile(r"ReachPack\s*/\s*AccessSpec is the leading", re.IGNORECASE),
-    re.compile(r"No product is selected", re.IGNORECASE),
-    re.compile(r"StageMe is the leading hypothesis", re.IGNORECASE),
+]
+
+ARCHIVED_STAGEME_ENTRY_FILES = [
+    "context-engineering/00-start-here/STAGEME_START_HERE.md",
+    "context-engineering/09-planning/STAGEME_CONCEPT_BRIEF.md",
+    "context-engineering/09-planning/STAGEME_FEASIBILITY_AND_JUDGE_FIT_2026-07-27.md",
+    "context-engineering/09-planning/STAGEME_PRECALL_AGENT_PROMPT.md",
+    "context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md",
+    "context-engineering/09-planning/STAGEME_PRECALL_READINESS_REPORT.md",
+    "context-engineering/09-planning/STAGEME_FIRST_CALL_RUNBOOK.md",
+    "context-engineering/09-planning/STAGEME_F1_RECORDING_CHECKLIST.md",
+    "context-engineering/09-planning/STAGEME_SPIKE_PROTOCOL.md",
+    "context-engineering/06-technical/STAGEME_SYSTEM_DESIGN.md",
+    "context-engineering/08-strategy/STAGEME_REFERENCE_IMPLEMENTATIONS.md",
+    "context-engineering/09-planning/STAGEME_AGENT_BUILD_HANDOFF.md",
 ]
 
 LINK_RE = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
@@ -402,6 +411,80 @@ def validate_active_status(errors: list[str]) -> None:
                 errors.append(f"stale active status in {rel}: {excerpt!r}")
 
 
+def validate_selection_state(errors: list[str]) -> None:
+    """Keep current routing neutral while preserving the StageMe research packet."""
+
+    facts_path = ROOT / "context-engineering/10-sources/facts.json"
+    try:
+        facts = json.loads(facts_path.read_text(encoding="utf-8"))
+        selection = facts["product_selection"]
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, KeyError, TypeError):
+        errors.append("facts.json missing product_selection state")
+        return
+
+    if selection.get("status") != "reopened":
+        errors.append("product_selection.status must be reopened")
+    if selection.get("selected_product") is not None:
+        errors.append("product_selection.selected_product must be null")
+    if selection.get("decision") != "D-014":
+        errors.append("product_selection must be controlled by D-014")
+
+    authority = selection.get("current_authority")
+    expected_authority = (
+        "context-engineering/00-start-here/"
+        "HACKATHON_REALITY_BRIEF_2026-07-28.md"
+    )
+    if authority != expected_authority:
+        errors.append("product_selection current authority is stale")
+
+    reality_path = ROOT / expected_authority
+    if reality_path.is_file():
+        reality = reality_path.read_text(encoding="utf-8")
+        for term in (
+            "No build direction is currently selected",
+            "[OFFICIAL]",
+            "[OBSERVED]",
+            "category overlap",
+        ):
+            if term.lower() not in reality.lower():
+                errors.append(f"reality brief missing required term: {term}")
+
+    decision_path = ROOT / "context-engineering/09-planning/DECISION_LOG.md"
+    if decision_path.is_file() and "D-014" not in decision_path.read_text(
+        encoding="utf-8"
+    ):
+        errors.append("decision log missing D-014 context reset")
+
+    for rel in ARCHIVED_STAGEME_ENTRY_FILES:
+        path = ROOT / rel
+        if not path.is_file():
+            continue
+        opening = path.read_text(encoding="utf-8")[:1600].lower()
+        if "d-014" not in opening or not any(
+            term in opening for term in ("historical", "unselected")
+        ):
+            errors.append(f"StageMe entry lacks current archive notice: {rel}")
+
+    try:
+        ledger = json.loads(
+            (
+                ROOT / "context-engineering/10-sources/repositories.json"
+            ).read_text(encoding="utf-8")
+        )
+        genblaze_entry = next(
+            item
+            for item in ledger
+            if item.get("owner") == "backblaze-labs"
+            and item.get("repo") == "genblaze"
+        )
+        genblaze_facts = facts["genblaze"]
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError, KeyError, StopIteration, TypeError):
+        errors.append("missing current Genblaze fact/ledger state")
+    else:
+        if genblaze_facts.get("current_main_commit") != genblaze_entry.get("commit"):
+            errors.append("Genblaze main commit differs between facts and repository ledger")
+
+
 def validate_core_phrase(errors: list[str]) -> None:
     product = (
         ROOT / "context-engineering/09-planning/STAGEME_PRODUCT_SPEC.md"
@@ -544,6 +627,7 @@ def main() -> int:
     validate_evidence_labels(errors)
     validate_secrets(errors)
     validate_active_status(errors)
+    validate_selection_state(errors)
     validate_core_phrase(errors)
     validate_stageme_readiness(errors)
 
@@ -566,7 +650,7 @@ def main() -> int:
     print(f"- markdown files checked: {markdown_count}")
     print(f"- JSON files checked: {json_count}")
     print(f"- repository ledger entries checked: {ledger_count}")
-    print(f"- required StageMe files checked: {len(REQUIRED)}")
+    print(f"- required context/readiness files checked: {len(REQUIRED)}")
     return 0
 
 

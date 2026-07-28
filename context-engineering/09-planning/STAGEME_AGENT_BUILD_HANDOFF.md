@@ -1,6 +1,6 @@
 # StageMe Agent Build Handoff
 
-> This file tells coding agents how to continue without the original conversation. It authorizes no paid call, secret use, deployment, commit, or push by itself.
+> **Historical handoff:** decision D-014 superseded StageMe's active-selection status on 2026-07-28. Do not execute this handoff unless a later owner decision explicitly reselects StageMe. It authorizes no paid call, secret use, deployment, commit, or push by itself.
 
 ## 1. Required read order
 
@@ -17,7 +17,7 @@
 11. `../06-technical/GENBLAZE_GUIDE.md`, `../06-technical/B2_GUIDE.md`
 12. `../10-sources/SOURCE_LEDGER.md`
 
-If summaries differ, `STAGEME_PRODUCT_SPEC.md` wins unless a later decision-log entry explicitly supersedes it.
+For the StageMe candidate contract, `STAGEME_PRODUCT_SPEC.md` wins. Repository-level selection and routing are controlled by later decision-log entries; D-014 currently leaves StageMe unselected.
 
 ## 2. Current mission
 

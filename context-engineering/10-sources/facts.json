@@ -1,6 +1,6 @@
 {
   "snapshot": {
-    "checked_at_utc": "2026-07-25T22:19:24Z",
+    "checked_at_utc": "2026-07-28T19:25:34Z",
     "event_status": "submission period open"
   },
   "event": {
@@ -28,7 +28,13 @@
     "provider_model_list": true,
     "public_demo_video": true,
     "video_duration_rule": "less than 3 minutes",
-    "submission_language": "English or English translations"
+    "submission_language": "English or English translations",
+    "submission_field_ids": {
+      "app_url": 27756,
+      "github_repo_url": 27757,
+      "providers_and_models": 27760,
+      "b2_and_genblaze_usage": 27761
+    }
   },
   "judging": {
     "stage_one": "pass/fail theme and required technology viability",
@@ -58,17 +64,49 @@
     "assessment": "likely eligible subject to law, individual sanctions screening, service access, and sponsor verification",
     "guarantee": false
   },
+  "product_selection": {
+    "status": "reopened",
+    "selected_product": null,
+    "effective_date": "2026-07-28",
+    "decision": "D-014",
+    "current_authority": "context-engineering/00-start-here/HACKATHON_REALITY_BRIEF_2026-07-28.md",
+    "prior_concepts_preserved": true
+  },
   "live_signals": {
-    "participant_count_observed": 1069,
+    "participant_count_observed": 1146,
+    "participant_count_checked_at_utc": "2026-07-28T19:14:00Z",
     "participant_count_stable": false,
     "participants_directory_login_required": true,
     "project_gallery_published": false,
+    "project_gallery_checked_at_utc": "2026-07-28T19:22:00Z",
     "b2_event_notifications_require_support_enablement": true,
     "gmi_promotional_credits_assumption": "treat as unavailable unless already credited"
+  },
+  "genblaze": {
+    "checked_at_utc": "2026-07-28T19:24:00Z",
+    "current_main_commit": "c5a57085a0ca78339eea65b91786f0edad7959e1",
+    "latest_release": "v0.6.0",
+    "latest_release_commit": "ce651213daa6eb90cca738e5ae2c56055a2f56e1",
+    "distribution_versions": {
+      "genblaze": "0.4.4",
+      "genblaze-core": "0.3.7",
+      "genblaze-s3": "0.3.6",
+      "genblaze-cli": "0.3.5"
+    },
+    "current_main_contract_tests": {
+      "passed": 345,
+      "skipped": 3,
+      "provider_calls_made": false,
+      "b2_operations_made": false,
+      "media_generated": false
+    },
+    "labs_support_status": "experimental and not production-supported"
   },
   "stageme_pre_call": {
     "checked_at_utc": "2026-07-27T17:28:04Z",
     "verdict": "conditionally ready",
+    "selection_status": "historical-candidate-not-selected",
+    "superseded_by": "D-014",
     "canonical_lane": "authorized 8–15 second rough sung performance",
     "f1_local_readiness": {
       "status": "technical-ready-private",

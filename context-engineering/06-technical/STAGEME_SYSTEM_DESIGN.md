@@ -1,6 +1,6 @@
 # StageMe System Design and Interface Contracts
 
-> Status: implementation design for the feasibility-first build. Read `../09-planning/STAGEME_PRODUCT_SPEC.md` first; it is canonical for product behavior.
+> Historical design: decision D-014 left StageMe unselected on 2026-07-28. Read `../09-planning/STAGEME_PRODUCT_SPEC.md` only when evaluating this preserved candidate; do not treat this as the current build architecture.
 >
 > Pinned technical evidence: Genblaze `293beade3e705d69b29dbf57402800f8a868313f`, ACE-Step 1.5 `6d467e4b5081ccb0abf1ec1bf4fdf9051a2d34b0`, AnyAccomp `82604b5e3107944ad4c49fc64900b86118ae2c62`.
 
