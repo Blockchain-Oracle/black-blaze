@@ -12,13 +12,13 @@ Your job is **not** to immediately generate a cute idea or start coding. Your fi
 
 ### Repository
 
-Private GitHub repository:
+Public GitHub repository:
 
 ```text
 https://github.com/Blockchain-Oracle/black-blaze
 ```
 
-You must have authenticated GitHub access. Never ask for or expose the owner's GitHub token, API keys, model credentials, B2 keys, or other secrets.
+Public read access is sufficient for cloning; authenticated GitHub access is required only for authorized writes. Never ask for or expose the owner's GitHub token, API keys, model credentials, B2 keys, or other secrets.
 
 ### Skills
 
@@ -39,13 +39,13 @@ Ask the owner only when:
 - an irreversible or expensive action needs approval;
 - a decision cannot be deferred without wasting substantial work.
 
-Do not purchase anything, activate paid services, publish an app, submit to Devpost, change repository visibility, or commit credentials.
+Do not purchase anything, activate paid services, publish an app, submit to Devpost, change the repository's now-public visibility, or commit credentials.
 
 ---
 
 ## Phase 1 — Clone and orient
 
-1. Clone the private repository using authenticated GitHub access:
+1. Clone the public repository; authenticated GitHub access is still required for authorized pushes:
 
    ```bash
    gh repo clone Blockchain-Oracle/black-blaze

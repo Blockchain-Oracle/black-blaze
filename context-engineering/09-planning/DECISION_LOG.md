@@ -24,7 +24,9 @@
 
 - Historical decision: publish this research context publicly unless blocked by account policy.
 - Superseded safety boundary: repository visibility, push, PR, or publication now requires task-specific owner authorization; an old publication preference is not standing permission for every agent.
-- Current task authority: the 2026-07-27 pre-call assignment explicitly authorizes committing and pushing completed readiness changes to `main` when authentication is available and the remote has not diverged. It does not authorize a visibility change, deployment, or media/credential publication.
+- Historical task boundary: the 2026-07-27 pre-call assignment authorized readiness commits and pushes but not a visibility change.
+- Current decision: on 2026-07-28, the owner explicitly authorized making `Blockchain-Oracle/black-blaze` public. A remote-history and GitHub-surface audit found no committed secrets, private media, private paths, large binaries, Actions logs, issues, pull requests, releases, or deployments. Unauthenticated GitHub API and web checks then confirmed public visibility.
+- Boundary: this decision authorizes repository visibility only. It does not authorize app deployment, Devpost submission, provider processing, media publication, credential publication, or paid calls.
 
 ## D-006 — Deprioritize ShipCast after competitor/feasibility audit
 
@@ -91,4 +93,4 @@
 
 ## Pending decisions
 
-- Representative fixture consent, GPU account/region/live inventory, spend cap, measured model outputs, Revideo repeatability, B2 credentialed canary, deployment platform, final retention wording, team structure, and product-repository visibility remain open.
+- Representative fixture processing consent, GPU account/region/live inventory, spend cap, measured model outputs, Revideo repeatability, B2 credentialed canary, deployment platform, final retention wording, and team structure remain open.

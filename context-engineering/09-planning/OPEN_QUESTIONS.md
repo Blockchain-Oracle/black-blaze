@@ -112,7 +112,7 @@ Current primary audit: `STAGEME_PRECALL_READINESS_REPORT.md`. Historical selecti
 ## Submission
 
 - [ ] Who is the entrant/representative?
-- [ ] Is the eventual product repository public or private?
+- [x] Is the product repository public or private? Public as of 2026-07-28, after a clean remote-history and GitHub-surface audit; this does not publish the private F1 media bundle.
 - [ ] Which deployment and test-account path will remain live through August 12?
 - [ ] Who records, narrates, and edits the demo?
 - [ ] What real artifact proves each judging criterion?

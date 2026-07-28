@@ -134,6 +134,8 @@ No third-party source was vendored.
 
 ## GitHub boundary
 
+> Historical 2026-07-27 task snapshot: the private/no-visibility-change statements below were superseded by decision D-005 on 2026-07-28. The repository is now public; the original task boundary is retained here as evidence.
+
 - Remote: `https://github.com/Blockchain-Oracle/black-blaze`
 - Visibility observed: private
 - Target branch for this explicitly authorized task: `main`
